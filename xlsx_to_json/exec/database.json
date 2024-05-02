@@ -1,0 +1,1059 @@
+[
+    {
+        "Apple": [
+            {
+                "iPhone 14 Pro": [
+                    {
+                        "General": {
+                            "identifiant": 1,
+                            "oem": "Apple",
+                            "modele": "iPhone 14 Pro",
+                            "os": "Apple",
+                            "date": 2022,
+                            "indice_reparabilite": 7.2,
+                            "score_ifixit": 6.0,
+                            "prix_neuf": 900.0,
+                            "prix_reconditionne": 740.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 0,
+                            "analyse": "(+) Display and battery replacements remain a priority in the design.\n(+) Most other components are modular and straightforward to access or replace.\n(-) Unlike in the non-Pro models, there’s still no good way to replace the rear glass."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 55.0,
+                            "prix_mo_batterie": 30.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Tournevis Pentalobe P2 pour iPhone\n. Sèche-cheveux \n. Médiators \n. Ventouse\n. Tournevis Tri-point Y000\n. Spudger (Spatule antistatique)\n. Piettes de précision\n. Tournevis cruciforme #00\n. Tournevis pour vis d'entretoise iPhone",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Changement+batterie+iPhone+14+Pro/152973"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 370.0,
+                            "prix_mo_ecran": 70.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Tournevis Pentalobe P2 pour iPhone\n. Sèche-cheveux\n. Kit iOpener\n. Médiators\n. Ventouse\n. Tournevis Tri-point Y000\n. Spudger (spatue antistatique)\n. Piettes de précision",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Changement+%C3%A9cran+iPhone+14+Pro+Max/152972"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 50.0,
+                            "prix_mo_composant": 50.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/iPhone_14_Pro"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 6.0,
+                            "moralscore": 5.2,
+                            "vie_prive": 2.0,
+                            "ecran": "grand"
+                        }
+                    }
+                ],
+                "iPhone SE 2020": [
+                    {
+                        "General": {
+                            "identifiant": 2,
+                            "oem": "Apple",
+                            "modele": "iPhone SE 2020",
+                            "os": "Apple",
+                            "date": 2020,
+                            "indice_reparabilite": 6.0,
+                            "score_ifixit": 6.0,
+                            "prix_neuf": 180.0,
+                            "prix_reconditionne": 121.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 0,
+                            "analyse": "(+) The two most commonly replaced components, display and battery, remain straightforward to access with the proper knowledge and tools.\n(+) Most components are modular and independently replaceable, iluding many that are cross-compatible with iPhone 8.\n(-) The fragile glass back is impractical to replace."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 15.0,
+                            "prix_mo_batterie": 30.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Tournevis Pentalobe P2 pour iPhone\n. Ventouse \n. Médiators\n. iOpener\n. Spudger (Spatule antistatique)\n. Spatule antistatique\n. Piettes de précision\n. Tournevis cruciforme #000\n. Tournevis Tri-point Y000\n. Tournevis pour vis d'entretoise iPhone",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Remplacement+de+la+batterie+de+l'iPhone+SE+2020/133814"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 30.0,
+                            "prix_mo_ecran": 50.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Tournevis Pentalobe P2 pour iPhone\n. Ventouse \n. Médiators\n. Kit iOpener\n. Spudger (spatule antistatique)\n. Piettes de précision\n. Tournevis cruciforme #000\n. Outil pour ouvrir \n. Tournevis Tri-point Y000",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Remplacement+de+l'%C3%A9cran+de+l'iPhone+SE+2020/133817"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 25.0,
+                            "prix_mo_composant": 50.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/iPhone_SE_2020"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 6.0,
+                            "moralscore": 5.2,
+                            "vie_prive": 2.0,
+                            "ecran": "petit"
+                        }
+                    }
+                ],
+                "iPhone 12 Pro": [
+                    {
+                        "General": {
+                            "identifiant": 3,
+                            "oem": "Apple",
+                            "modele": "iPhone 12 Pro",
+                            "os": "Apple",
+                            "date": 2020,
+                            "indice_reparabilite": 7.8,
+                            "score_ifixit": 6.0,
+                            "prix_neuf": 620.0,
+                            "prix_reconditionne": 400.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 1,
+                            "analyse": "(+) Display and battery replacements remain a priority in the new iPhones' design.\n(+) Most other important components are modular and easy to access or replace.\n(-) Glass on front and back doubles the likelihood of drop damage—and if the back glass breaks, you'll be removing every component and replacing the entire chassis."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 50.0,
+                            "prix_mo_batterie": 30.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Ejecteur de Carte SIM\n. Tournevis Pentalobe P2 pour iPhone\n. Sèche-cheveux\n. Médiators\n. Ventouse\n. Tournevis Tri-point Y000\n. Spudger (spatule antistatique)\n. Piettes de précision \n. Tournevis cruciforme #00\n. Tournevis pour vis d'entretoise iPhone\n. Alcool Isopropyl",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Remplacement+de+la+batterie+de+l'iPhone+12+Pro/140611"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 95.0,
+                            "prix_mo_ecran": 50.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Tournevis Pentalobe P2 pour iPhone\n. Sèche-cheveux\n. Kit iOpener\n. Médiators\n. Ventouse\n. Tournevis cruciforme #00\n. Tournevis Tri-point Y000\n. Spudger (spatule antistatique)\n. Piettes de précision",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Remplacement+de+l'%C3%A9cran+de+l'iPhone+12+Pro/140593"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 30.0,
+                            "prix_mo_composant": 50.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/iPhone_12_Pro"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 6.0,
+                            "moralscore": 5.2,
+                            "vie_prive": 2.0,
+                            "ecran": "grand"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Samsung": [
+            {
+                "Galaxy S23 Ultra": [
+                    {
+                        "General": {
+                            "identifiant": 4,
+                            "oem": "Samsung",
+                            "modele": "Galaxy S23 Ultra",
+                            "os": "Android",
+                            "date": 2023,
+                            "indice_reparabilite": 8.2,
+                            "score_ifixit": 4.0,
+                            "prix_neuf": 820.0,
+                            "prix_reconditionne": 700.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 0,
+                            "analyse": "(+) Standard Phillips screws throughout the phone.\n(-) The battery is still strongly glued down—the new pull tab helps only marginally.\n(-) Screen repairs require a lot of disassembly while battling tough adhesive."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 40.0,
+                            "prix_mo_batterie": 50.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": -1.0,
+                            "liste_outils_batterie": "NC",
+                            "tutoriel_batterie": 0,
+                            "lien_tutoriel_batterie": "NC"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 340.0,
+                            "prix_mo_ecran": 90.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": -1,
+                            "liste_outils_ecran": "NC",
+                            "tutoriel_ecran": 0,
+                            "lien_tutoriel_ecran": "NC"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 30.0,
+                            "prix_mo_composant": 30.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Galaxy_S23_Ultra"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 4.0,
+                            "moralscore": 5.1,
+                            "vie_prive": 2.0,
+                            "ecran": "grand"
+                        }
+                    }
+                ],
+                "Galaxy A51": [
+                    {
+                        "General": {
+                            "identifiant": 5,
+                            "oem": "Samsung ",
+                            "modele": "Galaxy A51",
+                            "os": "Android",
+                            "date": 2020,
+                            "indice_reparabilite": 8.1,
+                            "score_ifixit": 4.0,
+                            "prix_neuf": 150.0,
+                            "prix_reconditionne": 130.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 1,
+                            "analyse": "\n(+) A single Phillips driver takes care of all the screws.\n(+) The plastic back cover is glued in place, but can be removed fairly easily with heat.\n(-) Screen repairs require a lot of disassembly while battling tough adhesive."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 30.0,
+                            "prix_mo_batterie": 50.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Tournevis cruciforme #00\n. Ejecteur de carte SIM\n. Kit iOpener\n. Mediators\n. Ventouse\n. Spudger (spatule antistatique)\n. Cartes en plastique",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Remplacement+de+la+batterie+du+Samsung+Galaxy+A51/134468"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 50.0,
+                            "prix_mo_ecran": 80.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Ejecteur de carte SIM\n. Kit iOpener\n. Médiators\n. Ventouse\n. Tournevis cruciforme #00\n. Spudger #00\n. Cartes en plastique",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Remplacement+de+l'%C3%A9cran+du+Samsung+Galaxy+A51/135277"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 15.0,
+                            "prix_mo_composant": 20.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Samsung_Galaxy_A51"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 4.0,
+                            "moralscore": 5.1,
+                            "vie_prive": 2.0,
+                            "ecran": "petit"
+                        }
+                    }
+                ],
+                "Galaxy S20 Ultra": [
+                    {
+                        "General": {
+                            "identifiant": 6,
+                            "oem": "Samsung ",
+                            "modele": "Galaxy S20 Ultra",
+                            "os": "Android",
+                            "date": 2020,
+                            "indice_reparabilite": 5.7,
+                            "score_ifixit": 4.0,
+                            "prix_neuf": 400.0,
+                            "prix_reconditionne": 350.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 0,
+                            "analyse": "(+) The fasteners, all identical Phillips screws, only require one driver and can't be mixed up, simplifying repair.\n(-) Every repair starts with painstakingly un-gluing the fragile glass rear cover.\n(-) Replacing the glued-down battery is tougher than ever, especially with board interconnect cables to work around."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 30.0,
+                            "prix_mo_batterie": 50.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Kit iOpener\n. Ventouse\n. Mediators\n. Spudger (spatule antistatique)\n. Piettes de précision\n. Tournevis cruciforme #00\n. Alcool Isoproppyl",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Remplacement+de+la+batterie+du+Samsung+Galaxy+S20+Ultra/135441"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 270.0,
+                            "prix_mo_ecran": 90.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Kit iOpener\n. Ventouse\n. Médiators\n. Tournevis cruciforme #00\n. Piettes de précision\n. Spudger (spatule antistatique)\n. Alcool isopropyl",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Changement+%C3%A9cran+Samsung+Galaxy+S20+Ultra/139909"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 20.0,
+                            "prix_mo_composant": 30.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Samsung_Galaxy_S20_Ultra"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 4.0,
+                            "moralscore": 5.1,
+                            "vie_prive": 2.0,
+                            "ecran": "grand"
+                        }
+                    }
+                ]
+            }
+        ],
+        "Android": [
+            {
+                "Nokia G22": [
+                    {
+                        "General": {
+                            "identifiant": 7,
+                            "oem": "Nokia",
+                            "modele": "Nokia G22",
+                            "os": "Android",
+                            "date": 2023,
+                            "indice_reparabilite": 8.1,
+                            "score_ifixit": 8.0,
+                            "prix_neuf": 150.0,
+                            "prix_reconditionne": 100.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 1,
+                            "analyse": "(+) Easily pried open for repairs, with no adhesive mess.\n(+) Battery replacements are well-prioritized in the design.\n(+) Nokia supplies parts & guides for four of the most common repairs.\n(-) Screen repairs are do-able, but not well prioritized."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 25.0,
+                            "prix_mo_batterie": 20.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Ejecteur carte SIM\n. Médiators \n. Piettes de précisions\n. Tournevis cruciforme #00\n. Spudger (spatule antistatique)",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Changement+batterie+Nokia+G22/157502"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 50.0,
+                            "prix_mo_ecran": 50.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Ejecteur de carte SIM\n. Médiators\n. Piettes de précision\n. Tournevis cruciforme #00\n. Spudger (spatule antistatique)",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Changement+%C3%A9cran+Nokia+G22/157507"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 20.0,
+                            "prix_mo_composant": 20.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Nokia_G22"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 8.0,
+                            "moralscore": 3.4,
+                            "vie_prive": 2.0,
+                            "ecran": "grand"
+                        }
+                    }
+                ],
+                "Google Pixel 5": [
+                    {
+                        "General": {
+                            "identifiant": 8,
+                            "oem": "Google ",
+                            "modele": "Google Pixel 5",
+                            "os": "Android",
+                            "date": 2020,
+                            "indice_reparabilite": 6.3,
+                            "score_ifixit": 6.0,
+                            "prix_neuf": 300.0,
+                            "prix_reconditionne": 230.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 0,
+                            "analyse": "(+) Many components are modular and can be replaced independently.\n(+) Battery repairs are reasonably well-prioritized, but tricky adhesive complicates repairs.\n(-) The charging port, a high-wear part, is not modular; this repair requires microsoldering or a full motherboard replacement."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 40.0,
+                            "prix_mo_batterie": 35.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Kit iOpener \n. Ventouse\n. Médiators\n. Piettes de précision\n. Spudger (spatule antistatique)\n. Tournevis Torx T3\n. Alcool Isopropyl\n. Cartes en plastique",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Remplacement+de+la+batterie+du+Google+Pixel+5/140528"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 160.0,
+                            "prix_mo_ecran": 70.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Kit iOpener\n. Ventouse\n. Médiators\n. Piettes de précision\n. Spudger (spatule antistatique)",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Remplacement+de+l'%C3%A9cran+du+Google+Pixel+5/140507"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 25.0,
+                            "prix_mo_composant": 30.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Google_Pixel_5"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 6.0,
+                            "moralscore": 4.2,
+                            "vie_prive": 2.0,
+                            "ecran": "petit"
+                        }
+                    }
+                ],
+                "Google Pixel 8": [
+                    {
+                        "General": {
+                            "identifiant": 9,
+                            "oem": "Google ",
+                            "modele": "Google Pixel 8",
+                            "os": "Android",
+                            "date": 2023,
+                            "indice_reparabilite": 8.2,
+                            "score_ifixit": 6.0,
+                            "prix_neuf": 650.0,
+                            "prix_reconditionne": 570.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 0,
+                            "analyse": "(+) Google provides a free public service manual and offers OEM replacement parts for common repairs.\n(+) The display is well-prioritized, and secures with clips even when replacement adhesive isn’t available.\n(-) The battery is stubbornly glued down, and the soldered charge port can’t be easily replaced."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 50.0,
+                            "prix_mo_batterie": 35.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Kit iOpener\n. Sèche Cheveux\n. Ventouse\n. Médiators\n. Spudger (spatule antistatique)\n. Alcool Isopropyl\n. Chiffons en microfibre\n. Tournevis Torx T3\n. Piettes de précision",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Google+Pixel+8+Battery+Replacement/166180?lang=en"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 170.0,
+                            "prix_mo_ecran": 70.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Kit iOpener\n. Ventouse\n. Médiators\n. Spudger (spatule antistatique)\n. Alcool isopropyl\n. Chiffons en microfibre",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Google+Pixel+8+Screen+Replacement/166152?lang=en"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 50.0,
+                            "prix_mo_composant": 30.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Google_Pixel_8"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 6.0,
+                            "moralscore": 4.2,
+                            "vie_prive": 2.0,
+                            "ecran": "grand"
+                        }
+                    }
+                ]
+            }
+        ],
+        "TeleCoop": [
+            {
+                "Fairphone 4": [
+                    {
+                        "General": {
+                            "identifiant": 10,
+                            "oem": "Fairphone",
+                            "modele": "Fairphone 4",
+                            "os": "Android",
+                            "date": 2021,
+                            "indice_reparabilite": 9.3,
+                            "score_ifixit": 10.0,
+                            "prix_neuf": 600.0,
+                            "prix_reconditionne": 480.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 1,
+                            "analyse": "(+) The pop-out battery can be replaced in seconds, with no tools required.\n(+) Display repairs are easy and well-prioritized.\n(+) The OEM supports all common repairs with clear instructions and publicly available replacement parts."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 30.0,
+                            "prix_mo_batterie": -1.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Médiators",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Changement+batterie+Fairphone+4/152861"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 80.0,
+                            "prix_mo_ecran": -1.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Médiators \n. Tournevis cruciforme #00",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Changement+%C3%A9cran+Fairphone+4/152942"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 25.0,
+                            "prix_mo_composant": -1.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Fairphone_4"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 10.0,
+                            "moralscore": 6.7,
+                            "vie_prive": 8.0,
+                            "ecran": "petit"
+                        }
+                    }
+                ],
+                "Fairphone 5": [
+                    {
+                        "General": {
+                            "identifiant": 11,
+                            "oem": "Fairphone",
+                            "modele": "Fairphone 5",
+                            "os": "Android",
+                            "date": 2023,
+                            "indice_reparabilite": 9.3,
+                            "score_ifixit": 10.0,
+                            "prix_neuf": 700.0,
+                            "prix_reconditionne": 700.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 1,
+                            "analyse": "(+) Easy to disassemble/reassemble with basic tools—no adhesive blocks the way.\n(+) End users can replace the battery in a few seconds.\n(+) Fairphone provides a DIY service manual and offers original replacement parts."
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 40.0,
+                            "prix_mo_batterie": -1.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 0.0,
+                            "liste_outils_batterie": "NC",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Fairphone+5+Battery+Replacement/168819?lang=en"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 100.0,
+                            "prix_mo_ecran": -1.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Tournevis cruciforme #00\n. Spudger (spatule antistatique)",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Fairphone+5+Screen+Replacement/168828?lang=en"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 30.0,
+                            "prix_mo_composant": -1.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Fairphone_5"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 10.0,
+                            "moralscore": 6.7,
+                            "vie_prive": 8.0,
+                            "ecran": "grand"
+                        }
+                    }
+                ],
+                "Murena Fairphone 5": [
+                    {
+                        "General": {
+                            "identifiant": 12,
+                            "oem": "Murena",
+                            "modele": "Murena Fairphone 5",
+                            "os": "Murena OS",
+                            "date": 2023,
+                            "indice_reparabilite": 9.3,
+                            "score_ifixit": 10.0,
+                            "prix_neuf": 770.0,
+                            "prix_reconditionne": 770.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 1,
+                            "analyse": "NC"
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 30.0,
+                            "prix_mo_batterie": -1.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 1.0,
+                            "liste_outils_batterie": ". Médiators",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Changement+batterie+Fairphone+4/152861"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 80.0,
+                            "prix_mo_ecran": -1.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Médiators \n. Tournevis cruciforme #00",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Changement+%C3%A9cran+Fairphone+4/152942"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 25.0,
+                            "prix_mo_composant": -1.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Fairphone_4"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 10.0,
+                            "moralscore": 6.7,
+                            "vie_prive": 10.0,
+                            "ecran": "grand"
+                        }
+                    }
+                ],
+                "Murena Fairphone 4": [
+                    {
+                        "General": {
+                            "identifiant": 13,
+                            "oem": "Murena",
+                            "modele": "Murena Fairphone 4",
+                            "os": "Murena OS",
+                            "date": 2022,
+                            "indice_reparabilite": 9.3,
+                            "score_ifixit": 10.0,
+                            "prix_neuf": 550.0,
+                            "prix_reconditionne": 550.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 1,
+                            "analyse": "NC"
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 40.0,
+                            "prix_mo_batterie": -1.0,
+                            "reduction_telecoop_batterie": 30.0,
+                            "reduction_etat_batterie": 25.0,
+                            "besoin_outils_batterie": 0.0,
+                            "liste_outils_batterie": "NC",
+                            "tutoriel_batterie": 1,
+                            "lien_tutoriel_batterie": "https://fr.ifixit.com/Tutoriel/Fairphone+5+Battery+Replacement/168819?lang=en"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": 100.0,
+                            "prix_mo_ecran": -1.0,
+                            "reduction_telecoop_ecran": 30.0,
+                            "reduction_etat_ecran": 25.0,
+                            "besoin_outils_ecran": 1,
+                            "liste_outils_ecran": ". Tournevis cruciforme #00\n. Spudger (spatule antistatique)",
+                            "tutoriel_ecran": 1,
+                            "lien_tutoriel_ecran": "https://fr.ifixit.com/Tutoriel/Fairphone+5+Screen+Replacement/168828?lang=en"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": 30.0,
+                            "prix_mo_composant": -1.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": 25.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 1,
+                            "lien_tutoriel_composant": "https://fr.ifixit.com/Device/Fairphone_5"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 0,
+                            "reparabilite": 10.0,
+                            "moralscore": 6.7,
+                            "vie_prive": 10.0,
+                            "ecran": "petit"
+                        }
+                    }
+                ]
+            }
+        ],
+        "DumpPhone": [
+            {
+                "Mudita Pure": [
+                    {
+                        "General": {
+                            "identifiant": 14,
+                            "oem": "Mudita",
+                            "modele": "Mudita Pure",
+                            "os": "NC",
+                            "date": 2023,
+                            "indice_reparabilite": -1.0,
+                            "score_ifixit": -1.0,
+                            "prix_neuf": 310.0,
+                            "prix_reconditionne": 310.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 0,
+                            "analyse": "NC"
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": -1.0,
+                            "prix_mo_batterie": -1.0,
+                            "reduction_telecoop_batterie": -1.0,
+                            "reduction_etat_batterie": -1.0,
+                            "besoin_outils_batterie": -1.0,
+                            "liste_outils_batterie": "NC",
+                            "tutoriel_batterie": 0,
+                            "lien_tutoriel_batterie": "NC"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": -1.0,
+                            "prix_mo_ecran": -1.0,
+                            "reduction_telecoop_ecran": -1.0,
+                            "reduction_etat_ecran": -1.0,
+                            "besoin_outils_ecran": -1,
+                            "liste_outils_ecran": "NC",
+                            "tutoriel_ecran": 0,
+                            "lien_tutoriel_ecran": "NC"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": -1.0,
+                            "prix_mo_composant": -1.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": -1.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 0,
+                            "lien_tutoriel_composant": "NC"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 1,
+                            "simple": 1,
+                            "reparabilite": 6.0,
+                            "moralscore": 5.0,
+                            "vie_prive": 9.0,
+                            "ecran": "petit"
+                        }
+                    }
+                ],
+                "Nokia 5310": [
+                    {
+                        "General": {
+                            "identifiant": 15,
+                            "oem": "Nokia",
+                            "modele": "Nokia 5310",
+                            "os": "NC",
+                            "date": 2020,
+                            "indice_reparabilite": 7.0,
+                            "score_ifixit": -1.0,
+                            "prix_neuf": 60.0,
+                            "prix_reconditionne": 60.0,
+                            "lien_achat_neuf": "NC",
+                            "lien_achat_reconditionne": "NC",
+                            "lien_location": "NC",
+                            "promo_telecoop_neuf": -1.0,
+                            "promo_telecoop_reconditionne": -1.0,
+                            "gain_carbone": 0.8,
+                            "telephone_type": 1,
+                            "analyse": "NC"
+                        }
+                    },
+                    {
+                        "Batterie": {
+                            "prix_batterie": 11.0,
+                            "prix_mo_batterie": 10.0,
+                            "reduction_telecoop_batterie": 0.0,
+                            "reduction_etat_batterie": 0.0,
+                            "besoin_outils_batterie": 0.0,
+                            "liste_outils_batterie": "NC",
+                            "tutoriel_batterie": 0,
+                            "lien_tutoriel_batterie": "NC"
+                        }
+                    },
+                    {
+                        "Ecran": {
+                            "prix_ecran": -1.0,
+                            "prix_mo_ecran": -1.0,
+                            "reduction_telecoop_ecran": -1.0,
+                            "reduction_etat_ecran": -1.0,
+                            "besoin_outils_ecran": -1,
+                            "liste_outils_ecran": "NC",
+                            "tutoriel_ecran": 0,
+                            "lien_tutoriel_ecran": "NC"
+                        }
+                    },
+                    {
+                        "Composants divers": {
+                            "prix_composant": -1.0,
+                            "prix_mo_composant": -1.0,
+                            "reduction_telecoop_composant": -1.0,
+                            "reduction_etat_composant": -1.0,
+                            "besoin_outils_composant": -1,
+                            "liste_outils_composant": "NC",
+                            "tutoriel_composant": 0,
+                            "lien_tutoriel_composant": "NC"
+                        }
+                    },
+                    {
+                        "Recommandation": {
+                            "multi_sim": 0,
+                            "simple": 1,
+                            "reparabilite": 8.0,
+                            "moralscore": 3.4,
+                            "vie_prive": 9.0,
+                            "ecran": "petit"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

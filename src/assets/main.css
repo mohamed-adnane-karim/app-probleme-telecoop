@@ -1,0 +1,535 @@
+:root {
+    background: #f6f6f8;
+    --blue-back: #1F1549;
+    --attenuated-blue: #5D5389;
+    --green-back: #217d3f;
+    --attenuated-green: #359150;
+    --text-blue-color: #1F1549;
+    --text-white-color: white;
+    --module_default-background-color: #f6f6f8;
+    --wrapper-background-color: #f6f6f8;
+
+}
+
+#app {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0;
+    font-weight: normal;
+    font-family: Poppins, sans-serif;
+
+}
+
+
+@media (max-width: 768px) {
+
+    body {
+        place-items: center;
+        width: 95%;
+    }
+
+
+}
+
+
+
+/** 1 - Classes blocs **/
+
+/* 1.1 - Headers */
+
+.wrapper-titre {
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--wrapper-background-color);
+}
+
+.wrapper-sous-titre {
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--wrapper-background-color);
+}
+
+/* 1.2 - Boutons */
+.button-wrapper-2 {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+.button-wrapper-1 {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    /* margin: 0 auto;
+    padding: 0; */
+    width: 100%;
+}
+
+/* 1.3 - Menu divers */
+.module_default {
+    background-color: var(--module_default-background-color);
+    /* Couleur de fond de l'en-tête */
+    margin-top: 9vh;
+    margin-bottom: 0;
+}
+
+/* 1.4 - Footer */
+.footer {
+    background-color: #1F1549;
+    width: 100%;
+    justify-content: flex-start;
+
+}
+
+.wrapper-footer {
+    background-color: var(--module_default-background-color);
+    display: inline-block;
+    padding: 1vh;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: auto;
+    font-family: Poppins, sans-serif;
+    font-size: 220%;
+    font-weight: bold;
+    color: #1F1549;
+}
+
+/** 2 - Classes boutons **/
+
+/* 2.1 - Boutons */
+
+/* 2.1.a - Boutons page Accueil */
+.screen-buttons-blue-1 {
+    display: flex;
+}
+
+.screen-buttons-blue-1 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 8.45vw;
+    margin-right: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.screen-buttons-white-1 {
+    display: flex;
+}
+
+.screen-buttons-white-1 button {
+    background-color: var(--module_default-background-color);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 8.45vw;
+    margin-left: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: var(--text-blue-color);
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: auto;
+    flex-grow: 1;
+}
+
+.screen-buttons-blue-2 {
+    display: flex;
+}
+
+.screen-buttons-blue-2 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 9.85vw;
+    margin-left: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.screen-buttons-white-2 {
+    display: flex;
+}
+
+.screen-buttons-white-2 button {
+    background-color: var(--module_default-background-color);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 9.85vw;
+    margin-right: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: var(--text-blue-color);
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: auto;
+    flex-grow: 1;
+}
+
+
+.screen-buttons-blue-3_1 {
+    display: flex;
+}
+
+.screen-buttons-blue-3_1 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 5.215vw;
+    margin-right: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.screen-buttons-blue-3_2 {
+    display: flex;
+}
+
+.screen-buttons-blue-3_2 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 5.215vw;
+    margin-left: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.screen-buttons-white-3 {
+    display: flex;
+}
+
+.screen-buttons-white-3 button {
+    background-color: var(--module_default-background-color);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 5.215vw;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: var(--text-blue-color);
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: auto;
+    flex-grow: 1;
+}
+
+
+.screen-buttons-blue-4 {
+    display: flex;
+}
+
+.screen-buttons-blue-4 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 6.42vw;
+    margin-left: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.screen-buttons-white-4 {
+    display: flex;
+}
+
+.screen-buttons-white-4 button {
+    background-color: var(--module_default-background-color);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 6.42vw;
+    margin-right: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: var(--text-blue-color);
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: auto;
+    flex-grow: 1;
+}
+
+.screen-buttons-blue-5 {
+    display: flex;
+}
+
+.screen-buttons-blue-5 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 7.8vw;
+    margin-right: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+.screen-buttons-white-5 {
+    display: flex;
+}
+
+.screen-buttons-white-5 button {
+    background-color: var(--module_default-background-color);
+    border: 3px solid var(--blue-back);
+    padding: 3vh 7.8vw;
+    margin-left: 2px;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: var(--text-blue-color);
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: auto;
+    flex-grow: 1;
+}
+
+
+
+.screen-buttons-green {
+    display: flex;
+}
+
+.screen-buttons-green button {
+    background-color: var(--green-back);
+    border: 3px solid var(--green-back);
+    padding: 3vh 7vh;
+    margin-right: 1vh;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+    border-radius: 5px;
+    width: auto;
+}
+
+
+/* 2.2 - Actions sur boutons */
+.screen-buttons-blue-1 button:hover {
+    background-color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-white-1 button:hover {
+    color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-blue-2 button:hover {
+    background-color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-white-2 button:hover {
+    color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-blue-3_1 button:hover {
+    background-color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-blue-3_2 button:hover {
+    background-color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-white-3 button:hover {
+    color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-blue-4 button:hover {
+    background-color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-white-4 button:hover {
+    color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-blue-5 button:hover {
+    background-color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-white-5 button:hover {
+    color: var(--attenuated-blue);
+    border: 3px solid var(--attenuated-blue);
+}
+
+.screen-buttons-green button:hover {
+    background-color: var(--attenuated-green);
+    border: 3px solid var(--attenuated-green);
+}
+
+
+/** 3 - Classes textes **/
+
+/* 3.1 - Titres */
+h1 {
+    font-family: Poppins, sans-serif;
+    margin-bottom: 0.5vh;
+    font-size: 340%;
+    /* Taille de police du titre */
+    font-weight: bold;
+    /* Gras */
+    line-height: 1.4;
+    /* Hauteur de ligne */
+    color: #1F1549;
+}
+
+/* 3.2 - Sous-Titres */
+
+.p1 {
+    font-family: Poppins, sans-serif;
+    font-size: 150%;
+    /* Taille de police du paragraphe */
+    line-height: 1.4;
+    /* Hauteur de ligne */
+    font-weight: normal;
+    color: #1F1549;
+}
+
+/* 3.3 - Titres Catégories */
+
+
+
+
+
+
+
+
+
+
+/** 4 - Classes Menu Déroulant **/
+
+/* 4.1 - Options Rectangle */
+
+
+/* 4.2 - Options texte affiché sur rectangle */
+
+/* 4.3 - Options texte du menu déroulant */
+
+
+/* 4.4 - Option sur flèche du menu déroulant */
+
+
+/** 5 - Classes transitions Fadeout **/
+
+/* Sélecteurs menu déroulant page choix 1*/
+
+
+
+/* Style supplémentaire pour la flèche */
+
+
+/* Style supplémentaire pour le texte */
+
+
+
+
+/** 6 - Classes de style  texte et lignes  **/
+
+/* 6.1 - Textes */
+
+
+
+/* 6.2 - Bloc Ligne */
+
+
+/** 7 - Classes case à cocher **/
+
+/* 7.1 - Container cases à cocher */
+
+
+
+
+/* 7.2 - Style du marqueur avant cochage */
+
+
+
+/* 7.3 - Style pour le marqueur de la case à cocher lorsque coché */
+
+
+
+
+
+/** 8 - Tooltip **/
+
+/* 8.1 -  Styles pour le point d'interrogation */
+
+
+/* 8.2 - Styles pour le cadre gris du tooltip */
+
+
+/*8.3 - Styles pour afficher le tooltip lorsqu'il est visible */
