@@ -15,55 +15,55 @@
         <div class="module_default">
             <div class="button-wrapper-1">
                 <div class="screen-buttons-blue-1">
-                    <button>{{ uiParams.titrePageEcran }}</button>
+                    <button>{{ titresPages.titrePageEcran }}</button>
                 </div>
                 <div class="screen-buttons-white-1">
-                    <button>{{ uiParams.titrePageVitre }}</button>
+                    <button>{{ titresPages.titrePageVitre }}</button>
                 </div>
             </div>
 
             <div class="button-wrapper-1">
                 <div class="screen-buttons-white-2">
-                    <button>{{ uiParams.titrePageAutonomie }}</button>
+                    <button>{{ titresPages.titrePageAutonomie }}</button>
                 </div>
                 <div class="screen-buttons-blue-2">
-                    <button>{{ uiParams.titrePageCharge }}</button>
+                    <button>{{ titresPages.titrePageCharge }}</button>
                 </div>
             </div>
 
             <div class="button-wrapper-1">
                 <div class="screen-buttons-blue-3_1">
-                    <button>{{ uiParams.titrePageMicrophone }}</button>
+                    <button>{{ titresPages.titrePageMicrophone }}</button>
                 </div>
                 <div class="screen-buttons-white-3">
-                    <button>{{ uiParams.titrePageHautParleur }}</button>
+                    <button>{{ titresPages.titrePageHautParleur }}</button>
                 </div>
                 <div class="screen-buttons-blue-3_2">
-                    <button>{{ uiParams.titrePageCamera }}</button>
+                    <button>{{ titresPages.titrePageCamera }}</button>
                 </div>
             </div>
 
             <div class="button-wrapper-1">
                 <div class="screen-buttons-white-4">
-                    <button>{{ uiParams.titrePageBoutons }}</button>
+                    <button>{{ titresPages.titrePageBoutons }}</button>
                 </div>
                 <div class="screen-buttons-blue-4">
-                    <button>{{ uiParams.titrePageConnexion }}</button>
+                    <button>{{ titresPages.titrePageConnexion }}</button>
                 </div>
             </div>
 
             <div class="button-wrapper-1">
                 <div class="screen-buttons-blue-5">
-                    <button>{{ uiParams.titrePageStockage }}</button>
+                    <button>{{ titresPages.titrePageStockage }}</button>
                 </div>
                 <div class="screen-buttons-white-5">
-                    <button>{{ uiParams.titrePageBugs }}</button>
+                    <button>{{ titresPages.titrePageBugs }}</button>
                 </div>
             </div>
 
             <div class="button-wrapper-2">
                 <div class="screen-buttons-green">
-                    <button>{{ uiParams.titrePageAutre }}</button>
+                    <button>{{ titresPages.titrePageAutre }}</button>
                 </div>
             </div>
         </div>
@@ -71,5 +71,5 @@
 </template> 
 
 <script setup>
-    import uiParams from '@/config/uiParams';
+    import { titresPages } from '@/config/uiParams';
 </script>

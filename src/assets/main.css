@@ -76,12 +76,26 @@
     margin-bottom: 0;
 }
 
+.module_default-1 {
+    background-color: var(--module_default-background-color);
+    /* Couleur de fond de l'en-tête */
+    margin-top: 13vh;
+    margin-bottom: 10vh;
+}
+
+
 /* 1.4 - Footer */
 .footer {
     background-color: #1F1549;
     width: 100%;
     justify-content: flex-start;
-
+    padding-bottom: 2vh;
+    padding-top: 1vh;
+    /* padding-left: 10vh; */
+    /* position: fixed;
+    bottom: 0;
+    left: 0; */
+    z-index: 999;
 }
 
 .wrapper-footer {
@@ -93,8 +107,20 @@
     width: auto;
     font-family: Poppins, sans-serif;
     font-size: 220%;
-    font-weight: bold;
+    font-weight: 800;
     color: #1F1549;
+    margin-bottom: 1vh;
+
+}
+
+.wrapper-pratiques {
+    background-color: var(--blue-back);
+    margin-left: 100px;
+    margin-top: 20px;
+    font-family: Poppins, sans-serif;
+    font-size: 120%;
+    color: white;
+    margin-bottom: 10px;
 }
 
 /** 2 - Classes boutons **/
