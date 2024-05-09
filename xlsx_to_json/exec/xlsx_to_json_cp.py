@@ -1,19 +1,27 @@
 import pandas as pd 
 import json
 from geopy.geocoders import Nominatim
+from time import sleep
+
 
 database_link=r'C:\Users\moham\OneDrive\Bureau\MAK - Cloud\CS - Cours\2A\S8\PP\app-probleme-telecoop\xlsx_to_json\data\019HexaSmal.csv'
 database=pd.read_csv(database_link, encoding='utf-8',sep=';', dtype={'Code_postal': str})
 print(database)
 database_dic=[]
 
+
 def get_coordinates(location):
     geolocator = Nominatim(user_agent="my_geocoder")
-    location_info = geolocator.geocode(location)
-    if location_info:
-        return location_info.latitude, location_info.longitude
-    else:
-        return None, None
+    while True:
+        try:
+            location_info = geolocator.geocode(location)
+            if location_info:
+                return location_info.latitude, location_info.longitude
+            else:
+                return None, None
+        except Exception as e:
+            print("Une erreur s'est produite lors de la géocodage. Tentative de reconnexion dans 5 secondes...")
+            sleep(5)  # Attendre 5 secondes avant de réessayer
 
 for _,row in database.iterrows():
     cp=row['Code_postal']

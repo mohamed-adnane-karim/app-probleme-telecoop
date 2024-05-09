@@ -134,6 +134,17 @@
 
                         <div class="spacer-1"></div>
 
+                        <div class="module-text-info">
+                            <div class="p2">                            
+                                <span>En faisant réparer votre téléphone par un réparateur labellisé "QualiRépar" vous bénéficier directement du Bonus Réparation mis en place par l'Etat. </span>
+                                <span>Rendez-vous ici pour </span><a href="https://www.ecosystem.eco/conditions/">en savoir plus sur le Bonus Réparation</a><span> !</span>
+                            </div>
+                        </div>
+
+                        <div class="spacer-1"></div>
+                        <div class="spacer-1"></div>
+
+
                         <div class="module-select-info" id="selection-code-postal">
                             <span class="bullet-1"></span>
                             <span class="p2">Votre code postal :</span>
