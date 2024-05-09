@@ -18,7 +18,14 @@ const uiParams = reactive({
 
     selectedCP: "",
     selectedCPDisplay: "",
-    showSuggestions: true
+    showSuggestions: true,
+
+    selectedTeleCoopOui: false,
+    selectedTeleCoopNon: false,
+    selectedTeleCoopJsp: false,
+    labelTeleCoopOui: "OUI",
+    labelTeleCoopNon: "NON",
+    labelTeleCoopJsp: "JE NE SAIS PAS"
 
 });
 

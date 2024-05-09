@@ -147,10 +147,146 @@
 
                         <div class="spacer-1"></div>
 
+                        <div clas="button-wrapper-3">
+                            <div class="btn-1">
+                                <button>Trouver un réparateur QualiRépar</button>
+                            </div>
+                        </div>
+
+                        <div class="spacer-1"></div>
+
+
                     </div>
                     
                     <div class="spacer"></div>
 
+                    <div class="module_default-info" id="modele-phone">
+
+                        <header class="header-info">
+                            <div class="circle">2</div>
+                            <span>J'estime les frais de réparations de mon smartphone</span>
+                        </header>
+
+                        <div class="spacer-1"></div>
+
+                        <div class="module-select-info" id="selection-marque">
+                            <span class="bullet-1"></span>
+                            <span class="p2">Quelle est la marque de votre smartphone actuel ?</span>
+                            <div class="custom-select">
+                                <select v-model="uiParams.selectedMarque" id="marque">
+                                    <option value="" disabled selected>  Veuillez faire votre choix  </option>
+                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="spacer-1"></div>
+
+                        <div class="module-select-info" id="selection-model">
+                            <span class="bullet-1"></span>
+                            <span class="p2">Quel est le modèle de votre smartphone actuel ?</span>
+                            <div class="custom-select">
+                                <select v-model="uiParams.selectedModele" id="model">
+                                    <option value="" disabled selected>  Veuillez faire votre choix  </option>
+                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="spacer-1"></div>
+
+                        <div class="module-select-info" id="selection-possession">
+                            <span class="bullet-1"></span>
+                            <span class="p2">Depuis combien d'année(s) possédez-vous votre smartphone ?</span>
+                            <div class="custom-select">
+                                <select v-model="uiParams.selectedPossession" id="possession">
+                                    <option value="" disabled selected>  Veuillez faire votre choix  </option>
+                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="spacer-1"></div>
+
+                        <div class="module-select-info" id="selection-garantie">
+
+                            <span class="bullet-1"></span>
+                            <span class="p2">Votre smartphone est-il encore sous garantie ?</span>
+                            
+                            <div class="checkbox-grid"> 
+                                <div>
+                                    <label class="checkbox-container" id="GarantieOui">
+                                        <input type="checkbox" id="GarantieOui" @change="handleClickGarantie(1)" v-model="uiParams.selectedGarantieOui">
+                                        <span class="checkmark"></span>
+                                        <span class="label-text" >{{ uiParams.labelGarantieOui }}</span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="checkbox-container" id="GarantieNon">
+                                        <input type="checkbox" id="GarantieNon" @change="handleClickGarantie(2)" v-model="uiParams.selectedGarantieNon">
+                                        <span class="checkmark"></span>
+                                        <span class="label-text" >{{ uiParams.labelGarantieNon }}</span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="checkbox-container" id="GarantieJSP">
+                                        <input type="checkbox" id="GarantieJSP" @change="handleClickGarantie(3)" v-model="uiParams.selectedGarantieJsp">
+                                        <span class="checkmark"></span>
+                                        <span class="label-text-1" >{{ uiParams.labelGarantieJsp }}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="spacer-1"></div>
+
+
+                        <div class="module-select-info" id="selection-forfait-telecoop">
+
+                            <span class="bullet-1"></span>
+                            <span class="p2">Avez-vous un forfait TeleCoop ?</span>
+
+                            <div class="checkbox-grid"> 
+                                <div>
+                                    <label class="checkbox-container" id="TeleCoopOui">
+                                        <input type="checkbox" id="TeleCoopOui" @change="handleClickTeleCoop(1)" v-model="uiParams.selectedTeleCoopOui">
+                                        <span class="checkmark"></span>
+                                        <span class="label-text" >{{ uiParams.labelTeleCoopOui }}</span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="checkbox-container" id="TeleCoopNon">
+                                        <input type="checkbox" id="TeleCoopNon" @change="handleClickTeleCoop(2)" v-model="uiParams.selectedTeleCoopNon">
+                                        <span class="checkmark"></span>
+                                        <span class="label-text" >{{ uiParams.labelTeleCoopNon }}</span>
+                                    </label>
+                                </div>  
+
+                                <div>
+                                    <label class="checkbox-container" id="TeleCoopJsp">
+                                        <input type="checkbox" id="TeleCoopNon" @change="handleClickTeleCoop(3)" v-model="uiParams.selectedTeleCoopJsp">
+                                        <span class="checkmark"></span>
+                                        <span class="label-text-1" >{{ uiParams.labelTeleCoopJsp }}</span>
+                                    </label>
+                                </div>  
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="spacer-1"></div>
+
+                        <span class="label-mention">* Champs obligatoires</span>
+
+                        <div class="spacer-1"></div>
+                    
+                    </div>   
+
+                    <div class="spacer"></div>
 
                 </div>
             </section>
@@ -160,9 +296,41 @@
                     <span>JE DESIRE TOUT DE MÊME CHANGER DE TELEPHONE</span>
                 </div>
                 <div v-if="uiParams.isSection3Open" class="section-content">
-                    <div style="height: 300px;">
+                    <div class="spacer"></div>
+
+                    <div class="module_default-info" id="change-smartphone">
+
+                        <header class="header-info">
+                            <div class="circle">1</div>
+                            <span>Avez-vous bien considéré toutes les options de réparations ?</span>
+                        </header>
+
+                        <div class="spacer-1"></div>
+
+                        <div class="module-text-info" id="text-info">
+                            <span class="p2">80% de l'impact d'un mobile réside dans sa fabrication d'après l'ADEME. Les Français changent en moyenne de mobile tous les 2 ans alors qu'il fonctionne encore. Dans un effort commun de réduction de nos émission, il est donc important d'essayer de conserver son mobile le plus longtemps possible ! En faisant réparer votre smartphone, vous réduisez non seulement vos déchets, votre impact environnemental de votre usage numérique, mais aussi l'impact sur votre portefeuille.
+                            </span>
+                        </div>
+
+                        <div class="spacer-1"></div>
+
+                        <div clas="button-wrapper-3">
+                            <div class="btn-2">
+                                <button>Je souhaite quand même découvrir les smartphones durables de la gamme TeleCoop</button>
+                            </div>
+                        </div>
+
+                        <div class="spacer-1"></div>
+
                     </div>
+
+                    <div class="spacer"></div>
+
+
                 </div>
+
+                <div class="spacer"></div>
+    
             </section>
 
         </div>
@@ -188,7 +356,7 @@
 <script setup>
     import { titresPages, bonnes_pratiques_ecran } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
-    import { uncheckOthersGarantie } from '@/controller/controller';
+    import { uncheckOthersGarantie, uncheckOthersTeleCoop } from '@/controller/controller';
     import { OSs,cpVilles } from '@/model/model.js';
     import { computed } from 'vue';
 
@@ -212,10 +380,13 @@
         uncheckOthersGarantie(uiParams,index);
     }  ;
 
-    // Fonction pour filtrer les codes postaux en fonction de l'entrée de l'utilisateur
+    const handleClickTeleCoop = (index) => {
+        uncheckOthersTeleCoop(uiParams,index);
+    }  ;
+
+
     const filteredCPs = computed(() => {
-    return cpVilles().filter(cp => cp.codePostal.startsWith(uiParams.selectedCP))
-                      .sort((a, b) => {
+        return cpVilles.filter(cp => cp.codePostal.startsWith(uiParams.selectedCP)).sort((a, b) => {
                           // Compare les codes postaux
                           const cpComparison = a.codePostal.localeCompare(b.codePostal);
                           if (cpComparison !== 0) {
@@ -224,8 +395,7 @@
                           // Si les codes postaux sont les mêmes, compare les villes
                           return a.ville.localeCompare(b.ville);
                       });
-});
-
+    });
 
     const onCPInput = () => {
     // Mettre à jour les suggestions ici
@@ -265,6 +435,91 @@
 
 <style scoped>
 
+.module-text-info {
+    display: flex;
+    align-items: center;
+    position:relative;
+    margin-left: 3vh;
+    margin-right : 3vh
+
+}
+
+.button-wrapper-3 {
+    max-width: 1300px;
+    /* Définit la largeur maximale de la zone de contenu */
+    margin: 0 auto;
+    /* Centre le contenu horizontalement */
+    padding: 0;
+    /* Supprime le rembourrage */
+    display: flex;
+    /* Utilise Flexbox */
+    /* Centre les éléments horizontalement */
+    align-items: center;
+    /* Aligne les éléments en bas */
+    /* Calcul de la hauteur restante de la page */
+    overflow: hidden;
+    /* Empêche tout débordement de contenu */
+    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
+    position: absolute;
+}
+
+.btn-1 button:hover {
+    background-color: var(--green-back);
+    border-color: var(--green-back);
+    transform: scale(1.01);
+}
+
+
+.btn-1 {
+    display: flex;
+    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
+    margin-top: 10vh;
+    margin-bottom: 10vh
+}
+
+.btn-1 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 2vh ;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px;
+    width: 90%;
+}
+
+.btn-2 button:hover {
+    background-color: var(--green-back);
+    border-color: var(--green-back);
+    transform: scale(1.01);
+}
+
+
+.btn-2 {
+    display: flex;
+    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
+    margin-top: 5vh;
+    margin-bottom: 5vh
+}
+
+.btn-2 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 2vh ;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px;
+    width: 90%;
+}
+
+
 .custom-input {
     width: 100%; /* ajustez la largeur selon vos besoins */
     height: 40px; /* ajustez la hauteur selon vos besoins */
@@ -283,7 +538,7 @@
 
 .suggestions {
     position: absolute;
-    top: 90%;
+    top: 110%;
     width: 45%;
     max-height: 160px; /* Définir la hauteur maximale à afficher */
     overflow-y: scroll; /* Ajouter une barre de défilement verticale si nécessaire */
@@ -356,6 +611,7 @@
     margin-right: 10px; /* Ajoute une marge à droite pour séparer les cases à cocher */
     align-items: center;
     display: inline-flex;
+
 }
 
 .checkbox-container span {
@@ -382,6 +638,7 @@
     /* Bord bleu de 3px (code hexadécimal) */
     border-radius: 50%;
     /* Coins arrondis */
+
 }
 
 .checkbox-grid {
@@ -407,7 +664,8 @@
 
 .module-select-info{
     display: flex;
-    align-items: center
+    align-items: center;
+    position:relative
 
 }
 
@@ -551,9 +809,9 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: 0 solid;
-    background-color: var(--attenuated-blue);
+    background-color: var(--blue-back);
     color:white;
-    border-color: var(--attenuated-blue);
+    border-color: var(--blue-back);
 }
 
 .section-header-expanded::before {
@@ -570,9 +828,9 @@
 }
 
 .section-header:hover {
-    background-color: var(--attenuated-blue);
+    background-color: var(--blue-back);
     color:white;
-    border-color: var(--attenuated-blue);
+    border-color: var(--blue-back);
 }
 
 .section-header:hover::before {
