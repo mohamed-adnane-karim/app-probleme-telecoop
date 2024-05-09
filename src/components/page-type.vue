@@ -136,9 +136,14 @@
 
                         <div class="module-select-info" id="selection-code-postal">
                             <span class="bullet-1"></span>
-                            <span class="p2">Votre code postal : </span>
-                            <input type="number" v-model="uiParams.selectedCP" class="custom-input" placeholder="Entrez votre code postal">
-                        </div>   
+                            <span class="p2">Votre code postal :</span>
+                            <div style="display: flex; align-items: center;width: 45%;margin-left: 15vh;">
+                                <input type="text" v-model="uiParams.selectedCP" class="custom-input" placeholder="Entrez votre code postal" @input="onCPInput" @click="showSuggestions">
+                                <ul v-if="uiParams.selectedCP.length >= 3 && uiParams.showSuggestions" class="suggestions">
+                                    <li v-for="cp in filteredCPs" :key="`${cp.codePostal}-${cp.ville}`" @click="selectCP(cp)">{{ cp.codePostal }} - {{ cp.ville }}</li>
+                                </ul>
+                            </div>    
+                        </div> 
 
                         <div class="spacer-1"></div>
 
@@ -146,7 +151,6 @@
                     
                     <div class="spacer"></div>
 
-                    {{ console.log(uiParams.selectedCP) }}
 
                 </div>
             </section>
@@ -185,7 +189,8 @@
     import { titresPages, bonnes_pratiques_ecran } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
     import { uncheckOthersGarantie } from '@/controller/controller';
-    import { OSs } from '@/model/model.js';
+    import { OSs,cpVilles } from '@/model/model.js';
+    import { computed } from 'vue';
 
 
 
@@ -207,13 +212,61 @@
         uncheckOthersGarantie(uiParams,index);
     }  ;
 
+    // Fonction pour filtrer les codes postaux en fonction de l'entrée de l'utilisateur
+    const filteredCPs = computed(() => {
+    return cpVilles().filter(cp => cp.codePostal.startsWith(uiParams.selectedCP))
+                      .sort((a, b) => {
+                          // Compare les codes postaux
+                          const cpComparison = a.codePostal.localeCompare(b.codePostal);
+                          if (cpComparison !== 0) {
+                              return cpComparison;
+                          }
+                          // Si les codes postaux sont les mêmes, compare les villes
+                          return a.ville.localeCompare(b.ville);
+                      });
+});
+
+
+    const onCPInput = () => {
+    // Mettre à jour les suggestions ici
+    };
+
+    const showSuggestions = () => {
+    uiParams.showSuggestions = true;
+};
+
+    const selectCP = (selectedCP) => {
+        // Mettre à jour la valeur de selectedCP avec le code postal sélectionné
+        uiParams.selectedCP = selectedCP.codePostal;
+        // Afficher le code postal et la ville dans le champ de l'input
+        uiParams.selectedCPDisplay = `${selectedCP.codePostal} - ${selectedCP.ville}`;
+        // Cacher les suggestions après la sélection
+        uiParams.showSuggestions = false;
+    };
+
+    // Fonction pour masquer les suggestions lorsque l'utilisateur clique en dehors de la zone
+    const handleClickOutside = (event) => {
+        const suggestions = document.querySelector('.suggestions');
+        const inputField = document.querySelector('.custom-input');
+        if (suggestions && !suggestions.contains(event.target) && !inputField.contains(event.target)) {
+            uiParams.showSuggestions = false;
+            uiParams.selectedCP='';
+        }
+    };
+
+    // Fonction pour afficher les suggestions lorsque l'utilisateur clique sur l'entrée
+
+
+    // Ajouter des écouteurs d'événements pour détecter les clics sur le document entier et sur l'entrée
+    document.addEventListener('click', handleClickOutside);
+
     
 </script>
 
 <style scoped>
 
 .custom-input {
-    width: 40%; /* ajustez la largeur selon vos besoins */
+    width: 100%; /* ajustez la largeur selon vos besoins */
     height: 40px; /* ajustez la hauteur selon vos besoins */
     border: 3px solid var(--blue-back);
     border-radius: 15px;
@@ -223,8 +276,39 @@
     color: var(--text-blue-color);
     box-sizing: border-box;
     text-align: center;
-    margin-left: 10vh;
+    left:0;
 }
+
+
+
+.suggestions {
+    position: absolute;
+    top: 90%;
+    width: 45%;
+    max-height: 160px; /* Définir la hauteur maximale à afficher */
+    overflow-y: scroll; /* Ajouter une barre de défilement verticale si nécessaire */
+    background-color: white;
+    border: 2px solid var(--attenuated-blue);
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.suggestions li {
+    padding: 8px;
+    cursor: pointer;
+    color : var(--text-blue-color);
+    font-size: 15px;
+    font-family: Poppins, sans-serif;
+    text-align: center
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
 
 .custom-input::-webkit-inner-spin-button,
 .custom-input::-webkit-outer-spin-button {

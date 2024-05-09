@@ -16,7 +16,9 @@ const uiParams = reactive({
     labelGarantieNon: "NON",
     labelGarantieJsp: "JE NE SAIS PAS",
 
-    selectedCP: ""
+    selectedCP: "",
+    selectedCPDisplay: "",
+    showSuggestions: true
 
 });
 
