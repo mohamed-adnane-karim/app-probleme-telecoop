@@ -28,12 +28,12 @@ for _,row in database.iterrows():
     ville=row['Libell_d_acheminement']
 
     combo_cp_ville={"codePostal":cp, "ville":ville}
-    if combo_cp_ville not in database_dic:
-        compo=str(ville+', '+cp)
-        lat,lon=get_coordinates(compo)
-        compo_cp_ville_coord={"codePostal":cp, "ville":ville, "lat": lat, "lon":lon}
+    compo=str(ville+', '+cp)
+    lat,lon=get_coordinates(compo)
+    compo_cp_ville_coord={"codePostal":cp, "ville":ville, "lat": lat, "lon":lon}
+    if compo_cp_ville_coord not in database_dic:
         print(compo_cp_ville_coord)
-        database_dic.append(combo_cp_ville)
+        database_dic.append(compo_cp_ville_coord)
 
 
 json_link=r'C:\Users\moham\OneDrive\Bureau\MAK - Cloud\CS - Cours\2A\S8\PP\app-probleme-telecoop\xlsx_to_json\exec\villes.json'

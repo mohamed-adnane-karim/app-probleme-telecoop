@@ -81,6 +81,9 @@
     /* Couleur de fond de l'en-tête */
     margin-top: 13vh;
     margin-bottom: 10vh;
+    overflow-y: auto;
+    max-height: 50vh;
+    /* Ajouter une barre de défilement verticale si nécessaire */
 }
 
 
@@ -91,10 +94,10 @@
     justify-content: flex-start;
     padding-bottom: 2vh;
     padding-top: 1vh;
-    /* padding-left: 10vh; */
-    /* position: fixed;
+    padding-left: 10vh;
+    position: fixed;
     bottom: 0;
-    left: 0; */
+    left: 0;
     z-index: 999;
 }
 
