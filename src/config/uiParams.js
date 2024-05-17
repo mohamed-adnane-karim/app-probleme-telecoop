@@ -12,6 +12,7 @@ const uiParams = reactive({
     selectedGarantieOui: false,
     selectedGarantieNon: false,
     selectedGarantieJsp: false,
+    selectedGarantieOK: false,
     labelGarantieOui: "OUI",
     labelGarantieNon: "NON",
     labelGarantieJsp: "JE NE SAIS PAS",
@@ -27,7 +28,10 @@ const uiParams = reactive({
     selectedTeleCoopJsp: false,
     labelTeleCoopOui: "OUI",
     labelTeleCoopNon: "NON",
-    labelTeleCoopJsp: "JE NE SAIS PAS"
+    labelTeleCoopJsp: "JE NE SAIS PAS",
+
+    selectedContinuer: false,
+    labelContinuer: "JE SOUHAITE TOUT DE MEME ME RENSEIGNER SUR COMMENT REPARER MON ECRAN"
 
 });
 
@@ -45,7 +49,8 @@ const titresPages = {
     titrePageBugs: "Je rencontre des bugs sur mon smartphone",
     titrePageAutre: "Je recontre un autre type de problème",
 
-    soustitrePageEcran: "Réparons ensemble votre écran !    "
+    soustitrePageEcran: "Réparons ensemble votre écran !",
+    souslabelPageEcran: "Je répare mon écran de smartphone"
 };
 
 const bonnes_pratiques_ecran = {

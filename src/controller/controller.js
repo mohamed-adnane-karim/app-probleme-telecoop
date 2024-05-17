@@ -13,14 +13,17 @@ const uncheckOthersGarantie = (uiParams, index) => {
         uiParams.selectedGarantieOui = true;
         uiParams.selectedGarantieNon = false;
         uiParams.selectedGarantieJsp = false;
+        uiParams.selectedGarantieOK = true;
     } if (index == 2) {
         uiParams.selectedGarantieOui = false;
         uiParams.selectedGarantieNon = true;
         uiParams.selectedGarantieJsp = false;
+        uiParams.selectedGarantieOK = true;
     } if (index == 3) {
         uiParams.selectedGarantieOui = false;
         uiParams.selectedGarantieNon = false;
         uiParams.selectedGarantieJsp = true;
+        uiParams.selectedGarantieOK = true;
     }
 };
 

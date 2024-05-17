@@ -43,8 +43,7 @@
                         </div>
 
                         <div class="spacer-1"></div>
-                        {{ console.log(uiParams.selectedMarque) }}
-                        {{ console.log(modelsForSelectedMarque) }}
+
                         <div class="module-select-info" id="selection-model">
                             <span class="bullet-1"></span>
                             <span class="p2">Quel est le modèle de votre smartphone actuel ?</span>
@@ -102,7 +101,6 @@
                                 </div>
                             </div>
                         </div>
-                        
 
                         <div class="spacer-1"></div>
 
@@ -114,6 +112,58 @@
                     </div>
 
                     <div class="spacer"></div>
+
+                    <div class="module_default-info" id="info-repa">
+                        <header class="header-info">
+                            <div class="circle">2</div>
+                            <span>{{ titresPages.souslabelPageEcran }}</span>
+                        </header>
+
+                        <div class="spacer-1"></div>
+
+                        <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" class="module-text-info" id="default">
+                            <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informartions nécessaires dans la section "Je renseigne mon modèle de smartphone" ci-dessus.</span>
+                        </div>
+
+                        <div v-else>
+
+                            <div v-if="uiParams.selectedGarantieOui || uiParams.selectedPossession==='Moins de 1 an' || uiParams.selectedPossession==='Entre 1 an et 2 ans' " class="module-1" id="il-y-a-garantie">
+                                <div>
+                                    <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                    <span class="p3"> Votre smartphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
+                                </div>
+
+                                <div class="spacer-1"></div>
+                                
+                                <div class="checkbox-grid-1">
+                                    <div>
+                                        <label class="checkbox-container" id="Continuer">
+                                            <input type="checkbox" id="Continuer" v-model="uiParams.selectedContinuer">
+                                            <span class="checkmark"></span>
+                                            <span class="label-text">{{ uiParams.labelContinuer }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="spacer-1"></div>
+
+                                <div v-if="uiParams.selectedContinuer">
+                                    <span>Copier ici le v-else</span>
+                                </div>
+  
+                            </div>
+
+                            <div v-else>
+                                <span>v-else avec résultats à mettre</span>
+                            </div>
+
+                        </div>
+
+                        <div class="spacer-1"></div>
+                    </div>
+
+                    <div class="spacer"></div>
+
 
                 </div>
             </section>
@@ -223,7 +273,7 @@
 
                             <span class="bullet-1"></span>
                             <span class="p2">Votre smartphone est-il encore sous garantie ?</span>
-                            
+
                             <div class="checkbox-grid"> 
                                 <div>
                                     <label class="checkbox-container" id="GarantieOui">
@@ -249,7 +299,8 @@
                                     </label>
                                 </div>
                             </div>
-                        </div> 
+
+                        </div>
 
                         <div class="spacer-1"></div>
 
@@ -296,6 +347,58 @@
                         <div class="spacer-1"></div>
                     
                     </div>   
+
+
+                    <div class="spacer"></div>
+
+                    <div class="module_default-info" id="info-repa">
+                        <header class="header-info">
+                            <div class="circle">3</div>
+                            <span>{{ titresPages.souslabelPageEcran }}</span>
+                        </header>
+
+                        <div class="spacer-1"></div>
+
+                        <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" class="module-text-info" id="default">
+                            <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informartions nécessaires dans la section "Je renseigne mon modèle de smartphone" ci-dessus.</span>
+                        </div>
+
+                        <div v-else>
+
+                            <div v-if="uiParams.selectedGarantieOui || uiParams.selectedPossession==='Moins de 1 an' || uiParams.selectedPossession==='Entre 1 an et 2 ans' " class="module-1" id="il-y-a-garantie">
+                                <div>
+                                    <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                    <span class="p3"> Votre smartphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
+                                </div>
+
+                                <div class="spacer-1"></div>
+                                
+                                <div class="checkbox-grid-1">
+                                    <div>
+                                        <label class="checkbox-container" id="Continuer">
+                                            <input type="checkbox" id="Continuer" v-model="uiParams.selectedContinuer">
+                                            <span class="checkmark"></span>
+                                            <span class="label-text">{{ uiParams.labelContinuer }}</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="spacer-1"></div>
+
+                                <div v-if="uiParams.selectedContinuer">
+                                    <span>Copier ici le v-else</span>
+                                </div>
+  
+                            </div>
+
+                            <div v-else>
+                                <span>v-else avec résultats à mettre</span>
+                            </div>
+
+                        </div>
+
+                        <div class="spacer-1"></div>
+                    </div>
 
                     <div class="spacer"></div>
 
@@ -361,9 +464,6 @@
                 </div>
             </div>
         </footer>
-
-        {{ console.log(uiParams.selectedlat) }}
-        {{ console.log(uiParams.selectedlon) }}
 
     </body>
 
@@ -467,13 +567,17 @@
 
 <style scoped>
 
+.module-1{
+    margin-left: 3vh;
+    margin-right : 3vh;
+}
+
 .module-text-info {
     display: flex;
     align-items: center;
     position:relative;
     margin-left: 3vh;
-    margin-right : 3vh
-
+    margin-right : 3vh;
 }
 
 .button-wrapper-3 {
@@ -679,6 +783,12 @@
     margin-right:2.5%;
 }
 
+.checkbox-grid-1 {
+    display: flex;
+    flex-direction: row;
+    margin-right:2.5%;
+}
+
 
 
 
@@ -694,12 +804,24 @@
     color: #1F1549;
 }
 
+.p3 {
+    font-family: Poppins, sans-serif;
+    font-size: 2vh;
+    /* Taille de police du paragraphe */
+    line-height: 1.4;
+    /* Hauteur de ligne */
+    font-weight: normal;
+    color: #1F1549;
+}
+
 .module-select-info{
     display: flex;
     align-items: center;
     position:relative
 
 }
+
+
 
 .module-select-info .checkbox-grid {
     margin-left: auto; /* Place le bloc checkbox à droite */
