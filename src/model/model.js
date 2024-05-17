@@ -29,7 +29,9 @@ marques.unshift('Indifférent');
 // Convertissez les codes postaux en chaînes de caractères
 const cpVilles = villes.map(cp => ({
     codePostal: cp.codePostal.toString(),
-    ville: cp.ville
+    ville: cp.ville,
+    lat: cp.lat,
+    lon: cp.lon,
 }));
 
 const getModelsForMarque = (selectedMarque) => {

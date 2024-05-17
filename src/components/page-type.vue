@@ -123,7 +123,6 @@
                     <span>JE CHERCHE UN REPARATEUR AGREE AUTOUR DE MOI</span>
                 </div>
                 <div v-if="uiParams.isSection2Open" class="section-content">
-                    
                     <div class="spacer"></div>
 
                     <div class="module_default-info" id="adresse">
@@ -161,7 +160,7 @@
 
                         <div clas="button-wrapper-3">
                             <div class="btn-1">
-                                <button>Trouver un réparateur QualiRépar</button>
+                                <button @click="openRepairerLink">Trouver un réparateur QualiRépar</button>
                             </div>
                         </div>
 
@@ -345,6 +344,7 @@
     
             </section>
 
+
         </div>
 
         <footer class="footer">
@@ -361,6 +361,10 @@
                 </div>
             </div>
         </footer>
+
+        {{ console.log(uiParams.selectedlat) }}
+        {{ console.log(uiParams.selectedlon) }}
+
     </body>
 
 </template>
@@ -420,13 +424,16 @@
     uiParams.showSuggestions = true;
 };
 
-    const selectCP = (selectedCP) => {
+    const selectCP = (cp) => {
         // Mettre à jour la valeur de selectedCP avec le code postal sélectionné
-        uiParams.selectedCP = selectedCP.codePostal;
+        uiParams.selectedCP = cp.codePostal;
+        uiParams.selectedlat = cp.lat;
+        uiParams.selectedlon = cp.lon;
         // Afficher le code postal et la ville dans le champ de l'input
-        uiParams.selectedCPDisplay = `${selectedCP.codePostal} - ${selectedCP.ville}`;
+        uiParams.selectedCPDisplay = `${cp.codePostal} - ${cp.ville}`;
         // Cacher les suggestions après la sélection
         uiParams.showSuggestions = false;
+
     };
 
     // Fonction pour masquer les suggestions lorsque l'utilisateur clique en dehors de la zone
@@ -444,6 +451,16 @@
 
     // Ajouter des écouteurs d'événements pour détecter les clics sur le document entier et sur l'entrée
     document.addEventListener('click', handleClickOutside);
+
+    const openRepairerLink = () => {
+      if ((uiParams.selectedlat !== "") && (uiParams.selectedlon !== "")) {
+        const url = `https://www.ecosystem.eco/annuaire-qualirepar/?lat=${uiParams.selectedlat}&lon=${uiParams.selectedlon}&product=t%C3%A9l%C3%A9phone#resultats`;
+        window.open(url, '_blank');
+      } else {
+        alert("Veuillez sélectionner un code postal avant de cliquer sur ce bouton.");
+      }
+    };
+
 
     
 </script>

@@ -17,6 +17,8 @@ const uiParams = reactive({
     labelGarantieJsp: "JE NE SAIS PAS",
 
     selectedCP: "",
+    selectedlat: "",
+    selectedlon: "",
     selectedCPDisplay: "",
     showSuggestions: true,
 
