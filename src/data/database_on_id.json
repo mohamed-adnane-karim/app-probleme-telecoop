@@ -285,7 +285,7 @@
                 "General": {
                     "identifiant": 5,
                     "gamme": "Samsung",
-                    "oem": "Samsung ",
+                    "oem": "Samsung",
                     "modele": "Galaxy A51",
                     "os": "Android",
                     "date": 2020,
@@ -355,7 +355,7 @@
                 "General": {
                     "identifiant": 6,
                     "gamme": "Samsung",
-                    "oem": "Samsung ",
+                    "oem": "Samsung",
                     "modele": "Galaxy S20 Ultra",
                     "os": "Android",
                     "date": 2020,

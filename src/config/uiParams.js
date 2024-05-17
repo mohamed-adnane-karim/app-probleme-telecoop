@@ -49,11 +49,19 @@ const titresPages = {
 const bonnes_pratiques_ecran = {
     pratique1: "Protéger votre appareil à l'aide d'une coque de protection solide",
     pratique2: "Protéger votre écran à l'aide d'une vitre de protection, de préférence en verre trempé"
+};
+
+const annees = {
+    1: "Moins de 1 an",
+    2: "Entre 1 an et 2 ans",
+    3: "Plus de 2 ans"
+
 }
 
 export default uiParams;
 
 export {
     titresPages,
-    bonnes_pratiques_ecran
+    bonnes_pratiques_ecran,
+    annees
 }

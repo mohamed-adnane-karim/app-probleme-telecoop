@@ -37,20 +37,21 @@
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedMarque" id="marque">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
-                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                    <option v-for="marque in marques" :key="marque" :value="marque">{{ marque }}</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="spacer-1"></div>
-
+                        {{ console.log(uiParams.selectedMarque) }}
+                        {{ console.log(modelsForSelectedMarque) }}
                         <div class="module-select-info" id="selection-model">
                             <span class="bullet-1"></span>
                             <span class="p2">Quel est le modèle de votre smartphone actuel ?</span>
                             <div class="custom-select">
-                                <select v-model="uiParams.selectedModele" id="model">
+                                <select v-model="uiParams.selectedModele" id="model" >
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
-                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                    <option v-for="modele in modelsForSelectedMarque" :key="modele" :value="modele">{{ modele }}</option>
                                 </select>
                             </div>
                         </div>
@@ -63,7 +64,7 @@
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedPossession" id="possession">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
-                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                    <option v-for="annee in annees" :key="annee" :value="annee">{{ annee }}</option>
                                 </select>
                             </div>
                         </div>
@@ -186,7 +187,7 @@
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedMarque" id="marque">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
-                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                    <option v-for="marque in marques" :key="marque" :value="marque">{{ marque }}</option>
                                 </select>
                             </div>
                         </div>
@@ -199,7 +200,7 @@
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedModele" id="model">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
-                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                    <option v-for="modele in modelsForSelectedMarque" :key="modele" :value="modele">{{ modele }}</option>
                                 </select>
                             </div>
                         </div>
@@ -212,7 +213,7 @@
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedPossession" id="possession">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
-                                    <option v-for="os in OSs" :key="os" :value="os">{{ os }}</option>
+                                    <option v-for="annee in annees" :key="annee" :value="annee">{{ annee }}</option>
                                 </select>
                             </div>
                         </div>
@@ -365,12 +366,15 @@
 </template>
 
 <script setup>
-    import { titresPages, bonnes_pratiques_ecran } from '@/config/uiParams.js';
+    import { computed } from 'vue';
+    import { titresPages, bonnes_pratiques_ecran,annees } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
     import { uncheckOthersGarantie, uncheckOthersTeleCoop } from '@/controller/controller';
-    import { OSs,cpVilles } from '@/model/model.js';
-    import { computed } from 'vue';
+    import { OSs,cpVilles,marques,getModelsForMarque  } from '@/model/model.js';
 
+    const modelsForSelectedMarque = computed(() => {
+      return getModelsForMarque(uiParams.selectedMarque).map(model => model[1]);
+    });
 
 
     const toggleSection =(index) => {
@@ -707,12 +711,17 @@
     text-align: center;
     appearance: none;
     font-family: Poppins, sans-serif;
+
 }
 
 .custom-select select option {
     color: var(--text-blue-color);
     /* Couleur du texte pour les options */
     font-weight: bold;
+}
+
+.custom-select select:focus {
+    outline: none;
 }
 
 .custom-select::after {
@@ -727,6 +736,8 @@
     border-color: white transparent transparent transparent;
     transform: translateY(-50%);
 }
+
+
 
 
 .circle {
