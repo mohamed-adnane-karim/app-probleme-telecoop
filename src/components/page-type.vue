@@ -15,7 +15,7 @@
         <div class="module_default-1" :class="{'module_default-1-expanded' : uiParams.isOneSectionOpen}">
 
             <section class="section-container"  id="je-repare-moi-meme">
-                <div class="section-header" @click="toggleSection(1)" :class="{ 'section-header-expanded': uiParams.isSection1Open }">
+                <div class="section-header" @click="toggleSection(1,uiParams)" :class="{ 'section-header-expanded': uiParams.isSection1Open }">
                     <span>JE REPARE MOI-MEME MON TELEPHONE</span>
                 </div>
                 <div v-if="uiParams.isSection1Open" class="section-content">
@@ -529,7 +529,7 @@
             </section>
 
             <section class="section-container"  id="reparateur">
-                <div class="section-header" @click="toggleSection(2)" :class="{ 'section-header-expanded': uiParams.isSection2Open }">
+                <div class="section-header" @click="toggleSection(2,uiParams)" :class="{ 'section-header-expanded': uiParams.isSection2Open }">
                     <span>JE CHERCHE UN REPARATEUR AGREE AUTOUR DE MOI</span>
                 </div>
                 <div v-if="uiParams.isSection2Open" class="section-content">
@@ -564,9 +564,9 @@
                             <span class="bullet-1"></span>
                             <span class="p2">Votre code postal :</span>
                             <div style="display: flex; align-items: center;width: 45%;margin-left: 15vh;">
-                                <input type="text" v-model="uiParams.selectedCP" class="custom-input" placeholder="Entrez votre code postal" @input="onCPInput" @click="showSuggestions">
+                                <input type="text" v-model="uiParams.selectedCP" class="custom-input" placeholder="Entrez votre code postal" @input="onCPInput" @click="showSuggestions(uiParams)">
                                 <ul v-if="uiParams.selectedCP.length >= 3 && uiParams.showSuggestions" class="suggestions">
-                                    <li v-for="cp in filteredCPs" :key="`${cp.codePostal}-${cp.ville}`" @click="selectCP(cp)">{{ cp.codePostal }} - {{ cp.ville }}</li>
+                                    <li v-for="cp in filteredCPs" :key="`${cp.codePostal}-${cp.ville}`" @click="selectCP(cp,uiParams)">{{ cp.codePostal }} - {{ cp.ville }}</li>
                                 </ul>
                             </div>    
                         </div> 
@@ -575,7 +575,7 @@
 
                         <div clas="button-wrapper-3">
                             <div class="btn-1">
-                                <button @click="openRepairerLink">Trouver un réparateur QualiRépar</button>
+                                <button @click="openRepairerLink(uiParams)">Trouver un réparateur QualiRépar</button>
                             </div>
                         </div>
 
@@ -1344,7 +1344,7 @@
             </section>
 
             <section class="section-container"  id="je-change de téléphone">
-                <div class="section-header" @click="toggleSection(3)" :class="{ 'section-header-expanded': uiParams.isSection3Open }">
+                <div class="section-header" @click="toggleSection(3,uiParams)" :class="{ 'section-header-expanded': uiParams.isSection3Open }">
                     <span>JE DESIRE TOUT DE MÊME CHANGER DE TELEPHONE</span>
                 </div>
                 <div v-if="uiParams.isSection3Open" class="section-content">
@@ -1411,15 +1411,19 @@
     import { computed } from 'vue';
     import { titresPages, bonnes_pratiques_ecran,annees } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
-    import { uncheckOthersGarantie, uncheckOthersTeleCoop } from '@/controller/controller';
-    import { OSs,cpVilles,marques,getModelsForMarque,getPriceComponentForModel, getLinkTuto, getListOutils, getScoresRepa, getPriceRepa, getPriceMOForModel, getReducEtat, getReducTeleCoop } from '@/model/model.js';
+    import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP } from '@/controller/controller';
+    import { cpVilles,marques,getModelsForMarque,getPriceComponentForModel, getLinkTuto, getListOutils, getScoresRepa, getPriceRepa, getPriceMOForModel, getReducEtat, getReducTeleCoop } from '@/model/model.js';
     
-    
+    /**
+     * Retourne les Modèles Associés à une marque en particulier
+     */
     const modelsForSelectedMarque = computed(() => {
       return getModelsForMarque(uiParams.selectedMarque).map(model => model[1]);
     });
 
-
+    /**
+     * Retourne le prix de la pièce de réparation pour un téléphone donné
+     */
     const price_component = computed(()=>{
         if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
             const p = getPriceComponentForModel(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
@@ -1430,6 +1434,9 @@
         }
     });
 
+    /**
+     * Retourne le prix de la main d'oeuvre de réparation pour un téléphone donné
+     */
     const price_MO = computed (()=>{
         if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
             const p = getPriceMOForModel(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
@@ -1440,6 +1447,9 @@
         }
     });
 
+    /**
+     * Retourne le prix de global de réparation pour un téléphone donné
+     */
     const price_repa = computed (()=>{
         if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
             const price = getPriceRepa(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
@@ -1449,7 +1459,9 @@
         }
     });
 
-
+    /**
+     * Retourne le liens de tutoriel pour la réaration d'un téléphone donné
+     */
     const link_tuto = computed(()=>{
         if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
             const t = getLinkTuto(uiParams.selectedModele,'ecran');
@@ -1460,6 +1472,9 @@
         }
     });
 
+    /**
+     * Retourne la liste de matériel nécessaire pour un réparation de téléphone
+     */
     const liste_outils = computed(()=>{
         if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
             const l = getListOutils(uiParams.selectedModele,'ecran');
@@ -1470,6 +1485,9 @@
         }
     });
 
+    /**
+     * Retourne les liens des images des scores des téléphones
+     */
     const scores = computed(()=>{
         if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
             const s = getScoresRepa(uiParams.selectedModele);
@@ -1479,6 +1497,9 @@
         }
     });
 
+    /**
+     * Retourne le prix de la réduction telecoop pour un téléphone donné
+     */
     const reduc_telecoop = computed(()=>{
         if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
             const reduc = getReducTeleCoop(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
@@ -1488,6 +1509,9 @@
         }
     });
 
+    /**
+     * Retourne le prix du bonus réparabilité pour un téléphone donné
+     */
     const reduc_etat = computed(()=>{
         if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
             const reduc = getReducEtat(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
@@ -1497,31 +1521,25 @@
         }
     });
 
-
-
-    const toggleSection =(index) => {
-        if (index==1) {
-            uiParams.isSection1Open = !uiParams.isSection1Open;
-        }if (index==2) {
-            uiParams.isSection2Open = !uiParams.isSection2Open;
-        }if (index==3) {
-            uiParams.isSection3Open = !uiParams.isSection3Open;
-        }if (uiParams.isSection1Open || uiParams.isSection2Open || uiParams.isSection3Open){
-                uiParams.isOneSectionOpen = true;
-        }if (!uiParams.isSection1Open && !uiParams.isSection2Open && !uiParams.isSection3Open){
-                uiParams.isOneSectionOpen = false;
-        }
-    };
-
+    /**
+     * Assure qu'une seule cache de la catégorie "votre téléphone est-il encore sous garantie" est cochée
+     * @param index 
+     */
     const handleClickGarantie = (index) => {
         uncheckOthersGarantie(uiParams,index);
     }  ;
 
+    /**
+     * Assure qu'une seule cache de la catégorie "êtes vous client telecoop" est cochée
+     * @param index 
+     */
     const handleClickTeleCoop = (index) => {
         uncheckOthersTeleCoop(uiParams,index);
     }  ;
 
-
+    /**
+     * Filtres les suggestions de codes postaux en fonction de la saisie
+     */
     const filteredCPs = computed(() => {
         return cpVilles.filter(cp => cp.codePostal.startsWith(uiParams.selectedCP)).sort((a, b) => {
                           // Compare les codes postaux
@@ -1535,26 +1553,10 @@
     });
 
     const onCPInput = () => {
-    // Mettre à jour les suggestions ici
     };
 
-    const showSuggestions = () => {
-    uiParams.showSuggestions = true;
-};
-
-    const selectCP = (cp) => {
-        // Mettre à jour la valeur de selectedCP avec le code postal sélectionné
-        uiParams.selectedCP = cp.codePostal;
-        uiParams.selectedlat = cp.lat;
-        uiParams.selectedlon = cp.lon;
-        // Afficher le code postal et la ville dans le champ de l'input
-        uiParams.selectedCPDisplay = `${cp.codePostal} - ${cp.ville}`;
-        // Cacher les suggestions après la sélection
-        uiParams.showSuggestions = false;
-
-    };
-
-    // Fonction pour masquer les suggestions lorsque l'utilisateur clique en dehors de la zone
+  
+    // Fonction pour masquer les suggestions lorsque l'utilisateur clique en dehors de la zone de saisie de CP
     const handleClickOutside = (event) => {
         const suggestions = document.querySelector('.suggestions');
         const inputField = document.querySelector('.custom-input');
@@ -1564,644 +1566,8 @@
         }
     };
 
-    // Fonction pour afficher les suggestions lorsque l'utilisateur clique sur l'entrée
-
-
     // Ajouter des écouteurs d'événements pour détecter les clics sur le document entier et sur l'entrée
     document.addEventListener('click', handleClickOutside);
-
-    const openRepairerLink = () => {
-      if ((uiParams.selectedlat !== "") && (uiParams.selectedlon !== "")) {
-        const url = `https://www.ecosystem.eco/annuaire-qualirepar/?lat=${uiParams.selectedlat}&lon=${uiParams.selectedlon}&product=t%C3%A9l%C3%A9phone#resultats`;
-        window.open(url, '_blank');
-      } else {
-        alert("Veuillez sélectionner un code postal avant de cliquer sur ce bouton.");
-      }
-    };
-
-
     
 </script>
 
-<style scoped>
-
-.button-wrapper-4 {
-    width:95%;
-    /* Définit la largeur maximale de la zone de contenu */
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content:center;
-    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
-}
-
-.btn-3 button:hover {
-    background-color: var(--attenuated-blue);
-    border-color: var(--attenuated-blue);
-    transform: scale(1.01);
-}
-
-.btn-3 {
-    display: flex;
-    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
-    margin-top:18px;
-    margin-bottom:18px;
-    margin-right:10px;
-    width:100%
-}
-
-.btn-3 button {
-    background-color: var(--blue-back);
-    border: 3px solid var(--blue-back);
-    padding: 2vh ;
-    cursor: pointer;
-    color: white;
-    font-size: 120%;
-    text-align: center;
-    font-family: Poppins, sans-serif;
-    border-radius: 15px;
-    width: 100%;
-}
-
-.btn-4 button:hover {
-    border-color: var(--attenuated-blue);
-    color : var(--attenuated-blue);
-    transform: scale(1.01);
-}
-
-.btn-4 {
-    display: flex;
-    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
-    margin-top:18px;
-    margin-bottom:18px;
-    margin-left:10px;
-    width:100%
-}
-
-.btn-4 button {
-    background-color: white;
-    border: 3px solid var(--blue-back);
-    padding: 2vh ;
-    cursor: pointer;
-    color: var(--text-blue-color);
-    font-size: 120%;
-    text-align: center;
-    font-family: Poppins, sans-serif;
-    border-radius: 15px;
-    width: 100%;
-}
-
-.image-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  gap: 60px; /* Space between images */
-}
-
-.score-image {
-    width:15%;
-    background-size: contain;
-    /* Ajuster la taille de l'image */
-    background-position: center;
-    /* Centrer l'image */
-    background-repeat: no-repeat;
-    /* Empêcher la répétition de l'image */
-}
-
-
-
-.module_default-results {
-    background-color: white;
-    width: 75%;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 10px;
-    position: relative;
-    border : solid 3px var(--blue-back);
-    /* padding-top: 18px;
-    padding-bottom: 18px; */
-    padding:18px;
-    text-align: justify;
-    text-align-last: center;
-}
-
-.module_default-results-1 {
-    background-color: white;
-    width: 75%;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 10px;
-    position: relative;
-    border : solid 3px var(--blue-back);
-    /* padding-top: 18px;
-    padding-bottom: 18px; */
-    padding:18px;
-
-}
-
-.module_default-results-2 {
-    background-color: white;
-    width: 75%;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 10px;
-    position: relative;
-    border : solid 3px var(--green-back);
-    /* padding-top: 18px;
-    padding-bottom: 18px; */
-    padding:18px;
-    text-align: justify;
-    text-align-last: center;
-}
-
-.module-1{
-    margin-left: 40px;
-    margin-right : 40px;
-}
-
-.module-text-info {
-    display: flex;
-    align-items: center;
-    position:relative;
-    margin-left: 25px;
-    margin-right : 25px;
-}
-
-.button-wrapper-3 {
-    max-width: 1300px;
-    /* Définit la largeur maximale de la zone de contenu */
-    margin: 0 auto;
-    /* Centre le contenu horizontalement */
-    padding: 0;
-    /* Supprime le rembourrage */
-    display: flex;
-    /* Utilise Flexbox */
-    /* Centre les éléments horizontalement */
-    align-items: center;
-    /* Aligne les éléments en bas */
-    /* Calcul de la hauteur restante de la page */
-    overflow: hidden;
-    /* Empêche tout débordement de contenu */
-    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
-    position: absolute;
-}
-
-.btn-1 button:hover {
-    background-color: var(--green-back);
-    border-color: var(--green-back);
-    transform: scale(1.01);
-}
-
-
-.btn-1 {
-    display: flex;
-    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
-    margin-top: 5vh;
-    margin-bottom: 1vh
-}
-
-.btn-1 button {
-    background-color: var(--blue-back);
-    border: 3px solid var(--blue-back);
-    padding: 2vh ;
-    cursor: pointer;
-    color: white;
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    font-family: Poppins, sans-serif;
-    border-radius: 15px;
-    width: 90%;
-}
-
-.btn-2 button:hover {
-    background-color: var(--green-back);
-    border-color: var(--green-back);
-    transform: scale(1.01);
-}
-
-
-.btn-2 {
-    display: flex;
-    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
-    margin-top: 5vh;
-    margin-bottom: 5vh
-}
-
-.btn-2 button {
-    background-color: var(--blue-back);
-    border: 3px solid var(--blue-back);
-    padding: 2vh ;
-    cursor: pointer;
-    color: white;
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    font-family: Poppins, sans-serif;
-    border-radius: 15px;
-    width: 90%;
-}
-
-
-.custom-input {
-    width: 100%; /* ajustez la largeur selon vos besoins */
-    height: 40px; /* ajustez la hauteur selon vos besoins */
-    border: 3px solid var(--blue-back);
-    border-radius: 15px;
-    background-color: white;
-    font-size: 16px;
-    font-family: Poppins, sans-serif;
-    color: var(--text-blue-color);
-    box-sizing: border-box;
-    text-align: center;
-    left:0;
-}
-
-
-
-.suggestions {
-    position: absolute;
-    top: 110%;
-    width: 45%;
-    max-height: 160px; /* Définir la hauteur maximale à afficher */
-    overflow-y: scroll; /* Ajouter une barre de défilement verticale si nécessaire */
-    background-color: white;
-    border: 2px solid var(--attenuated-blue);
-    list-style-type: none;
-    padding: 0;
-    margin: 0 auto;
-    border-radius: 5px;
-    z-index: 999;
-}
-
-.suggestions li {
-    padding: 8px;
-    cursor: pointer;
-    color : var(--text-blue-color);
-    font-size: 15px;
-    font-family: Poppins, sans-serif;
-    text-align: center
-}
-
-.suggestions li:hover {
-    background-color: #f0f0f0;
-}
-
-
-.custom-input::-webkit-inner-spin-button,
-.custom-input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.custom-input[type=number] {
-    appearance: textfield;
-}
-
-.custom-input:focus {
-    outline: none;
-    border-color: var(--attenuated-blue); /* change la couleur de la bordure lorsqu'il est focus */
-}
-
-
-
-
-.label-mention{
-    font-size: 12px;
-    font-family: Poppins, sans-serif;
-    color: var(--text-blue-color);
-    margin-left: 10vh;
-}
-
-.label-text {
-    margin-right: 5vh;
-    margin-left: 3vh;
-    font-size: 16px;
-    font-family: Poppins, sans-serif;
-    color: var(--text-blue-color);
-}
-
-.label-text-1 {
-    margin-left: 3vh;
-    font-size: 16px;
-    font-family: Poppins, sans-serif;
-    color: var(--text-blue-color);
-}
-
-
-
-.checkbox-container {
-    margin-right: 10px; /* Ajoute une marge à droite pour séparer les cases à cocher */
-    align-items: center;
-    display: inline-flex;
-
-}
-
-.checkbox-container span {
-    cursor: pointer;
-}
-
-.checkbox-container input[type="checkbox"] {
-    display: none;
-}
-
-.checkbox-container input[type="checkbox"]:checked+.checkmark {
-    background-color: var(--blue-back);
-    /* Changez cette couleur selon vos préférences */
-    border-color: var(--blue-back);
-    /* Changez cette couleur selon vos préférences */
-}
-
-.checkmark {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: 3px solid var(--blue-back);
-    background-color: white;
-    /* Bord bleu de 3px (code hexadécimal) */
-    border-radius: 50%;
-    /* Coins arrondis */
-
-}
-
-.checkbox-grid {
-    display: flex;
-    flex-direction: row;
-    margin-right:2.5%;
-}
-
-.checkbox-grid-1 {
-    display: flex;
-    flex-direction: row;
-    margin-right:2.5%;
-}
-
-.p4 {
-    font-family: Poppins, sans-serif;
-    font-size: 15px;
-    /* Taille de police du paragraphe */
-    line-height: 1.4;
-    /* Hauteur de ligne */
-    font-weight: normal;
-    color: var(--green-back);
-}
-
-
-
-
-.p2 {
-    font-family: Poppins, sans-serif;
-    font-size: 19px;
-    /* Taille de police du paragraphe */
-    line-height: 1.4;
-    /* Hauteur de ligne */
-    font-weight: normal;
-    color: #1F1549;
-}
-
-.p3 {
-    font-family: Poppins, sans-serif;
-    font-size: 19px;
-    /* Taille de police du paragraphe */
-    line-height: 1.4;
-    /* Hauteur de ligne */
-    font-weight: normal;
-    color: #1F1549;
-}
-
-.module-select-info{
-    display: flex;
-    align-items: center;
-    position:relative;
-
-}
-
-
-
-.module-select-info .checkbox-grid {
-    margin-left: auto; /* Place le bloc checkbox à droite */
-}
-
-.custom-select {
-    width: 40%;
-    height: 38px;
-    background-color: var(--blue-back);
-    margin-left: auto;
-    right: 3%;
-    display: block;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.custom-select select {
-    width: 100%;
-    height: 90%;
-    border: none;
-    background-color: transparent;
-    color: white;
-    font-size: 100%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-
-}
-
-.custom-select select option {
-    color: var(--text-blue-color);
-    /* Couleur du texte pour les options */
-    font-weight: bold;
-}
-
-.custom-select select:focus {
-    outline: none;
-}
-
-.custom-select::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 8px 8px 0 8px;
-    border-color: white transparent transparent transparent;
-    transform: translateY(-50%);
-}
-
-
-
-
-.circle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px; /* Ajustez la taille du cercle selon vos besoins */
-    height: 50px; /* Ajustez la taille du cercle selon vos besoins */
-    border-radius: 50%; /* Rendre le div un cercle */
-    background-color: var(--blue-back); /* Couleur de fond bleu */
-    color: white; /* Couleur du texte blanc */
-    font-size: px; /* Taille de la police */
-    margin-right: 10px; /* Marge à droite pour l'espace */
-    font-weight: lighter;
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 40px;
-}
-
-.spacer{
-    height: 15px;
-}
-
-.spacer-1{
-    height: 20px;
-}
-
-.header-info{
-    color: var(--text-blue-color);
-    font-family: Poppins, sans-serif;
-    font-size: 140%;
-    font-weight: bold;
-}
-
-.module_default-info {
-    background-color: lightgrey;
-    width: 98%;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 10px;
-    position: relative;
-}
-
-.module_default-1-expanded {
-    margin-top: 1vh;
-
-}
-
-
-.section-container {
-    position: relative;
-    cursor: pointer;
-    padding-bottom: 20px;
-    width: 95%;
-    margin: 0 auto; /* Centrer le header lui-même */
-    margin-top: 1vh;
-    margin-bottom: 1 vh;
-
-}
-
-
-.section-header {
-    position: relative; /* Permet de positionner le pseudo-élément par rapport à ce conteneur */
-    background-color: var(--module_default-background-color);
-    color: var(--text-blue-color);
-    padding: 20px;
-    border: 3px solid var(--blue-back);
-    border-radius: 10px;
-    text-align: center; /* Centrer le texte à l'intérieur du header */
-    font-family: Poppins, sans-serif;
-    font-size: 130%;
-    font-weight: 700;
-    box-sizing: border-box; /* Ajoutez cette propriété */
-}
-
-.section-header::before {
-    content: ''; /* Obligatoire pour les pseudo-éléments */
-    position: absolute; /* Positionnement absolu par rapport au conteneur parent */
-    top: 35%; /* Le triangle sera positionné en bas du header */
-    left: 95%; /* Déplacement à mi-chemin de la largeur du header */
-    transform: translateX(-50%) rotate(180deg); /* Rotation du triangle de 180 degrés pour l'inverser */
-    border-width: 2vh; /* Taille du triangle */
-    border-style: solid;
-    border-color: transparent transparent var(--blue-back) transparent; /* Couleur des bordures (bleu pour le bas) */
-    z-index: 1; /* Assure que le triangle apparaît au-dessus du contenu */
-    transition: transform 0.5s ease; /* Ajoutez cette propriété pour animer la rotation */
-}
-
-
-.section-header-expanded {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom: 0 solid;
-    background-color: var(--blue-back);
-    color:white;
-    border-color: var(--blue-back);
-}
-
-.section-header-expanded::before {
-    content: ''; /* Obligatoire pour les pseudo-éléments */
-    position: absolute; /* Positionnement absolu par rapport au conteneur parent */
-    top: 0; /* Le triangle sera positionné en bas du header */
-    left: 95%; /* Déplacement à mi-chemin de la largeur du header */
-    transform: translateX(-50%); /* Rotation du triangle de 180 degrés pour l'inverser */
-    border-width: 2vh; /* Taille du triangle */
-    border-style: solid;
-    border-color: transparent transparent white transparent; /* Couleur des bordures (bleu pour le bas) */
-    z-index: 1; /* Assure que le triangle apparaît au-dessus du contenu */
-    transition: transform 0.5s ease; /* Ajoutez cette propriété pour animer la rotation */
-}
-
-.section-header:hover {
-    background-color: var(--blue-back);
-    color:white;
-    border-color: var(--blue-back);
-}
-
-.section-header:hover::before {
-    border-color: transparent transparent white transparent; /* Couleur des bordures (bleu pour le bas) */
-}
-
-
-.section-content {
-    position: relative;
-    top: 100%;
-    left: 0;
-    width:100%;
-    background-color: var(--module_default-background-color);
-    border-left: 3px solid var(--blue-back);
-    border-right: 3px solid var(--blue-back);
-    border-bottom: 3px solid var(--blue-back);
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin: 0 auto; /* Centrer le header lui-même */
-    box-sizing: border-box; /* Ajoutez cette propriété */
-}
-
-
-.wrapper-pratiques-item {
-    margin-left: 150px;
-    font-family: Poppins, sans-serif;
-    font-size: 120%;
-    color: white;
-}
-.bullet-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px; /* espace entre chaque puce */
-}
-
-.bullet {
-    display: inline-block;
-    width: 4px; /* diamètre du cercle (le double du rayon) */
-    height: 4px; /* diamètre du cercle (le double du rayon) */
-    border-radius: 50%; /* pour former un cercle */
-    background-color: white; /* couleur du fond */
-    margin-right: 8px; /* espace entre le cercle et le texte */
-}
-
-.bullet-1 {
-    display: inline-block;
-    width: 8px; /* diamètre du cercle (le double du rayon) */
-    height: 8px; /* diamètre du cercle (le double du rayon) */
-    border-radius: 50%; /* pour former un cercle */
-    background-color: var(--blue-back); /* couleur du fond */
-    margin-right: 8px; /* espace entre le cercle et le texte */
-    margin-left: 3vh;
-
-}
-</style>

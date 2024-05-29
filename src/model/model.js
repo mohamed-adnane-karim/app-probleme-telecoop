@@ -42,6 +42,11 @@ const cpVilles = villes.map(cp => ({
     lon: cp.lon,
 }));
 
+/**
+ * Obtient la liste des noms des modèles de téléphones pour une marque donnée
+ * @param {*} selectedMarque 
+ * @returns 
+ */
 const getModelsForMarque = (selectedMarque) => {
     const ModelsForMarque = [];
     for (const id of ids) {
@@ -59,6 +64,11 @@ const getModelsForMarque = (selectedMarque) => {
     return ModelsForMarque;
 };
 
+/**
+ * Donne l'ID d'un modèle de téléphone
+ * @param {*} selectedModele 
+ * @returns 
+ */
 const getIdForModel = (selectedModele) => {
     if (selectedModele !== "") {
         const idforModele = [];
@@ -71,6 +81,13 @@ const getIdForModel = (selectedModele) => {
     }
 };
 
+/**
+ * Pour un modèle et un composant donné, donne le prix du composant. Si modèle choist = autre, alors sort le prix du téléphone type de la marque choisie
+ * @param {*} selectedModele 
+ * @param {*} selectedMarque 
+ * @param {*} typeComponent 
+ * @returns 
+ */
 const getPriceComponentForModel = (selectedModele, selectedMarque, typeComponent) => {
     const priceComponentForModel = [];
     if (selectedModele !== 'autre') {
@@ -95,6 +112,13 @@ const getPriceComponentForModel = (selectedModele, selectedMarque, typeComponent
     }
 };
 
+/**
+ *  Pour un modèle et un composant donné, donne le prix de la main d'oeuvre de réparation. Si modèle choist = autre, alors sort le prix du téléphone type de la marque choisie
+ * @param {*} selectedModele 
+ * @param {*} selectedMarque 
+ * @param {*} typeComponent 
+ * @returns 
+ */
 const getPriceMOForModel = (selectedModele, selectedMarque, typeComponent) => {
     const priceMOForModel = [];
     if (selectedModele !== 'autre') {
@@ -118,6 +142,13 @@ const getPriceMOForModel = (selectedModele, selectedMarque, typeComponent) => {
     }
 };
 
+/**
+ * Pour un téléphone donné et un compoosant donné calcule le prix total d'un réparation
+ * @param {*} selectedModele 
+ * @param {*} selectedMarque 
+ * @param {*} typeComponent 
+ * @returns 
+ */
 const getPriceRepa = (selectedModele, selectedMarque, typeComponent) => {
     const priceMO = getPriceMOForModel(selectedModele, selectedMarque, typeComponent);
     const p1 = priceMO[0];
@@ -127,6 +158,12 @@ const getPriceRepa = (selectedModele, selectedMarque, typeComponent) => {
     return priceRepa;
 };
 
+/**
+ * Pour un modèle donné et un composant donné, sort le lien des tutos
+ * @param {*} selectedModele 
+ * @param {*} typeComponent 
+ * @returns 
+ */
 const getLinkTuto = (selectedModele, typeComponent) => {
     const linkTuto = [];
     if (selectedModele !== 'autre') {
@@ -148,6 +185,12 @@ const getLinkTuto = (selectedModele, typeComponent) => {
     }
 };
 
+/**
+ * Pour un modèle donné et un composant, donne la liste des outils nécessaire pour une réparation maison
+ * @param {*} selectedModele 
+ * @param {*} typeComponent 
+ * @returns 
+ */
 const getListOutils = (selectedModele, typeComponent) => {
     const listOutils = [];
     if (selectedModele !== 'autre') {
@@ -172,6 +215,11 @@ const getListOutils = (selectedModele, typeComponent) => {
     }
 };
 
+/**
+ * Pour un modèle de téléphone donné, sort les liens des images de score de classification du téléphone
+ * @param {*} selectedModele 
+ * @returns 
+ */
 const getScoresRepa = (selectedModele) => {
     const scores = [];
     if (selectedModele !== 'autre') {
@@ -197,6 +245,13 @@ const getScoresRepa = (selectedModele) => {
     }
 };
 
+/**
+ * Pour un modèle donné et un composant donné, sort le prix de la réduction de l'état (bonus réparation)
+ * @param {*} selectedModele 
+ * @param {*} selectedMarque 
+ * @param {*} typeComponent 
+ * @returns 
+ */
 const getReducEtat = (selectedModele, selectedMarque, typeComponent) => {
     if (selectedModele !== 'autre') {
         if (typeComponent === 'ecran') {
@@ -217,6 +272,13 @@ const getReducEtat = (selectedModele, selectedMarque, typeComponent) => {
     }
 };
 
+/**
+ * Pour un modèle donné et un composant donné, sort le prix de la réduction de télécoop (bonus réparation client télécoop)
+ * @param {*} selectedModele 
+ * @param {*} selectedMarque 
+ * @param {*} typeComponent 
+ * @returns 
+ */
 const getReducTeleCoop = (selectedModele, selectedMarque, typeComponent) => {
     if (selectedModele !== 'autre') {
         if (typeComponent === 'ecran') {

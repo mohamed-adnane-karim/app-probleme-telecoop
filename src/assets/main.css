@@ -68,7 +68,55 @@
     width: 100%;
 }
 
+.button-wrapper-3 {
+    max-width: 1300px;
+    /* Définit la largeur maximale de la zone de contenu */
+    margin: 0 auto;
+    /* Centre le contenu horizontalement */
+    padding: 0;
+    /* Supprime le rembourrage */
+    display: flex;
+    /* Utilise Flexbox */
+    /* Centre les éléments horizontalement */
+    align-items: center;
+    /* Aligne les éléments en bas */
+    /* Calcul de la hauteur restante de la page */
+    overflow: hidden;
+    /* Empêche tout débordement de contenu */
+    justify-content: center;
+    /* Ajoutez ceci pour centrer horizontalement */
+    position: absolute;
+}
+
+.button-wrapper-4 {
+    width: 95%;
+    /* Définit la largeur maximale de la zone de contenu */
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    /* Ajoutez ceci pour centrer horizontalement */
+}
+
 /* 1.3 - Menu divers */
+
+.module_default-info {
+    background-color: lightgrey;
+    width: 98%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    position: relative;
+}
+
+.module_default-1-expanded {
+    margin-top: 1vh;
+
+}
+
 .module_default {
     background-color: var(--module_default-background-color);
     /* Couleur de fond de l'en-tête */
@@ -84,6 +132,75 @@
     overflow-y: auto;
     max-height: 50vh;
     /* Ajouter une barre de défilement verticale si nécessaire */
+}
+
+.module_default-results {
+    background-color: white;
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    position: relative;
+    border: solid 3px var(--blue-back);
+    /* padding-top: 18px;
+    padding-bottom: 18px; */
+    padding: 18px;
+    text-align: justify;
+    text-align-last: center;
+}
+
+.module_default-results-1 {
+    background-color: white;
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    position: relative;
+    border: solid 3px var(--blue-back);
+    /* padding-top: 18px;
+    padding-bottom: 18px; */
+    padding: 18px;
+
+}
+
+.module_default-results-2 {
+    background-color: white;
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    position: relative;
+    border: solid 3px var(--green-back);
+    /* padding-top: 18px;
+    padding-bottom: 18px; */
+    padding: 18px;
+    text-align: justify;
+    text-align-last: center;
+}
+
+.module-1 {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.module-text-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.module-select-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+}
+
+.module-select-info .checkbox-grid {
+    margin-left: auto;
+    /* Place le bloc checkbox à droite */
 }
 
 
@@ -124,6 +241,168 @@
     font-size: 120%;
     color: white;
     margin-bottom: 10px;
+}
+
+.wrapper-pratiques-item {
+    margin-left: 150px;
+    font-family: Poppins, sans-serif;
+    font-size: 120%;
+    color: white;
+}
+
+/* 1.5 - Images */
+
+.image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    gap: 60px;
+    /* Space between images */
+}
+
+.score-image {
+    width: 15%;
+    background-size: contain;
+    /* Ajuster la taille de l'image */
+    background-position: center;
+    /* Centrer l'image */
+    background-repeat: no-repeat;
+    /* Empêcher la répétition de l'image */
+}
+
+/* 1.6 - Puces */
+
+.bullet-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    /* espace entre chaque puce */
+}
+
+/* 1.7 - Sections */
+
+.section-container {
+    position: relative;
+    cursor: pointer;
+    padding-bottom: 20px;
+    width: 95%;
+    margin: 0 auto;
+    /* Centrer le header lui-même */
+    margin-top: 1vh;
+    margin-bottom: 1 vh;
+
+}
+
+
+.section-header {
+    position: relative;
+    /* Permet de positionner le pseudo-élément par rapport à ce conteneur */
+    background-color: var(--module_default-background-color);
+    color: var(--text-blue-color);
+    padding: 20px;
+    border: 3px solid var(--blue-back);
+    border-radius: 10px;
+    text-align: center;
+    /* Centrer le texte à l'intérieur du header */
+    font-family: Poppins, sans-serif;
+    font-size: 130%;
+    font-weight: 700;
+    box-sizing: border-box;
+    /* Ajoutez cette propriété */
+}
+
+.section-header::before {
+    content: '';
+    /* Obligatoire pour les pseudo-éléments */
+    position: absolute;
+    /* Positionnement absolu par rapport au conteneur parent */
+    top: 35%;
+    /* Le triangle sera positionné en bas du header */
+    left: 95%;
+    /* Déplacement à mi-chemin de la largeur du header */
+    transform: translateX(-50%) rotate(180deg);
+    /* Rotation du triangle de 180 degrés pour l'inverser */
+    border-width: 2vh;
+    /* Taille du triangle */
+    border-style: solid;
+    border-color: transparent transparent var(--blue-back) transparent;
+    /* Couleur des bordures (bleu pour le bas) */
+    z-index: 1;
+    /* Assure que le triangle apparaît au-dessus du contenu */
+    transition: transform 0.5s ease;
+    /* Ajoutez cette propriété pour animer la rotation */
+}
+
+
+.section-header-expanded {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0 solid;
+    background-color: var(--blue-back);
+    color: white;
+    border-color: var(--blue-back);
+}
+
+.section-header-expanded::before {
+    content: '';
+    /* Obligatoire pour les pseudo-éléments */
+    position: absolute;
+    /* Positionnement absolu par rapport au conteneur parent */
+    top: 0;
+    /* Le triangle sera positionné en bas du header */
+    left: 95%;
+    /* Déplacement à mi-chemin de la largeur du header */
+    transform: translateX(-50%);
+    /* Rotation du triangle de 180 degrés pour l'inverser */
+    border-width: 2vh;
+    /* Taille du triangle */
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    /* Couleur des bordures (bleu pour le bas) */
+    z-index: 1;
+    /* Assure que le triangle apparaît au-dessus du contenu */
+    transition: transform 0.5s ease;
+    /* Ajoutez cette propriété pour animer la rotation */
+}
+
+.section-header:hover {
+    background-color: var(--blue-back);
+    color: white;
+    border-color: var(--blue-back);
+}
+
+.section-header:hover::before {
+    border-color: transparent transparent white transparent;
+    /* Couleur des bordures (bleu pour le bas) */
+}
+
+
+.section-content {
+    position: relative;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--module_default-background-color);
+    border-left: 3px solid var(--blue-back);
+    border-right: 3px solid var(--blue-back);
+    border-bottom: 3px solid var(--blue-back);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 0 auto;
+    /* Centrer le header lui-même */
+    box-sizing: border-box;
+    /* Ajoutez cette propriété */
+}
+
+/* 1.8 - Spacers */
+
+.spacer {
+    height: 15px;
+}
+
+.spacer-1 {
+    height: 20px;
 }
 
 /** 2 - Classes boutons **/
@@ -399,6 +678,96 @@
     width: auto;
 }
 
+.btn-3 {
+    display: flex;
+    justify-content: center;
+    /* Ajoutez ceci pour centrer horizontalement */
+    margin-top: 18px;
+    margin-bottom: 18px;
+    margin-right: 10px;
+    width: 100%
+}
+
+.btn-3 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 2vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.btn-1 {
+    display: flex;
+    justify-content: center;
+    /* Ajoutez ceci pour centrer horizontalement */
+    margin-top: 5vh;
+    margin-bottom: 1vh
+}
+
+.btn-1 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 2vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px;
+    width: 90%;
+}
+
+.btn-2 {
+    display: flex;
+    justify-content: center;
+    /* Ajoutez ceci pour centrer horizontalement */
+    margin-top: 5vh;
+    margin-bottom: 5vh
+}
+
+.btn-2 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 2vh;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px;
+    width: 90%;
+}
+
+.btn-4 {
+    display: flex;
+    justify-content: center;
+    /* Ajoutez ceci pour centrer horizontalement */
+    margin-top: 18px;
+    margin-bottom: 18px;
+    margin-left: 10px;
+    width: 100%
+}
+
+.btn-4 button {
+    background-color: white;
+    border: 3px solid var(--blue-back);
+    padding: 2vh;
+    cursor: pointer;
+    color: var(--text-blue-color);
+    font-size: 120%;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px;
+    width: 100%;
+}
+
 
 /* 2.2 - Actions sur boutons */
 .screen-buttons-blue-1 button:hover {
@@ -461,6 +830,32 @@
     border: 3px solid var(--attenuated-green);
 }
 
+.btn-4 button:hover {
+    border-color: var(--attenuated-blue);
+    color: var(--attenuated-blue);
+    transform: scale(1.01);
+}
+
+.btn-3 button:hover {
+    background-color: var(--attenuated-blue);
+    border-color: var(--attenuated-blue);
+    transform: scale(1.01);
+}
+
+
+.btn-1 button:hover {
+    background-color: var(--green-back);
+    border-color: var(--green-back);
+    transform: scale(1.01);
+}
+
+
+.btn-2 button:hover {
+    background-color: var(--green-back);
+    border-color: var(--green-back);
+    transform: scale(1.01);
+}
+
 
 /** 3 - Classes textes **/
 
@@ -477,6 +872,14 @@ h1 {
     color: #1F1549;
 }
 
+
+.header-info {
+    color: var(--text-blue-color);
+    font-family: Poppins, sans-serif;
+    font-size: 140%;
+    font-weight: bold;
+}
+
 /* 3.2 - Sous-Titres */
 
 .p1 {
@@ -489,67 +892,297 @@ h1 {
     color: #1F1549;
 }
 
+.p4 {
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+    /* Taille de police du paragraphe */
+    line-height: 1.4;
+    /* Hauteur de ligne */
+    font-weight: normal;
+    color: var(--green-back);
+}
+
+
+
+
+.p2 {
+    font-family: Poppins, sans-serif;
+    font-size: 19px;
+    /* Taille de police du paragraphe */
+    line-height: 1.4;
+    /* Hauteur de ligne */
+    font-weight: normal;
+    color: #1F1549;
+}
+
+.p3 {
+    font-family: Poppins, sans-serif;
+    font-size: 19px;
+    /* Taille de police du paragraphe */
+    line-height: 1.4;
+    /* Hauteur de ligne */
+    font-weight: normal;
+    color: #1F1549;
+}
+
 /* 3.3 - Titres Catégories */
+.label-mention {
+    font-size: 12px;
+    font-family: Poppins, sans-serif;
+    color: var(--text-blue-color);
+    margin-left: 10vh;
+}
+
+.label-text {
+    margin-right: 5vh;
+    margin-left: 3vh;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    color: var(--text-blue-color);
+}
+
+.label-text-1 {
+    margin-left: 3vh;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    color: var(--text-blue-color);
+}
+
+/* 3.4 - Puces */
+
+.bullet {
+    display: inline-block;
+    width: 4px;
+    /* diamètre du cercle (le double du rayon) */
+    height: 4px;
+    /* diamètre du cercle (le double du rayon) */
+    border-radius: 50%;
+    /* pour former un cercle */
+    background-color: white;
+    /* couleur du fond */
+    margin-right: 8px;
+    /* espace entre le cercle et le texte */
+}
+
+.bullet-1 {
+    display: inline-block;
+    width: 8px;
+    /* diamètre du cercle (le double du rayon) */
+    height: 8px;
+    /* diamètre du cercle (le double du rayon) */
+    border-radius: 50%;
+    /* pour former un cercle */
+    background-color: var(--blue-back);
+    /* couleur du fond */
+    margin-right: 8px;
+    /* espace entre le cercle et le texte */
+    margin-left: 3vh;
+
+}
+
+/** 4 - Formes **/
+
+/* 4.1 - Cercles */
+
+.circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    /* Ajustez la taille du cercle selon vos besoins */
+    height: 50px;
+    /* Ajustez la taille du cercle selon vos besoins */
+    border-radius: 50%;
+    /* Rendre le div un cercle */
+    background-color: var(--blue-back);
+    /* Couleur de fond bleu */
+    color: white;
+    /* Couleur du texte blanc */
+    font-size: px;
+    /* Taille de la police */
+    margin-right: 10px;
+    /* Marge à droite pour l'espace */
+    font-weight: lighter;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 40px;
+}
 
 
 
+/** 5 - Classes Menu Déroulant **/
+
+.custom-select {
+    width: 40%;
+    height: 38px;
+    background-color: var(--blue-back);
+    margin-left: auto;
+    right: 3%;
+    display: block;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.custom-select select {
+    width: 100%;
+    height: 90%;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+    appearance: none;
+    font-family: Poppins, sans-serif;
+
+}
+
+.custom-select select option {
+    color: var(--text-blue-color);
+    /* Couleur du texte pour les options */
+    font-weight: bold;
+}
+
+.custom-select select:focus {
+    outline: none;
+}
+
+.custom-select::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 8px 0 8px;
+    border-color: white transparent transparent transparent;
+    transform: translateY(-50%);
+}
+
+/** 6 - Barre de saisie **/
+
+.custom-input {
+    width: 100%;
+    /* ajustez la largeur selon vos besoins */
+    height: 40px;
+    /* ajustez la hauteur selon vos besoins */
+    border: 3px solid var(--blue-back);
+    border-radius: 15px;
+    background-color: white;
+    font-size: 16px;
+    font-family: Poppins, sans-serif;
+    color: var(--text-blue-color);
+    box-sizing: border-box;
+    text-align: center;
+    left: 0;
+}
+
+.suggestions {
+    position: absolute;
+    top: 110%;
+    width: 45%;
+    max-height: 160px;
+    /* Définir la hauteur maximale à afficher */
+    overflow-y: scroll;
+    /* Ajouter une barre de défilement verticale si nécessaire */
+    background-color: white;
+    border: 2px solid var(--attenuated-blue);
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    border-radius: 5px;
+    z-index: 999;
+}
+
+.suggestions li {
+    padding: 8px;
+    cursor: pointer;
+    color: var(--text-blue-color);
+    font-size: 15px;
+    font-family: Poppins, sans-serif;
+    text-align: center
+}
+
+.suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+.custom-input::-webkit-inner-spin-button,
+.custom-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.custom-input[type=number] {
+    appearance: textfield;
+}
+
+.custom-input:focus {
+    outline: none;
+    border-color: var(--attenuated-blue);
+    /* change la couleur de la bordure lorsqu'il est focus */
+}
 
 
-
-
-
-
-
-/** 4 - Classes Menu Déroulant **/
-
-/* 4.1 - Options Rectangle */
-
-
-/* 4.2 - Options texte affiché sur rectangle */
-
-/* 4.3 - Options texte du menu déroulant */
-
-
-/* 4.4 - Option sur flèche du menu déroulant */
-
-
-/** 5 - Classes transitions Fadeout **/
-
-/* Sélecteurs menu déroulant page choix 1*/
-
-
-
-/* Style supplémentaire pour la flèche */
-
-
-/* Style supplémentaire pour le texte */
-
-
-
-
-/** 6 - Classes de style  texte et lignes  **/
-
-/* 6.1 - Textes */
-
-
-
-/* 6.2 - Bloc Ligne */
 
 
 /** 7 - Classes case à cocher **/
 
 /* 7.1 - Container cases à cocher */
 
+.checkbox-container {
+    margin-right: 10px;
+    /* Ajoute une marge à droite pour séparer les cases à cocher */
+    align-items: center;
+    display: inline-flex;
 
+}
 
+.checkbox-container span {
+    cursor: pointer;
+}
+
+.checkbox-grid {
+    display: flex;
+    flex-direction: row;
+    margin-right: 2.5%;
+}
+
+.checkbox-grid-1 {
+    display: flex;
+    flex-direction: row;
+    margin-right: 2.5%;
+}
 
 /* 7.2 - Style du marqueur avant cochage */
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid var(--blue-back);
+    background-color: white;
+    /* Bord bleu de 3px (code hexadécimal) */
+    border-radius: 50%;
+    /* Coins arrondis */
+
+}
 
 
 
 /* 7.3 - Style pour le marqueur de la case à cocher lorsque coché */
 
-
+.checkbox-container input[type="checkbox"]:checked+.checkmark {
+    background-color: var(--blue-back);
+    /* Changez cette couleur selon vos préférences */
+    border-color: var(--blue-back);
+    /* Changez cette couleur selon vos préférences */
+}
 
 
 
