@@ -38,21 +38,21 @@ const uiParams = reactive({
 });
 
 const titresPages = {
-    titrePageEcran: "L'écran de mon smartphone est cassé",
-    titrePageVitre: "La vitre arrière de mon smartphone est cassée",
-    titrePageAutonomie: "L'autonomie de mon smartphone a diminué",
-    titrePageCharge: "Mon smartphone ne charge plus",
+    titrePageEcran: "L'écran de mon téléphone est cassé",
+    titrePageVitre: "La vitre arrière de mon téléphone est cassée",
+    titrePageAutonomie: "L'autonomie de mon téléphone a diminué",
+    titrePageCharge: "Mon téléphone ne charge plus",
     titrePageMicrophone: "Le microphone est défectueux",
     titrePageHautParleur: "Le haut-parleur est défectueux",
     titrePageCamera: "La caméra est défectueuse",
-    titrePageBoutons: "Les boutons de mon smartphone sont défectueux",
-    titrePageConnexion: "La connexion de mon smartphone est mauvaise",
-    titrePageStockage: "Je manque de stockage sur mon smartphone",
-    titrePageBugs: "Je rencontre des bugs sur mon smartphone",
+    titrePageBoutons: "Les boutons de mon téléphone sont défectueux",
+    titrePageConnexion: "La connexion de mon téléphone est mauvaise",
+    titrePageStockage: "Je manque de stockage sur mon téléphone",
+    titrePageBugs: "Je rencontre des bugs sur mon téléphone",
     titrePageAutre: "Je recontre un autre type de problème",
 
     soustitrePageEcran: "Réparons ensemble votre écran !",
-    souslabelPageEcran: "Je répare mon écran de smartphone"
+    souslabelPageEcran: "Je répare mon écran de téléphone"
 };
 
 const bonnes_pratiques_ecran = {

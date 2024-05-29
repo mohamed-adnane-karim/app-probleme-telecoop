@@ -21,14 +21,14 @@
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1130px) {
 
     body {
         place-items: center;
         width: 95%;
+
+
     }
-
-
 }
 
 
@@ -82,7 +82,7 @@
     margin-top: 13vh;
     margin-bottom: 10vh;
     overflow-y: auto;
-    /* max-height: 50vh; */
+    max-height: 50vh;
     /* Ajouter une barre de défilement verticale si nécessaire */
 }
 
@@ -95,10 +95,10 @@
     padding-bottom: 2vh;
     padding-top: 1vh;
     padding-left: 10vh;
-    /* position: fixed; */
+    position: fixed;
     bottom: 0;
     left: 0;
-    /* z-index: 999; */
+    z-index: 999;
 }
 
 .wrapper-footer {

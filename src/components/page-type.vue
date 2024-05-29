@@ -16,7 +16,7 @@
 
             <section class="section-container"  id="je-repare-moi-meme">
                 <div class="section-header" @click="toggleSection(1)" :class="{ 'section-header-expanded': uiParams.isSection1Open }">
-                    <span>JE REPARE MOI-MEME MON SMARTPHONE</span>
+                    <span>JE REPARE MOI-MEME MON TELEPHONE</span>
                 </div>
                 <div v-if="uiParams.isSection1Open" class="section-content">
 
@@ -26,7 +26,7 @@
 
                         <header class="header-info">
                             <div class="circle">1</div>
-                            <span>Je renseigne mon modèle de smartphone</span>
+                            <span>Je renseigne mon modèle de téléphone</span>
                         </header>
 
                         <div class="spacer-1"></div>
@@ -590,7 +590,7 @@
 
                         <header class="header-info">
                             <div class="circle">2</div>
-                            <span>J'estime les frais de réparations de mon smartphone</span>
+                            <span>J'estime les frais de réparations de mon téléphone</span>
                         </header>
 
                         <div class="spacer-1"></div>
@@ -728,7 +728,7 @@
                         <!-- Verifier que les champs obligatoires sont cochés -->
                         <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" id="default">
                             <div class="module-text-info"> 
-                                <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informations nécessaires dans la section "Je renseigne mon modèle de smartphone" ci-dessus.</span>
+                                <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informations nécessaires dans la section "Je renseigne mon modèle de téléphone" ci-dessus.</span>
                             </div>
                             <div class="spacer-1"></div>
                         </div>
@@ -1718,16 +1718,16 @@
 }
 
 .module-1{
-    margin-left: 3vh;
-    margin-right : 3vh;
+    margin-left: 40px;
+    margin-right : 40px;
 }
 
 .module-text-info {
     display: flex;
     align-items: center;
     position:relative;
-    margin-left: 3vh;
-    margin-right : 3vh;
+    margin-left: 25px;
+    margin-right : 25px;
 }
 
 .button-wrapper-3 {
@@ -1873,7 +1873,7 @@
     font-size: 12px;
     font-family: Poppins, sans-serif;
     color: var(--text-blue-color);
-    margin-left: 10vh
+    margin-left: 10vh;
 }
 
 .label-text {
@@ -1941,7 +1941,7 @@
 
 .p4 {
     font-family: Poppins, sans-serif;
-    font-size: 1.6vh;
+    font-size: 15px;
     /* Taille de police du paragraphe */
     line-height: 1.4;
     /* Hauteur de ligne */
@@ -1954,7 +1954,7 @@
 
 .p2 {
     font-family: Poppins, sans-serif;
-    font-size: 2vh;
+    font-size: 19px;
     /* Taille de police du paragraphe */
     line-height: 1.4;
     /* Hauteur de ligne */
@@ -1964,7 +1964,7 @@
 
 .p3 {
     font-family: Poppins, sans-serif;
-    font-size: 2vh;
+    font-size: 19px;
     /* Taille de police du paragraphe */
     line-height: 1.4;
     /* Hauteur de ligne */
@@ -1975,7 +1975,7 @@
 .module-select-info{
     display: flex;
     align-items: center;
-    position:relative
+    position:relative;
 
 }
 
@@ -1987,7 +1987,7 @@
 
 .custom-select {
     width: 40%;
-    height: 3vh;
+    height: 38px;
     background-color: var(--blue-back);
     margin-left: auto;
     right: 3%;
@@ -2049,17 +2049,17 @@
     font-size: px; /* Taille de la police */
     margin-right: 10px; /* Marge à droite pour l'espace */
     font-weight: lighter;
-    margin-top: 1vh;
-    margin-left: 2vh;
-    margin-right: 5vh;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 40px;
 }
 
 .spacer{
-    height: 2vh;
+    height: 15px;
 }
 
 .spacer-1{
-    height: 2vh;
+    height: 20px;
 }
 
 .header-info{
@@ -2100,7 +2100,7 @@
     position: relative; /* Permet de positionner le pseudo-élément par rapport à ce conteneur */
     background-color: var(--module_default-background-color);
     color: var(--text-blue-color);
-    padding: 2vh;
+    padding: 20px;
     border: 3px solid var(--blue-back);
     border-radius: 10px;
     text-align: center; /* Centrer le texte à l'intérieur du header */
@@ -2202,5 +2202,6 @@
     background-color: var(--blue-back); /* couleur du fond */
     margin-right: 8px; /* espace entre le cercle et le texte */
     margin-left: 3vh;
+
 }
 </style>

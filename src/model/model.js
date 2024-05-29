@@ -33,7 +33,6 @@ for (const id of ids) {
 }
 
 const marques = Array.from(marquesSet).sort();
-marques.unshift('Indifférent');
 
 // Convertissez les codes postaux en chaînes de caractères
 const cpVilles = villes.map(cp => ({
