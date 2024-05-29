@@ -4,8 +4,45 @@ export {
     openRepairerLink,
     toggleSection,
     showSuggestions,
-    selectCP
+    selectCP,
+    handleClickChgt,
+    handleClickRepar,
+    handleClickSelf,
+    toggleTooltip
 };
+
+
+/**
+ * Lorsqu'on clique sur le bouton préférence passage par réparateur agréé, ouvre la section 2
+ * @param {*} uiParams 
+ */
+const handleClickRepar = (uiParams) => {
+    uiParams.isSection1Open = false;
+    uiParams.isSection2Open = true;
+    uiParams.isSection3Open = false;
+};
+
+/**
+ * Lorsqu'on clique sur le bouton préférence réparation maison, ouvre la section 1
+ * @param {*} uiParams 
+ */
+const handleClickSelf = (uiParams) => {
+    uiParams.isSection1Open = true;
+    uiParams.isSection2Open = false;
+    uiParams.isSection3Open = false;
+
+};
+
+/**
+ * Lorsqu'on clique sur le bouton préférence changement de téléphone, ouvre la section 3
+ * @param {*} uiParams 
+ */
+const handleClickChgt = (uiParams) => {
+    uiParams.isSection1Open = false;
+    uiParams.isSection2Open = false;
+    uiParams.isSection3Open = true
+};
+
 
 /**
  * Coche la case de l'index i et s'assure que les autres cases soient décochées
@@ -104,4 +141,26 @@ const selectCP = (cp, uiParams) => {
     // Cacher les suggestions après la sélection
     uiParams.showSuggestions = false;
 
+};
+
+// Fonction pour basculer la visibilité du tooltip lors du clic
+/**
+ * Change le paramètre de visibilité du ième tooltip
+ * @param {string} Nom de l'obet contenant les paramètres
+ * @param {int} index Index du Tooltip
+ */
+const toggleTooltip = (uiParams, index) => {
+    if (index == 1) {
+        uiParams.tooltipVisibleprixcomposant = !uiParams.tooltipVisibleprixcomposant;
+    } if (index == 2) {
+        uiParams.tooltipVisibletutos = !uiParams.tooltipVisibletutos;
+    } if (index == 3) {
+        uiParams.tooltipVisibleoutils = !uiParams.tooltipVisibleoutils;
+    } if (index == 4) {
+        uiParams.tooltipVisiblescores = !uiParams.tooltipVisiblescores;
+    } if (index == 5) {
+        uiParams.tooltipVisibleprixtotal = !uiParams.tooltipVisibleprixtotal;
+    } if (index == 6) {
+        uiParams.tooltipVisibleprixmo = !uiParams.tooltipVisibleprixmo;
+    }
 };

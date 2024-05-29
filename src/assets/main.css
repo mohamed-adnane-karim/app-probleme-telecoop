@@ -1106,15 +1106,15 @@ h1 {
 }
 
 .label-text {
-    margin-right: 5vh;
-    margin-left: 3vh;
+    margin-right: 5vw;
+    margin-left: 2vw;
     font-size: 16px;
     font-family: Poppins, sans-serif;
     color: var(--text-blue-color);
 }
 
 .label-text-1 {
-    margin-left: 3vh;
+    margin-left: 2vw;
     font-size: 16px;
     font-family: Poppins, sans-serif;
     color: var(--text-blue-color);

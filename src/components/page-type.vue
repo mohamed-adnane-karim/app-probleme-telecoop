@@ -33,7 +33,7 @@
 
                         <div class="module-select-info" id="selection-marque">
                             <span class="bullet-1"></span>
-                            <span class="p2">Quelle est la marque de votre smartphone actuel ?</span>
+                            <span class="p2">Quelle est la marque de votre smartphone actuel ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedMarque" id="marque">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -46,7 +46,7 @@
 
                         <div class="module-select-info" id="selection-model">
                             <span class="bullet-1"></span>
-                            <span class="p2">Quel est le modèle de votre smartphone actuel ?</span>
+                            <span class="p2">Quel est le modèle de votre smartphone actuel ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedModele" id="model" >
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -60,7 +60,7 @@
 
                         <div class="module-select-info" id="selection-possession">
                             <span class="bullet-1"></span>
-                            <span class="p2">Depuis combien d'année(s) possédez-vous votre smartphone ?</span>
+                            <span class="p2">Depuis combien d'année(s) possédez-vous votre smartphone ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedPossession" id="possession">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -74,7 +74,7 @@
                         <div class="module-select-info" id="selection-garantie">
 
                             <span class="bullet-1"></span>
-                            <span class="p2">Votre smartphone est-il encore sous garantie ?</span>
+                            <span class="p2">Votre smartphone est-il encore sous garantie ?*</span>
                             
                             <div class="checkbox-grid"> 
                                 <div>
@@ -155,7 +155,6 @@
 
                                 <div v-if="uiParams.selectedContinuer">
                                     
-                                    
                                 <!-- Si le modèle de téléphone n'est pas dans BDD -->
                                 <div v-if="uiParams.selectedModele==='autre'">
                                     <div style="text-align: justify">
@@ -171,6 +170,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                            <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -200,6 +203,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                            <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -232,6 +239,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Présence de tutoriel en ligne ?</span>
+                                            <span class="tooltip-icon-tutos" @click="handleClickToggle(2)">?</span>
+                                        </div>
+                                        <div class="tooltip-tutos" :class="{ 'visible': uiParams.tooltipVisibletutos }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labeltutos }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -263,6 +274,10 @@
                                         <div class="module-select-info" >
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Besoin d'outils spécifiques ?</span>
+                                            <span class="tooltip-icon-outils" @click="handleClickToggle(3)">?</span>
+                                        </div>
+                                        <div class="tooltip-outils" :class="{ 'visible': uiParams.tooltipVisibleoutils }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labeloutils }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -309,6 +324,10 @@
                                         <div class="module-select-info" id="score-repa">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                            <span class="tooltip-icon-scores" @click="handleClickToggle(4)">?</span>
+                                        </div>
+                                        <div class="tooltip-scores" :class="{ 'visible': uiParams.tooltipVisiblescores }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelscores }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -347,6 +366,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                            <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -376,6 +399,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                            <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -408,6 +435,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Présence de tutoriel en ligne ?</span>
+                                            <span class="tooltip-icon-tutos" @click="handleClickToggle(2)">?</span>
+                                        </div>
+                                        <div class="tooltip-tutos" :class="{ 'visible': uiParams.tooltipVisibletutos }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labeltutos }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -439,6 +470,10 @@
                                         <div class="module-select-info" >
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Besoin d'outils spécifiques ?</span>
+                                            <span class="tooltip-icon-outils" @click="handleClickToggle(3)">?</span>
+                                        </div>
+                                        <div class="tooltip-outils" :class="{ 'visible': uiParams.tooltipVisibleoutils }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labeloutils }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -462,7 +497,7 @@
                                                     <span>Afin de vous lancer dans la réparation de votre écran, vous aurez besoin de :</span>
                                                     <br>                                                    
                                                 </div>
-                                                <div class="p2" style="text-align: left ; margin-left:30px;">
+                                                <div class="p2" style="text-align: left ; margin-left:130px;">
                                                     <div class="spacer-1"></div>
                                                     <span v-for="(outil, index) in liste_outils.split('\n')" :key="index">
                                                         {{ outil.trim() }} <!-- Supprime les espaces inutiles autour de chaque outil -->
@@ -488,8 +523,11 @@
                                         <div class="module-select-info" id="score-repa">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                            <span class="tooltip-icon-scores" @click="handleClickToggle(4)">?</span>
                                         </div>
-
+                                        <div class="tooltip-scores" :class="{ 'visible': uiParams.tooltipVisiblescores }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelscores }}</span>
+                                        </div>
                                         <div class="spacer-1"></div>
 
                                         <div class="module_default-results">
@@ -510,10 +548,10 @@
 
                             <div class="button-wrapper-4">
                                 <div class="btn-3">
-                                    <button>Je préfère passer par un réparateur agréé</button>
+                                    <button @click="handleClickRepar(uiParams)">Je préfère passer par un réparateur agréé</button>
                                 </div>
                                 <div class="btn-4">
-                                    <button>Je préfère changer de smartphone</button>
+                                    <button @click="handleClickChgt(uiParams)">Je préfère changer de téléphone</button>
                                 </div>
                             </div>
 
@@ -559,7 +597,6 @@
                         <div class="spacer-1"></div>
 
 
-
                         <div class="module-select-info" id="selection-code-postal">
                             <span class="bullet-1"></span>
                             <span class="p2">Votre code postal :</span>
@@ -597,7 +634,7 @@
 
                         <div class="module-select-info" id="selection-marque">
                             <span class="bullet-1"></span>
-                            <span class="p2">Quelle est la marque de votre smartphone actuel ?</span>
+                            <span class="p2">Quelle est la marque de votre smartphone actuel ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedMarque" id="marque">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -610,7 +647,7 @@
 
                         <div class="module-select-info" id="selection-model">
                             <span class="bullet-1"></span>
-                            <span class="p2">Quel est le modèle de votre smartphone actuel ?</span>
+                            <span class="p2">Quel est le modèle de votre smartphone actuel ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedModele" id="model">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -624,7 +661,7 @@
 
                         <div class="module-select-info" id="selection-possession">
                             <span class="bullet-1"></span>
-                            <span class="p2">Depuis combien d'année(s) possédez-vous votre smartphone ?</span>
+                            <span class="p2">Depuis combien d'année(s) possédez-vous votre smartphone ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedPossession" id="possession">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -638,7 +675,7 @@
                         <div class="module-select-info" id="selection-garantie">
 
                             <span class="bullet-1"></span>
-                            <span class="p2">Votre smartphone est-il encore sous garantie ?</span>
+                            <span class="p2">Votre smartphone est-il encore sous garantie ?*</span>
 
                             <div class="checkbox-grid"> 
                                 <div>
@@ -714,7 +751,6 @@
                     
                     </div>   
 
-
                     <div class="spacer"></div>
 
                     <div class="module_default-info" id="info-repa">
@@ -777,6 +813,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen de la réparation totale</span>
+                                            <span class="tooltip-icon-prix-total" @click="handleClickToggle(5)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-total" :class="{ 'visible': uiParams.tooltipVisibleprixtotal }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixprixtotal }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -828,6 +868,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                            <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -859,6 +903,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen de la main d'oeuvre</span>
+                                            <span class="tooltip-icon-prix-mo" @click="handleClickToggle(6)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-mo" :class="{ 'visible': uiParams.tooltipVisibleprixmo }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixmo }}</span>
                                         </div>
 
 
@@ -904,6 +952,10 @@
                                             <div class="module-select-info">
                                                 <span class="bullet-1"></span>
                                                 <span class="p3" style="font-weight: bold">Prix moyen de la réparation totale</span>
+                                                <span class="tooltip-icon-prix-total" @click="handleClickToggle(5)">?</span>
+                                            </div>
+                                            <div class="tooltip-prix-total" :class="{ 'visible': uiParams.tooltipVisibleprixtotal }" style="text-align-last:center"> 
+                                                <span>{{ tooltipsLabels.tooltip_labelprixprixtotal }}</span>
                                             </div>
 
                                             <div class="spacer-1"></div>
@@ -955,6 +1007,10 @@
                                             <div class="module-select-info">
                                                 <span class="bullet-1"></span>
                                                 <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                                <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
+                                            </div>
+                                            <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
+                                                <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                             </div>
 
                                             <div class="spacer-1"></div>
@@ -986,8 +1042,11 @@
                                             <div class="module-select-info">
                                                 <span class="bullet-1"></span>
                                                 <span class="p3" style="font-weight: bold">Prix moyen de la main d'oeuvre</span>
+                                                <span class="tooltip-icon-prix-mo" @click="handleClickToggle(6)">?</span>
                                             </div>
-
+                                            <div class="tooltip-prix-mo" :class="{ 'visible': uiParams.tooltipVisibleprixmo }" style="text-align-last:center"> 
+                                                <span>{{ tooltipsLabels.tooltip_labelprixmo }}</span>
+                                            </div>
 
                                             <div class="spacer-1"></div>
 
@@ -1019,6 +1078,10 @@
                                             <div class="module-select-info" id="score-repa">
                                                 <span class="bullet-1"></span>
                                                 <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                                <span class="tooltip-icon-scores" @click="handleClickToggle(4)">?</span>
+                                            </div>
+                                            <div class="tooltip-scores" :class="{ 'visible': uiParams.tooltipVisiblescores }" style="text-align-last:center"> 
+                                                <span>{{ tooltipsLabels.tooltip_labelscores }}</span>
                                             </div>
 
                                             <div class="spacer-1"></div>
@@ -1060,6 +1123,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen de la réparation totale</span>
+                                            <span class="tooltip-icon-prix-total" @click="handleClickToggle(5)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-total" :class="{ 'visible': uiParams.tooltipVisibleprixtotal }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixprixtotal }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -1111,6 +1178,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                            <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -1142,6 +1213,10 @@
                                         <div class="module-select-info">
                                             <span class="bullet-1"></span>
                                             <span class="p3" style="font-weight: bold">Prix moyen de la main d'oeuvre</span>
+                                            <span class="tooltip-icon-prix-mo" @click="handleClickToggle(6)">?</span>
+                                        </div>
+                                        <div class="tooltip-prix-mo" :class="{ 'visible': uiParams.tooltipVisibleprixmo }" style="text-align-last:center"> 
+                                            <span>{{ tooltipsLabels.tooltip_labelprixmo }}</span>
                                         </div>
 
 
@@ -1187,6 +1262,10 @@
                                             <div class="module-select-info">
                                                 <span class="bullet-1"></span>
                                                 <span class="p3" style="font-weight: bold">Prix moyen de la réparation totale</span>
+                                                <span class="tooltip-icon-prix-total" @click="handleClickToggle(5)">?</span>
+                                            </div>
+                                            <div class="tooltip-prix-total" :class="{ 'visible': uiParams.tooltipVisibleprixtotal }" style="text-align-last:center"> 
+                                                <span>{{ tooltipsLabels.tooltip_labelprixprixtotal }}</span>
                                             </div>
 
                                             <div class="spacer-1"></div>
@@ -1238,6 +1317,10 @@
                                             <div class="module-select-info">
                                                 <span class="bullet-1"></span>
                                                 <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                                <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
+                                            </div>
+                                            <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
+                                                <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                             </div>
 
                                             <div class="spacer-1"></div>
@@ -1269,6 +1352,10 @@
                                             <div class="module-select-info">
                                                 <span class="bullet-1"></span>
                                                 <span class="p3" style="font-weight: bold">Prix moyen de la main d'oeuvre</span>
+                                                <span class="tooltip-icon-prix-mo" @click="handleClickToggle(6)">?</span>
+                                            </div>
+                                            <div class="tooltip-prix-mo" :class="{ 'visible': uiParams.tooltipVisibleprixmo }" style="text-align-last:center"> 
+                                                <span>{{ tooltipsLabels.tooltip_labelprixmo }}</span>
                                             </div>
 
 
@@ -1302,6 +1389,10 @@
                                             <div class="module-select-info" id="score-repa">
                                                 <span class="bullet-1"></span>
                                                 <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                                <span class="tooltip-icon-scores" @click="handleClickToggle(4)">?</span>
+                                            </div>
+                                            <div class="tooltip-scores" :class="{ 'visible': uiParams.tooltipVisiblescores }" style="text-align-last:center"> 
+                                                <span>{{ tooltipsLabels.tooltip_labelscores }}</span>
                                             </div>
 
                                             <div class="spacer-1"></div>
@@ -1325,10 +1416,10 @@
 
                             <div class="button-wrapper-4">
                             <div class="btn-3">
-                                <button>Je préfère réparer moi-même mon téléphone</button>
+                                <button @click="handleClickSelf(uiParams)">Je préfère réparer moi-même mon téléphone</button>
                             </div>
                             <div class="btn-4">
-                                <button>Je préfère changer de smartphone</button>
+                                <button @click="handleClickChgt(uiParams)">Je préfère changer de téléphone</button>
                             </div>
                         </div>
 
@@ -1338,7 +1429,6 @@
                     </div>
 
                     <div class="spacer"></div>
-
 
                 </div>
             </section>
@@ -1411,7 +1501,8 @@
     import { computed } from 'vue';
     import { titresPages, bonnes_pratiques_ecran,annees } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
-    import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP } from '@/controller/controller';
+    import { tooltipsLabels } from '@/config/uiParams.js';
+    import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickChgt,handleClickRepar,handleClickSelf,toggleTooltip } from '@/controller/controller';
     import { cpVilles,marques,getModelsForMarque,getPriceComponentForModel, getLinkTuto, getListOutils, getScoresRepa, getPriceRepa, getPriceMOForModel, getReducEtat, getReducTeleCoop } from '@/model/model.js';
     
     /**
@@ -1568,6 +1659,342 @@
 
     // Ajouter des écouteurs d'événements pour détecter les clics sur le document entier et sur l'entrée
     document.addEventListener('click', handleClickOutside);
+
+    /**
+     * Gère l'affichage des tooltips au click de l'icone
+     */
+    const handleClickToggle =(index)=>{
+        toggleTooltip(uiParams,index)
+    };
+
+    // Déohe automatiquement les tooltips si click autre part
+    document.addEventListener('click', function(event) {
+        var tooltip = document.querySelector('.tooltip-prix-composant');
+        var tooltip1 = document.querySelector('.tooltip-tutos');
+        var tooltip2 = document.querySelector('.tooltip-outils');
+        var tooltip3 = document.querySelector('.tooltip-scores');
+        var tooltip4 = document.querySelector('.tooltip-prix-total');
+        var tooltip5 = document.querySelector('.tooltip-prix-mo');
+        var tooltipIcon = document.querySelector('.tooltip-icon-prix-composant');
+        var tooltipIcon1 = document.querySelector('.tooltip-icon-tutos');
+        var tooltipIcon2 = document.querySelector('.tooltip-icon-outils');
+        var tooltipIcon3 = document.querySelector('.tooltip-icon-scores');
+        var tooltipIcon4 = document.querySelector('.tooltip-icon-prix-total');
+        var tooltipIcon5 = document.querySelector('.tooltip-icon-prix-mo');
+
+
+        // Vérifie si le clic n'est pas à l'intérieur du tooltip ni sur l'icône du tooltip
+        if (tooltip && !tooltip.contains(event.target) && !tooltipIcon.contains(event.target)) {
+            // Si le clic est en dehors, masque le tooltip
+            uiParams.tooltipVisibleprixcomposant = false;
+        } if (tooltip1 && !tooltip1.contains(event.target) && !tooltipIcon1.contains(event.target)) {
+            // Si le clic est en dehors, masque le tooltip
+            uiParams.tooltipVisibletutos = false;
+        } if (tooltip2 && !tooltip2.contains(event.target) && !tooltipIcon2.contains(event.target)) {
+            // Si le clic est en dehors, masque le tooltip
+            uiParams.tooltipVisibleoutils = false;
+        } if (tooltip3 && !tooltip3.contains(event.target) && !tooltipIcon3.contains(event.target)) {
+            // Si le clic est en dehors, masque le tooltip
+            uiParams.tooltipVisiblescores = false;
+        } if (tooltip4 && !tooltip4.contains(event.target) && !tooltipIcon4.contains(event.target)) {
+            // Si le clic est en dehors, masque le tooltip
+            uiParams.tooltipVisibleprixtotal = false;
+        } if (tooltip5 && !tooltip5.contains(event.target) && !tooltipIcon5.contains(event.target)) {
+            // Si le clic est en dehors, masque le tooltip
+            uiParams.tooltipVisibleprixmo = false;
+        }
+
+        
+    });
     
 </script>
+
+<style setup>
+/** 8 - Tooltip **/
+
+/* 8.1 -  Styles pour le point d'interrogation */
+
+.tooltip-icon-prix-composant {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: var(--blue-back);
+    color: #fff;
+    /* Blanc */
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    font-weight: normal;
+    align-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+    margin-left: 1vh;
+}
+
+.tooltip-icon-tutos{
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: var(--blue-back);
+    color: #fff;
+    /* Blanc */
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    font-weight: normal;
+    align-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+    margin-left: 1vh;
+}
+
+.tooltip-icon-outils {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: var(--blue-back);
+    color: #fff;
+    /* Blanc */
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    font-weight: normal;
+    align-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+    margin-left: 1vh;
+}
+
+.tooltip-icon-scores {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: var(--blue-back);
+    color: #fff;
+    /* Blanc */
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    font-weight: normal;
+    align-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+    margin-left: 1vh;
+}
+
+.tooltip-icon-prix-total {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: var(--blue-back);
+    color: #fff;
+    /* Blanc */
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    font-weight: normal;
+    align-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+    margin-left: 1vh;
+}
+
+.tooltip-icon-prix-mo {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: var(--blue-back);
+    color: #fff;
+    /* Blanc */
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    font-weight: normal;
+    align-content: center;
+    align-items: center;
+    font-family: Poppins, sans-serif;
+    margin-left: 1vh;
+}
+
+/* 8.2 - Styles pour le cadre gris du tooltip */
+.tooltip-prix-composant {
+    display: none;
+    /* Caché par défaut */
+    position: absolute;
+    /* Position absolue pour afficher par-dessus le reste de la page */
+    background-color:var(--attenuated-blue);
+    /* Gris */
+    color: #fff;
+    /* Blanc */
+    padding: 10px;
+    border-radius: 5px;
+    z-index:91;
+    /* Pour s'assurer qu'il est au-dessus de tout le reste */
+    /* Positionnement par rapport à l'icône */
+    /* top: 35%;
+    left: 70%; */
+    max-width: 320px;
+    /* Définissez la largeur maximale */
+    white-space: normal;
+    /* Permettre le retour à la ligne */
+    text-align: center;
+}
+
+.tooltip-tutos {
+    display: none;
+    /* Caché par défaut */
+    position: absolute;
+    /* Position absolue pour afficher par-dessus le reste de la page */
+    background-color:var(--attenuated-blue);
+    /* Gris */
+    color: #fff;
+    /* Blanc */
+    padding: 10px;
+    border-radius: 5px;
+    z-index:91;
+    /* Pour s'assurer qu'il est au-dessus de tout le reste */
+    /* Positionnement par rapport à l'icône */
+    /* top: 35%;
+    left: 70%; */
+    max-width: 320px;
+    /* Définissez la largeur maximale */
+    white-space: normal;
+    /* Permettre le retour à la ligne */
+    text-align: center;
+}
+
+.tooltip-outils {
+    display: none;
+    /* Caché par défaut */
+    position: absolute;
+    /* Position absolue pour afficher par-dessus le reste de la page */
+    background-color:var(--attenuated-blue);
+    /* Gris */
+    color: #fff;
+    /* Blanc */
+    padding: 10px;
+    border-radius: 5px;
+    z-index:91;
+    /* Pour s'assurer qu'il est au-dessus de tout le reste */
+    /* Positionnement par rapport à l'icône */
+    /* top: 35%;
+    left: 70%; */
+    max-width: 320px;
+    /* Définissez la largeur maximale */
+    white-space: normal;
+    /* Permettre le retour à la ligne */
+    text-align: center;
+}
+
+.tooltip-scores {
+    display: none;
+    /* Caché par défaut */
+    position: absolute;
+    /* Position absolue pour afficher par-dessus le reste de la page */
+    background-color:var(--attenuated-blue);
+    /* Gris */
+    color: #fff;
+    /* Blanc */
+    padding: 10px;
+    border-radius: 5px;
+    z-index:91;
+    /* Pour s'assurer qu'il est au-dessus de tout le reste */
+    /* Positionnement par rapport à l'icône */
+    /* top: 35%;
+    left: 70%; */
+    max-width: 320px;
+    /* Définissez la largeur maximale */
+    white-space: normal;
+    /* Permettre le retour à la ligne */
+    text-align: center;
+}
+
+.tooltip-prix-total {
+    display: none;
+    /* Caché par défaut */
+    position: absolute;
+    /* Position absolue pour afficher par-dessus le reste de la page */
+    background-color:var(--attenuated-blue);
+    /* Gris */
+    color: #fff;
+    /* Blanc */
+    padding: 10px;
+    border-radius: 5px;
+    z-index:91;
+    /* Pour s'assurer qu'il est au-dessus de tout le reste */
+    /* Positionnement par rapport à l'icône */
+    /* top: 35%;
+    left: 70%; */
+    max-width: 320px;
+    /* Définissez la largeur maximale */
+    white-space: normal;
+    /* Permettre le retour à la ligne */
+    text-align: center;
+}
+
+.tooltip-prix-mo {
+    display: none;
+    /* Caché par défaut */
+    position: absolute;
+    /* Position absolue pour afficher par-dessus le reste de la page */
+    background-color:var(--attenuated-blue);
+    /* Gris */
+    color: #fff;
+    /* Blanc */
+    padding: 10px;
+    border-radius: 5px;
+    z-index:91;
+    /* Pour s'assurer qu'il est au-dessus de tout le reste */
+    /* Positionnement par rapport à l'icône */
+    /* top: 35%;
+    left: 70%; */
+    max-width: 320px;
+    /* Définissez la largeur maximale */
+    white-space: normal;
+    /* Permettre le retour à la ligne */
+    text-align: center;
+}
+
+
+
+/*8.3 - Styles pour afficher le tooltip lorsqu'il est visible */
+
+.tooltip-prix-composant.visible {
+    display: block;
+    /* Afficher le tooltip */
+}
+
+.tooltip-tutos.visible {
+    display: block;
+    /* Afficher le tooltip */
+}
+
+.tooltip-outils.visible {
+    display: block;
+    /* Afficher le tooltip */
+}
+
+.tooltip-scores.visible {
+    display: block;
+    /* Afficher le tooltip */
+}
+
+.tooltip-prix-total.visible {
+    display: block;
+    /* Afficher le tooltip */
+}
+
+.tooltip-prix-mo.visible {
+    display: block;
+    /* Afficher le tooltip */
+}
+
+
+</style>
 

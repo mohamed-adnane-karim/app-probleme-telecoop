@@ -32,7 +32,14 @@ const uiParams = reactive({
 
     selectedContinuer: false,
     labelContinuer: "JE SOUHAITE TOUT DE MEME ME RENSEIGNER SUR COMMENT REPARER MON ECRAN",
-    labelContinuer1: "JE SOUHAITE TOUT DE MEME AVOIR UNE ESTIMATION DU COUT DE REPARATION DE MON ECRAN"
+    labelContinuer1: "JE SOUHAITE TOUT DE MEME AVOIR UNE ESTIMATION DU COUT DE REPARATION DE MON ECRAN",
+
+    tooltipVisibleprixcomposant: false,
+    tooltipVisibletutos: false,
+    tooltipVisibleoutils: false,
+    tooltipVisiblescores: false,
+    tooltipVisibleprixtotal: false,
+    tooltipVisibleprixmo: false
 
 
 });
@@ -67,10 +74,20 @@ const annees = {
 
 }
 
+const tooltipsLabels = {
+    tooltip_labelprixcomposant: "tooltip_labelprixcomposant",
+    tooltip_labeltutos: "tooltip_labeltutos",
+    tooltip_labeloutils: "tooltip_labeloutils",
+    tooltip_labelscores: "tooltip_labelscores",
+    tooltip_labelprixprixtotal: "tooltip_labelprixprixtotal",
+    tooltip_labelprixmo: "tooltip_labelprixmo"
+}
+
 export default uiParams;
 
 export {
     titresPages,
     bonnes_pratiques_ecran,
-    annees
+    annees,
+    tooltipsLabels
 }
