@@ -33,7 +33,7 @@
 
                         <div class="module-select-info" id="selection-marque">
                             <span class="bullet-1"></span>
-                            <span class="p2">Quelle est la marque de votre smartphone actuel ?*</span>
+                            <span class="p2">Quelle est la marque de votre téléphone actuel ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedMarque" id="marque">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -46,7 +46,7 @@
 
                         <div class="module-select-info" id="selection-model">
                             <span class="bullet-1"></span>
-                            <span class="p2">Quel est le modèle de votre smartphone actuel ?*</span>
+                            <span class="p2">Quel est le modèle de votre téléphone actuel ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedModele" id="model" >
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -60,7 +60,7 @@
 
                         <div class="module-select-info" id="selection-possession">
                             <span class="bullet-1"></span>
-                            <span class="p2">Depuis combien d'année(s) possédez-vous votre smartphone ?*</span>
+                            <span class="p2">Depuis combien d'année(s) possédez-vous votre téléphone ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedPossession" id="possession">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -74,7 +74,7 @@
                         <div class="module-select-info" id="selection-garantie">
 
                             <span class="bullet-1"></span>
-                            <span class="p2">Votre smartphone est-il encore sous garantie ?*</span>
+                            <span class="p2">Votre téléphone est-il encore sous garantie ?*</span>
                             
                             <div class="checkbox-grid"> 
                                 <div>
@@ -125,7 +125,7 @@
                         <!-- Vérifier que tous les champs obligatoires sont remplis -->
                         <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" id="default">
                             <div class="module-text-info"> 
-                                <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informartions nécessaires dans la section "Je renseigne mon modèle de smartphone" ci-dessus.</span>
+                                <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informartions nécessaires dans la section "Je renseigne mon modèle de téléphone" ci-dessus.</span>
                             </div>
                             <div class="spacer-1"></div>
                         </div>
@@ -136,7 +136,7 @@
                             <div v-if="uiParams.selectedGarantieOui || uiParams.selectedPossession==='Moins de 1 an' || uiParams.selectedPossession==='Entre 1 an et 2 ans' " class="module-1" id="il-y-a-garantie">
                                 <div>
                                     <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                    <span class="p3"> Votre smartphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
+                                    <span class="p3"> Votre téléphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
                                 </div>
 
                                 <div class="spacer-1"></div>
@@ -159,7 +159,7 @@
                                 <div v-if="uiParams.selectedModele==='autre'">
                                     <div style="text-align: justify">
                                         <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                        <span class="p3"> Même si votre smartphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un smartphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        <span class="p3"> Même si votre téléphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un téléphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                     </div>
 
                                     <div class="spacer-1"></div>
@@ -192,7 +192,7 @@
 
                                     <div style="text-align: justify">
                                         <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                        <span class="p3"> Votre smartphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        <span class="p3"> Votre téléphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                     </div>
 
                                     <div class="spacer-1"></div>
@@ -355,7 +355,7 @@
                                 <div v-if="uiParams.selectedModele==='autre'">
                                     <div style="text-align: justify">
                                         <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                        <span class="p3"> Même si votre smartphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un smartphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        <span class="p3"> Même si votre téléphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un téléphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                     </div>
 
                                     <div class="spacer-1"></div>
@@ -388,7 +388,7 @@
 
                                     <div style="text-align: justify">
                                         <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                        <span class="p3"> Votre smartphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        <span class="p3"> Votre téléphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                     </div>
 
                                     <div class="spacer-1"></div>
@@ -634,7 +634,7 @@
 
                         <div class="module-select-info" id="selection-marque">
                             <span class="bullet-1"></span>
-                            <span class="p2">Quelle est la marque de votre smartphone actuel ?*</span>
+                            <span class="p2">Quelle est la marque de votre téléphone actuel ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedMarque" id="marque">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -647,7 +647,7 @@
 
                         <div class="module-select-info" id="selection-model">
                             <span class="bullet-1"></span>
-                            <span class="p2">Quel est le modèle de votre smartphone actuel ?*</span>
+                            <span class="p2">Quel est le modèle de votre téléphone actuel ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedModele" id="model">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -661,7 +661,7 @@
 
                         <div class="module-select-info" id="selection-possession">
                             <span class="bullet-1"></span>
-                            <span class="p2">Depuis combien d'année(s) possédez-vous votre smartphone ?*</span>
+                            <span class="p2">Depuis combien d'année(s) possédez-vous votre téléphone ?*</span>
                             <div class="custom-select">
                                 <select v-model="uiParams.selectedPossession" id="possession">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
@@ -675,7 +675,7 @@
                         <div class="module-select-info" id="selection-garantie">
 
                             <span class="bullet-1"></span>
-                            <span class="p2">Votre smartphone est-il encore sous garantie ?*</span>
+                            <span class="p2">Votre téléphone est-il encore sous garantie ?*</span>
 
                             <div class="checkbox-grid"> 
                                 <div>
@@ -772,12 +772,12 @@
                         <!-- Lorsque les champs obligatoires sont biens cochés -->
                         <div v-else>
 
-                            <!-- Smartphone encore sous garantie -->
+                            <!-- téléphone encore sous garantie -->
                             <div v-if="uiParams.selectedGarantieOui || uiParams.selectedPossession==='Moins de 1 an' || uiParams.selectedPossession==='Entre 1 an et 2 ans' " class="module-1" id="il-y-a-garantie">
                                 
                                 <div>
                                     <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                    <span class="p3"> Votre smartphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
+                                    <span class="p3"> Votre téléphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
                                 </div>
 
                                 <div class="spacer-1"></div>
@@ -801,7 +801,7 @@
                                     
                                     <div style="text-align: justify">
                                         <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                        <span class="p3"> Même si votre smartphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un smartphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        <span class="p3"> Même si votre téléphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un téléphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                     </div>
 
                                     <div class="spacer-1"></div>
@@ -940,7 +940,7 @@
 
                                         <div style="text-align: justify">
                                             <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                            <span class="p3"> Votre smartphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                            <span class="p3"> Votre téléphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -1111,7 +1111,7 @@
                                     
                                     <div style="text-align: justify">
                                         <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                        <span class="p3"> Même si votre smartphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un smartphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        <span class="p3"> Même si votre téléphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un téléphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                     </div>
 
                                     <div class="spacer-1"></div>
@@ -1250,7 +1250,7 @@
 
                                         <div style="text-align: justify">
                                             <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                            <span class="p3"> Votre smartphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                            <span class="p3"> Votre téléphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                         </div>
 
                                         <div class="spacer-1"></div>
@@ -1440,7 +1440,7 @@
                 <div v-if="uiParams.isSection3Open" class="section-content">
                     <div class="spacer"></div>
 
-                    <div class="module_default-info" id="change-smartphone">
+                    <div class="module_default-info" id="change-téléphone">
 
                         <header class="header-info">
                             <div class="circle">1</div>
@@ -1450,7 +1450,7 @@
                         <div class="spacer-1"></div>
 
                         <div class="module-text-info" id="text-info">
-                            <span class="p2">80% de l'impact d'un mobile réside dans sa fabrication d'après l'ADEME. Les Français changent en moyenne de mobile tous les 2 ans alors qu'il fonctionne encore. Dans un effort commun de réduction de nos émission, il est donc important d'essayer de conserver son mobile le plus longtemps possible ! En faisant réparer votre smartphone, vous réduisez non seulement vos déchets, votre impact environnemental de votre usage numérique, mais aussi l'impact sur votre portefeuille.
+                            <span class="p2">80% de l'impact d'un mobile réside dans sa fabrication d'après l'ADEME. Les Français changent en moyenne de mobile tous les 2 ans alors qu'il fonctionne encore. Dans un effort commun de réduction de nos émission, il est donc important d'essayer de conserver son mobile le plus longtemps possible ! En faisant réparer votre téléphone, vous réduisez non seulement vos déchets, votre impact environnemental de votre usage numérique, mais aussi l'impact sur votre portefeuille.
                             </span>
                         </div>
 
@@ -1458,7 +1458,7 @@
 
                         <div clas="button-wrapper-3">
                             <div class="btn-2">
-                                <button>Je souhaite quand même découvrir les smartphones durables de la gamme TeleCoop</button>
+                                <button>Je souhaite quand même découvrir les téléphones durables de la gamme TeleCoop</button>
                             </div>
                         </div>
 
