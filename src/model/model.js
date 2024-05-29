@@ -44,8 +44,8 @@ const cpVilles = villes.map(cp => ({
 
 /**
  * Obtient la liste des noms des modèles de téléphones pour une marque donnée
- * @param {*} selectedMarque 
- * @returns 
+ * @param {str} selectedMarque Marque séletionné
+ * @returns {[[id,modele]]} Liste de liste de type [id,modele] correspondant aux modèles de la marque sélectionnée
  */
 const getModelsForMarque = (selectedMarque) => {
     const ModelsForMarque = [];
@@ -66,8 +66,8 @@ const getModelsForMarque = (selectedMarque) => {
 
 /**
  * Donne l'ID d'un modèle de téléphone
- * @param {*} selectedModele 
- * @returns 
+ * @param {str} selectedModele Modèle de téléphone sélectionné
+ * @returns {int} ID du modèle sélectionné en paramètre
  */
 const getIdForModel = (selectedModele) => {
     if (selectedModele !== "") {
@@ -83,10 +83,10 @@ const getIdForModel = (selectedModele) => {
 
 /**
  * Pour un modèle et un composant donné, donne le prix du composant. Si modèle choist = autre, alors sort le prix du téléphone type de la marque choisie
- * @param {*} selectedModele 
- * @param {*} selectedMarque 
- * @param {*} typeComponent 
- * @returns 
+ * @param {str} selectedModele Modèle de téléphone sélectionné
+ * @param {str} selectedMarque Marque sélectionné
+ * @param {str} typeComponent  Type de composant sélectionné
+ * @returns {[int]} Retourné une liste d'un élément avec le prix du composant pour le modèle sélectionné, si le modèle sélectionné vaut autre, sort le prix du composant pour le téléphone type de la marqie sémlectionnéee
  */
 const getPriceComponentForModel = (selectedModele, selectedMarque, typeComponent) => {
     const priceComponentForModel = [];
@@ -114,10 +114,10 @@ const getPriceComponentForModel = (selectedModele, selectedMarque, typeComponent
 
 /**
  *  Pour un modèle et un composant donné, donne le prix de la main d'oeuvre de réparation. Si modèle choist = autre, alors sort le prix du téléphone type de la marque choisie
- * @param {*} selectedModele 
- * @param {*} selectedMarque 
- * @param {*} typeComponent 
- * @returns 
+ * @param {str} selectedModele Modèle de téléphone sélectionné
+ * @param {str} selectedMarque Marque sélectionné
+ * @param {str} typeComponent  Type de composant sélectionné
+ * @returns {[int]} Retourné une liste d'un élément avec le prix de la main d'oeuvre de réparation pour le modèle sélectionné, si le modèle sélectionné vaut autre, sort le prix de la main d'oeuvre pour le téléphone type de la marqie sémlectionnéee
  */
 const getPriceMOForModel = (selectedModele, selectedMarque, typeComponent) => {
     const priceMOForModel = [];
@@ -144,10 +144,10 @@ const getPriceMOForModel = (selectedModele, selectedMarque, typeComponent) => {
 
 /**
  * Pour un téléphone donné et un compoosant donné calcule le prix total d'un réparation
- * @param {*} selectedModele 
- * @param {*} selectedMarque 
- * @param {*} typeComponent 
- * @returns 
+ * @param {str} selectedModele Modèle de téléphone sélectionné
+ * @param {str} selectedMarque Marque sélectionné
+ * @param {str} typeComponent  Type de composant sélectionné
+ * @returns {[int]} Retourné une liste d'un élément avec le prix de la réparation totale du téléphone sous le composant sélection, si modèle=autre, retourne le prix du téléphone type pour la marque
  */
 const getPriceRepa = (selectedModele, selectedMarque, typeComponent) => {
     const priceMO = getPriceMOForModel(selectedModele, selectedMarque, typeComponent);
@@ -160,9 +160,9 @@ const getPriceRepa = (selectedModele, selectedMarque, typeComponent) => {
 
 /**
  * Pour un modèle donné et un composant donné, sort le lien des tutos
- * @param {*} selectedModele 
- * @param {*} typeComponent 
- * @returns 
+ * @param {str} selectedModele Modèle de téléphone sélectionné
+ * @param {str} typeComponent  Type de composant sélectionné
+ * @returns {[str]||[0]} s'il le modèle sélectionné à un lien de tuto pour réparer le composant sélectionnés, le retour sous forme de liste, sinon renvoie une liste contenant la valeur 0
  */
 const getLinkTuto = (selectedModele, typeComponent) => {
     const linkTuto = [];
@@ -187,9 +187,9 @@ const getLinkTuto = (selectedModele, typeComponent) => {
 
 /**
  * Pour un modèle donné et un composant, donne la liste des outils nécessaire pour une réparation maison
- * @param {*} selectedModele 
- * @param {*} typeComponent 
- * @returns 
+ * @param {str} selectedModele Modèle de téléphone sélectionné
+ * @param {str} typeComponent  Type de composant sélectionné
+ * @returns {[str]||[0]} s'il le modèle sélectionné a une liste d'outils nécessaires pour réparer le composant sélectionnés, le retour sous forme de liste, sinon renvoie une liste contenant la valeur 0
  */
 const getListOutils = (selectedModele, typeComponent) => {
     const listOutils = [];
@@ -217,8 +217,8 @@ const getListOutils = (selectedModele, typeComponent) => {
 
 /**
  * Pour un modèle de téléphone donné, sort les liens des images de score de classification du téléphone
- * @param {*} selectedModele 
- * @returns 
+ * @param {*} selectedModele  Modèle de téléphone sélectionné
+ * @returns {[link_pic_ind_repa,link_pic_scr_ifixit,link_pic_ethique,link_pic_prive]} pour un modèle donnée ressort la liste des liens des images de score 
  */
 const getScoresRepa = (selectedModele) => {
     const scores = [];
@@ -247,10 +247,10 @@ const getScoresRepa = (selectedModele) => {
 
 /**
  * Pour un modèle donné et un composant donné, sort le prix de la réduction de l'état (bonus réparation)
- * @param {*} selectedModele 
- * @param {*} selectedMarque 
- * @param {*} typeComponent 
- * @returns 
+ * @param {str} selectedModele Modèle de téléphone sélectionné
+ * @param {str} selectedMarque Marque sélectionné
+ * @param {str} typeComponent  Type de composant sélectionné
+ * @returns {int} retour le montant de la réduction du bonus de réparabilité pour un téléphone donné pour un composant
  */
 const getReducEtat = (selectedModele, selectedMarque, typeComponent) => {
     if (selectedModele !== 'autre') {
@@ -274,10 +274,9 @@ const getReducEtat = (selectedModele, selectedMarque, typeComponent) => {
 
 /**
  * Pour un modèle donné et un composant donné, sort le prix de la réduction de télécoop (bonus réparation client télécoop)
- * @param {*} selectedModele 
- * @param {*} selectedMarque 
- * @param {*} typeComponent 
- * @returns 
+ * @param {str} selectedMarque Marque sélectionné
+ * @param {str} typeComponent  Type de composant sélectionné
+ * @returns {int} retour le montant de la réduction réparabilité des clients telecoop pour un téléphone donné pour un composant
  */
 const getReducTeleCoop = (selectedModele, selectedMarque, typeComponent) => {
     if (selectedModele !== 'autre') {
