@@ -563,7 +563,7 @@
                         <div class="module-select-info" id="selection-code-postal">
                             <span class="bullet-1"></span>
                             <span class="p2">Votre code postal :</span>
-                            <div style="display: flex; align-items: center;width: 45%;margin-left: 15vh;">
+                            <div class="barre-select">
                                 <input type="text" v-model="uiParams.selectedCP" class="custom-input" placeholder="Entrez votre code postal" @input="onCPInput" @click="showSuggestions(uiParams)">
                                 <ul v-if="uiParams.selectedCP.length >= 3 && uiParams.showSuggestions" class="suggestions">
                                     <li v-for="cp in filteredCPs" :key="`${cp.codePostal}-${cp.ville}`" @click="selectCP(cp,uiParams)">{{ cp.codePostal }} - {{ cp.ville }}</li>
