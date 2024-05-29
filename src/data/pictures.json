@@ -1,0 +1,229 @@
+[
+    {
+        "1": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/iphone-14-pro.jpeg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/7_2.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/5_2.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/6.jpg"
+                }
+            }
+        ],
+        "2": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/iphone-se-2020.jpg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/6_0.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/5_2.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/6.jpg"
+                }
+            }
+        ],
+        "3": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/iphone-12-pro.jpg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/7_8.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/5_2.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/6.jpg"
+                }
+            }
+        ],
+        "4": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/galaxy-s23-ultra.jpeg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/8_2.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/5_1.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/4.jpg"
+                }
+            }
+        ],
+        "5": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/galaxy-a51.jpg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/8_1.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/5_1.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/4.jpg"
+                }
+            }
+        ],
+        "6": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/galaxy-s20-ultra.jpg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/5_7.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/5_1.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/4.jpg"
+                }
+            }
+        ],
+        "7": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/nokia-g22.jpg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/8_1.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/3_4.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/8.jpg"
+                }
+            }
+        ],
+        "8": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/google-pixel-5.jpeg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/6_3.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/4_2.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/6.jpg"
+                }
+            }
+        ],
+        "9": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/google-pixel-8.jpeg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/8_2.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/4_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/4_2.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/6.jpg"
+                }
+            }
+        ],
+        "10": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/fairphone-4.png"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/9_3.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/5_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/6_7.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/10.jpg"
+                }
+            }
+        ],
+        "11": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/fairphone-5.png"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/9_3.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/5_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/6_7.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/10.jpg"
+                }
+            }
+        ],
+        "12": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/fairphone-5.png"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/9_3.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/10.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/6_7.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/10.jpg"
+                }
+            }
+        ],
+        "13": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/fairphone-4.png"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/9_3.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/10.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/6_7.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/10.jpg"
+                }
+            }
+        ],
+        "14": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/mudita-pure.jpeg"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/8_0.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/5_0.jpg",
+                    "score_ifixit": ""
+                }
+            }
+        ],
+        "15": [
+            {
+                "Picture": {
+                    "link": "/./src/pictures/smartphones/nokia-5310.png"
+                }
+            },
+            {
+                "Recommandation": {
+                    "indice_reparabilite": "/./src/pictures/indice_reparabilite/7_0.jpg",
+                    "score_vie_prive": "/./src/pictures/score_vie_prive/10.jpg",
+                    "score_ethique": "/./src/pictures/moralscore/3_4.jpg",
+                    "score_ifixit": "/./src/pictures/i-fixit/9.jpg"
+                }
+            }
+        ]
+    }
+]

@@ -31,7 +31,9 @@ const uiParams = reactive({
     labelTeleCoopJsp: "JE NE SAIS PAS",
 
     selectedContinuer: false,
-    labelContinuer: "JE SOUHAITE TOUT DE MEME ME RENSEIGNER SUR COMMENT REPARER MON ECRAN"
+    labelContinuer: "JE SOUHAITE TOUT DE MEME ME RENSEIGNER SUR COMMENT REPARER MON ECRAN",
+    labelContinuer1: "JE SOUHAITE TOUT DE MEME AVOIR UNE ESTIMATION DU COUT DE REPARATION DE MON ECRAN"
+
 
 });
 

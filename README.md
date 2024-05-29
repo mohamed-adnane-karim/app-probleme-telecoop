@@ -1,5 +1,11 @@
 # Application Recommandation TeleCoop
 
+### Copyright 2024
+
+- **Propriétaires** : AURIOL-DELPLA Lucien & KARIM Mohamed Adnane
+- **Tous droits réservés**
+- **Droits d'auteur et licence** : Ce logiciel est la propriété de AURIOL-DELPLA Lucien & KARIM Mohamed Adnane et est protégé par les lois sur les droits d'auteur. Il ne peut être copié modifié, redistribué, vendu ou utilisé de quelque manière que ce soit sans l'autorisation écrite des propriétaires.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

@@ -509,7 +509,7 @@
                     "promo_telecoop_neuf": -1.0,
                     "promo_telecoop_reconditionne": -1.0,
                     "gain_carbone": 0.8,
-                    "telephone_type": 0,
+                    "telephone_type": 1,
                     "analyse": "(+) Many components are modular and can be replaced independently.\n(+) Battery repairs are reasonably well-prioritized, but tricky adhesive complicates repairs.\n(-) The charging port, a high-wear part, is not modular; this repair requires microsoldering or a full motherboard replacement."
                 }
             },
@@ -929,7 +929,7 @@
                     "promo_telecoop_neuf": -1.0,
                     "promo_telecoop_reconditionne": -1.0,
                     "gain_carbone": 0.8,
-                    "telephone_type": 0,
+                    "telephone_type": 1,
                     "analyse": "NC"
                 }
             },

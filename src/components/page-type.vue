@@ -51,6 +51,7 @@
                                 <select v-model="uiParams.selectedModele" id="model" >
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
                                     <option v-for="modele in modelsForSelectedMarque" :key="modele" :value="modele">{{ modele }}</option>
+                                    <option value="autre">Mon téléphone ne figure pas sur la liste</option>
                                 </select>
                             </div>
                         </div>
@@ -121,12 +122,17 @@
 
                         <div class="spacer-1"></div>
 
-                        <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" class="module-text-info" id="default">
-                            <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informartions nécessaires dans la section "Je renseigne mon modèle de smartphone" ci-dessus.</span>
+                        <!-- Vérifier que tous les champs obligatoires sont remplis -->
+                        <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" id="default">
+                            <div class="module-text-info"> 
+                                <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informartions nécessaires dans la section "Je renseigne mon modèle de smartphone" ci-dessus.</span>
+                            </div>
+                            <div class="spacer-1"></div>
                         </div>
-
+                        <!-- Si tous les champs obligatoires sont remplis -->
                         <div v-else>
 
+                            <!-- Cas où le téléphone est encore sous garantie -->
                             <div v-if="uiParams.selectedGarantieOui || uiParams.selectedPossession==='Moins de 1 an' || uiParams.selectedPossession==='Entre 1 an et 2 ans' " class="module-1" id="il-y-a-garantie">
                                 <div>
                                     <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
@@ -148,18 +154,372 @@
                                 <div class="spacer-1"></div>
 
                                 <div v-if="uiParams.selectedContinuer">
-                                    <span>Copier ici le v-else</span>
+                                    
+                                    
+                                <!-- Si le modèle de téléphone n'est pas dans BDD -->
+                                <div v-if="uiParams.selectedModele==='autre'">
+                                    <div style="text-align: justify">
+                                        <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                        <span class="p3"> Même si votre smartphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un smartphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix moyen composant -->
+                                    <div id="prix-composant">
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="module_default-results">
+                                            
+                                            <span class="p2">
+                                                <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre téléphone.</span>
+                                            </span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Si le modèle de téléphone est dans la BDD -->
+                                <div v-else>
+
+                                    <div style="text-align: justify">
+                                        <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                        <span class="p3"> Votre smartphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix moyen composant -->
+                                    <div id="prix-composant">
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="module_default-results">
+
+                                            <!-- Prix enregistré dans la BDD -->
+                                            <div v-if="price_component!==-1">
+                                                <span class="p2">
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre </span><span>{{ uiParams.selectedModele }}.</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Prix pas enregistré  -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>Malheureusement nous n'avons pas le prix moyen d'un écran pour votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                </span>
+                                            </div>   
+                                            
+                                        </div>
+                                    </div>
+
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Présence de tutoriel en ligne -->
+                                    <div id="tuto">
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Présence de tutoriel en ligne ?</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="module_default-results">
+                                            <!-- Pas de tuto dans la BDD -->
+                                            <div v-if="link_tuto===0">
+                                                <span class="p2">
+                                                    <span>A ce jour, il n'y malheureusement aucun tutoriel sur le site de notre partenaire iFixit pour vous aider à changer vous même l'écran de votre </span><span>{{ uiParams.selectedModele }}.</span><span> Nous faisons tout pour remédier à cela au plus vite ! En attendant, n'hésitez pas à consulter les informations fournies sur le site de </span><span>{{ uiParams.selectedMarque }}.</span><span> Vous pouvez aussi passer par un réparateur agréé si vous ne souhaitez prendre aucun risque.</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Tuto dans la BDD -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>Vous pouvez consulter le tutoriel pour changer l'écran de votre </span><span>{{ uiParams.selectedModele }} </span> <span></span>
+                                                    <a :href="link_tuto" target="_blank">en cliquant ici</a>
+                                                    <span>.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Besoin outils spécifique -->
+                                    <div id="outils">
+                                        <div class="module-select-info" >
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Besoin d'outils spécifiques ?</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="module_default-results-1">
+
+                                            <!-- Pas d'infos -->
+                                            <div v-if="liste_outils==-1" style="text-align:justify">
+                                                <span class="p2">Malheureusement le site de notre partenaire iFixit ne recense pas à ce jour la liste du matériel nécessaire pour changer l'écran de votre {{ uiParams.selectedModele }}. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                            </div>
+
+                                            <!-- Pas besoin d'outils -->
+                                            <div v-if="liste_outils==0" style="text-align:justify">
+                                                <span class="p2">
+                                                    <span style="font-weight:bold">Bonne nouvelle !</span><span>Aucun matériel n'est nécessaire pour changer l'écran de votre {{ uiParams.selectedModele }}. On s'y met maintenant ?</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Besoin d'outils et on a la liste -->
+                                            <div v-if="liste_outils!==0&&liste_outils!==-1">
+                                                <div class="p2" style="text-align: center">
+                                                    <span>Afin de vous lancer dans la réparation de votre écran, vous aurez besoin de :</span>
+                                                    <br>                                                    
+                                                </div>
+                                                <div class="p2" style="text-align: left ; margin-left:30px;">
+                                                    <div class="spacer-1"></div>
+                                                    <span v-for="(outil, index) in liste_outils.split('\n')" :key="index">
+                                                        {{ outil.trim() }} <!-- Supprime les espaces inutiles autour de chaque outil -->
+                                                        <br v-if="index !== liste_outils.split('\n').length - 1"> <!-- Ajoute un saut de ligne sauf pour le dernier élément -->
+                                                    </span>
+                                                    <div class="spacer-1"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Score de réparabilité de votre téléphone -->
+                                    <div v-if="scores.length>0">
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module-select-info" id="score-repa">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results">
+                                            <div class="image-container">
+                                                <img v-for="(score, index) in scores" :key="index" :src="score" class="score-image" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="spacer-1"></div>
+
                                 </div>
   
                             </div>
 
-                            <div v-else>
-                                <span>v-else avec résultats à mettre</span>
+                            <!-- Cas où le téléphone n'est plus sous garantie -->
+                            <div v-else class="module-1">
+
+                                <!-- Si le modèle de téléphone n'est pas dans BDD -->
+                                <div v-if="uiParams.selectedModele==='autre'">
+                                    <div style="text-align: justify">
+                                        <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                        <span class="p3"> Même si votre smartphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un smartphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix moyen composant -->
+                                    <div id="prix-composant">
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="module_default-results">
+                                            
+                                            <span class="p2">
+                                                <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre téléphone.</span>
+                                            </span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Si le modèle de téléphone est dans la BDD -->
+                                <div v-else>
+
+                                    <div style="text-align: justify">
+                                        <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                        <span class="p3"> Votre smartphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix moyen composant -->
+                                    <div id="prix-composant">
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="module_default-results">
+
+                                            <!-- Prix enregistré dans la BDD -->
+                                            <div v-if="price_component!==-1">
+                                                <span class="p2">
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre </span><span>{{ uiParams.selectedModele }}.</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Prix pas enregistré  -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>Malheureusement nous n'avons pas le prix moyen d'un écran pour votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                </span>
+                                            </div>   
+                                            
+                                        </div>
+                                    </div>
+
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Présence de tutoriel en ligne -->
+                                    <div id="tuto">
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Présence de tutoriel en ligne ?</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="module_default-results">
+                                            <!-- Pas de tuto dans la BDD -->
+                                            <div v-if="link_tuto===0">
+                                                <span class="p2">
+                                                    <span>A ce jour, il n'y malheureusement aucun tutoriel sur le site de notre partenaire iFixit pour vous aider à changer vous même l'écran de votre </span><span>{{ uiParams.selectedModele }}.</span><span> Nous faisons tout pour remédier à cela au plus vite ! En attendant, n'hésitez pas à consulter les informations fournies sur le site de </span><span>{{ uiParams.selectedMarque }}.</span><span> Vous pouvez aussi passer par un réparateur agréé si vous ne souhaitez prendre aucun risque.</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Tuto dans la BDD -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>Vous pouvez consulter le tutoriel pour changer l'écran de votre </span><span>{{ uiParams.selectedModele }} </span> <span></span>
+                                                    <a :href="link_tuto" target="_blank">en cliquant ici</a>
+                                                    <span>.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Besoin outils spécifique -->
+                                    <div id="outils">
+                                        <div class="module-select-info" >
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Besoin d'outils spécifiques ?</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="module_default-results-1">
+
+                                            <!-- Pas d'infos -->
+                                            <div v-if="liste_outils==-1" style="text-align:justify">
+                                                <span class="p2">Malheureusement le site de notre partenaire iFixit ne recense pas à ce jour la liste du matériel nécessaire pour changer l'écran de votre {{ uiParams.selectedModele }}. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                            </div>
+
+                                            <!-- Pas besoin d'outils -->
+                                            <div v-if="liste_outils==0" style="text-align:justify">
+                                                <span class="p2">
+                                                    <span style="font-weight:bold">Bonne nouvelle !</span><span>Aucun matériel n'est nécessaire pour changer l'écran de votre {{ uiParams.selectedModele }}. On s'y met maintenant ?</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Besoin d'outils et on a la liste -->
+                                            <div v-if="liste_outils!==0&&liste_outils!==-1">
+                                                <div class="p2" style="text-align: center">
+                                                    <span>Afin de vous lancer dans la réparation de votre écran, vous aurez besoin de :</span>
+                                                    <br>                                                    
+                                                </div>
+                                                <div class="p2" style="text-align: left ; margin-left:30px;">
+                                                    <div class="spacer-1"></div>
+                                                    <span v-for="(outil, index) in liste_outils.split('\n')" :key="index">
+                                                        {{ outil.trim() }} <!-- Supprime les espaces inutiles autour de chaque outil -->
+                                                        <br v-if="index !== liste_outils.split('\n').length - 1"> <!-- Ajoute un saut de ligne sauf pour le dernier élément -->
+                                                    </span>
+                                                    <div class="spacer-1"></div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+
+
+
+                                    <!-- Score de réparabilité de votre téléphone -->
+                                    <div v-if="scores.length>0">
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module-select-info" id="score-repa">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results">
+                                            <div class="image-container">
+                                                <img v-for="(score, index) in scores" :key="index" :src="score" class="score-image" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="spacer-1"></div>                                
+
                             </div>
+
+                            <div class="spacer-1"></div>
+
+                            <div class="button-wrapper-4">
+                                <div class="btn-3">
+                                    <button>Je préfère passer par un réparateur agréé</button>
+                                </div>
+                                <div class="btn-4">
+                                    <button>Je préfère changer de smartphone</button>
+                                </div>
+                            </div>
+
 
                         </div>
 
-                        <div class="spacer-1"></div>
                     </div>
 
                     <div class="spacer"></div>
@@ -185,14 +545,19 @@
                         <div class="spacer-1"></div>
 
                         <div class="module-text-info">
-                            <div class="p2">                            
+                            <div class="p2" style="text-align:justify">                            
                                 <span>En faisant réparer votre téléphone par un réparateur labellisé "QualiRépar" vous bénéficier directement du Bonus Réparation mis en place par l'Etat. </span>
                                 <span>Rendez-vous ici pour </span><a href="https://www.ecosystem.eco/conditions/">en savoir plus sur le Bonus Réparation</a><span> !</span>
+                                <br>
+                                <br>
+                                <span>Et parce que chez TeleCoop nous voulons vous aide à garder votre téléphone plus longtemps possible afin de réduire votre impact carbone numérique, nos clients bénéficient d'une réduction supplémentaire sur leurs réparations ! Rendez-vous dans la section "J'estime mes frais de réparations" pour en savoir plus.</span>
                             </div>
                         </div>
 
                         <div class="spacer-1"></div>
                         <div class="spacer-1"></div>
+                        <div class="spacer-1"></div>
+
 
 
                         <div class="module-select-info" id="selection-code-postal">
@@ -250,6 +615,7 @@
                                 <select v-model="uiParams.selectedModele" id="model">
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
                                     <option v-for="modele in modelsForSelectedMarque" :key="modele" :value="modele">{{ modele }}</option>
+                                    <option value="autre">Mon téléphone ne figure pas sur la liste</option>
                                 </select>
                             </div>
                         </div>
@@ -354,18 +720,25 @@
                     <div class="module_default-info" id="info-repa">
                         <header class="header-info">
                             <div class="circle">3</div>
-                            <span>{{ titresPages.souslabelPageEcran }}</span>
+                            <span>Mon estimation personnalisée</span>
                         </header>
 
                         <div class="spacer-1"></div>
 
-                        <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" class="module-text-info" id="default">
-                            <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informartions nécessaires dans la section "Je renseigne mon modèle de smartphone" ci-dessus.</span>
+                        <!-- Verifier que les champs obligatoires sont cochés -->
+                        <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" id="default">
+                            <div class="module-text-info"> 
+                                <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informations nécessaires dans la section "Je renseigne mon modèle de smartphone" ci-dessus.</span>
+                            </div>
+                            <div class="spacer-1"></div>
                         </div>
 
+                        <!-- Lorsque les champs obligatoires sont biens cochés -->
                         <div v-else>
 
+                            <!-- Smartphone encore sous garantie -->
                             <div v-if="uiParams.selectedGarantieOui || uiParams.selectedPossession==='Moins de 1 an' || uiParams.selectedPossession==='Entre 1 an et 2 ans' " class="module-1" id="il-y-a-garantie">
+                                
                                 <div>
                                     <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
                                     <span class="p3"> Votre smartphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
@@ -378,7 +751,7 @@
                                         <label class="checkbox-container" id="Continuer">
                                             <input type="checkbox" id="Continuer" v-model="uiParams.selectedContinuer">
                                             <span class="checkmark"></span>
-                                            <span class="label-text">{{ uiParams.labelContinuer }}</span>
+                                            <span class="label-text">{{ uiParams.labelContinuer1 }}</span>
                                         </label>
                                     </div>
                                 </div>
@@ -386,21 +759,586 @@
                                 <div class="spacer-1"></div>
 
                                 <div v-if="uiParams.selectedContinuer">
-                                    <span>Copier ici le v-else</span>
+                                    
+                                    <!-- Si Modèle pas dans la BDD -->
+                                <div v-if="uiParams.selectedModele==='autre'" class="module-1">
+                                    
+                                    <div style="text-align: justify">
+                                        <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                        <span class="p3"> Même si votre smartphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un smartphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix Global réparation  -->
+                                    <div id="prix-repa">
+
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen de la réparation totale</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results" >
+
+                                            <!-- Cas où il manque soit le prix composant soit le prix mo -->
+                                            <div v-if="price_MO==-1||price_component==-1">
+                                                <span class="p2">
+                                                        <span>Malheureusement nous ne pouvons vous fournir le prix moyen d'une réparation d'un écran pour votre téléphone. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- On a à la fois le prix MO et le prix composant -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_repa }} €</span><span> pour faire réparer l'écran de votre téléphone par un professionnel agréé.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div v-if="reduc_etat>0||reduc_telecoop>0" class="spacer-1"></div>
+                                        <div v-if="reduc_etat>0||reduc_telecoop>0" class="module_default-results-2">
+                                            <div v-if="reduc_etat>0" class="p4">
+                                                <span>Profitez du Bonus Réparation sur cette intervention chez n'importe quel réparateur labellisé QualiRépar, pour une réduction à hauteur de </span><span style="font-weight: bold">{{ reduc_etat }} € sur votre facture finale.</span>
+                                            </div>
+
+                                            <div v-if="reduc_telecoop>0" class="p4">
+                                                <br>
+                                                <div v-if="uiParams.selectedTeleCoopOui">
+                                                    <span>En tant que client TeleCoop, cumulez les réductions en passant chez n'importe quel réparateur labellisé QualiRépar, pour une réduction supplémentaire de </span><span style="font-weight: bold">{{ reduc_telecoop }} € sur votre facture finale.</span>
+                                                </div>
+                                                <div v-else>
+                                                    <span>En devenant client TeleCoop, cumulez les réductions en passant chez n'importe quel réparateur labellisé QualiRépar, pour une réduction supplémentaire de </span><span style="font-weight: bold">{{ reduc_telecoop }} € sur votre facture finale.</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix moyen composant -->
+                                    <div id="prix-composant">
+
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results">
+                                            <!-- Prix enregistré dans la BDD -->
+                                            <div v-if="price_component!==-1">
+                                                <span class="p2">
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre téléphone.</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Prix pas enregistré  -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>Malheureusement nous n'avons pas le prix moyen d'un écran pour votre téléphone. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                </span>
+                                            </div>   
+                                        </div>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix moyen main d'oeuvre -->
+                                    <div id="prix-mo">
+
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen de la main d'oeuvre</span>
+                                        </div>
+
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results">
+                                            <!-- Prix enregistré dans la BDD -->
+                                            <div v-if="price_MO!==-1">
+                                                <span class="p2">
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_MO }} €</span><span> de frais de main d'oeuvre chez un réparateur agréé pour réparer l'écran de votre téléphone.</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Prix pas enregistré  -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>Malheureusement nous n'avons pas le prix moyen de main d'oeuvre nécessaire pour réparer l'écran de votre téléphone. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                </span>
+                                            </div>   
+                                        </div>
+
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+
+                                </div>
+
+                                <!-- Si modèle dans la BDD -->
+                                <div v-else>
+                                    <div class="module-1">
+
+                                        <div style="text-align: justify">
+                                            <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                            <span class="p3"> Votre smartphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Prix Global réparation  -->
+                                        <div id="prix-repa">
+
+                                            <div class="module-select-info">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Prix moyen de la réparation totale</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results" >
+
+                                                <!-- Cas où il manque soit le prix composant soit le prix mo -->
+                                                <div v-if="price_MO==-1||price_component==-1">
+                                                    <span class="p2">
+                                                            <span>Malheureusement nous ne pouvons vous fournir le prix moyen d'une réparation d'un écran pour votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                    </span>
+                                                </div>
+
+                                                <!-- On a à la fois le prix MO et le prix composant -->
+                                                <div v-else>
+                                                    <span class="p2">
+                                                            <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_repa }} €</span><span> pour faire réparer l'écran de votre </span><span>{{ uiParams.selectedModele }} par un professionnel agréé.</span>
+                                                        </span>
+                                                </div>
+                                            </div>
+
+                                            <div v-if="reduc_etat>0||reduc_telecoop>0" class="spacer-1"></div>
+                                            <div v-if="reduc_etat>0||reduc_telecoop>0" class="module_default-results-2">
+                                                <div v-if="reduc_etat>0" class="p4">
+                                                    <span>Profitez du Bonus Réparation sur cette intervention chez n'importe quel réparateur labellisé QualiRépar, pour une réduction à hauteur de </span><span style="font-weight: bold">{{ reduc_etat }} € sur votre facture finale.</span>
+                                                </div>
+
+                                                <div v-if="reduc_telecoop>0" class="p4">
+                                                    <br>
+                                                    <div v-if="uiParams.selectedTeleCoopOui">
+                                                        <span>En tant que client TeleCoop, cumulez les réductions en passant chez n'importe quel réparateur labellisé QualiRépar, pour une réduction supplémentaire de </span><span style="font-weight: bold">{{ reduc_telecoop }} € sur votre facture finale.</span>
+                                                    </div>
+                                                    <div v-else>
+                                                        <span>En devenant client TeleCoop, cumulez les réductions en passant chez n'importe quel réparateur labellisé QualiRépar, pour une réduction supplémentaire de </span><span style="font-weight: bold">{{ reduc_telecoop }} € sur votre facture finale.</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Prix moyen composant -->
+                                        <div id="prix-composant">
+
+                                            <div class="module-select-info">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results">
+                                                <!-- Prix enregistré dans la BDD -->
+                                                <div v-if="price_component!==-1">
+                                                    <span class="p2">
+                                                        <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre </span><span>{{ uiParams.selectedModele }}.</span>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Prix pas enregistré  -->
+                                                <div v-else>
+                                                    <span class="p2">
+                                                        <span>Malheureusement nous n'avons pas le prix moyen d'un écran pour votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                    </span>
+                                                </div>   
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Prix moyen main d'oeuvre -->
+                                        <div id="prix-mo">
+
+                                            <div class="module-select-info">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Prix moyen de la main d'oeuvre</span>
+                                            </div>
+
+
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results">
+                                                <!-- Prix enregistré dans la BDD -->
+                                                <div v-if="price_MO!==-1">
+                                                    <span class="p2">
+                                                        <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_MO }} €</span><span> de frais de main d'oeuvre chez un réparateur agréé pour réparer l'écran de votre </span><span>{{ uiParams.selectedModele }}.</span>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Prix pas enregistré  -->
+                                                <div v-else>
+                                                    <span class="p2">
+                                                        <span>Malheureusement nous n'avons pas le prix moyen de main d'oeuvre nécessaire pour réparer l'écran de votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                    </span>
+                                                </div>   
+                                            </div>
+
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Score de réparabilité de votre téléphone -->
+                                        <div v-if="scores.length>0">
+                                            <div class="spacer-1"></div>
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module-select-info" id="score-repa">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results">
+                                                <div class="image-container">
+                                                    <img v-for="(score, index) in scores" :key="index" :src="score" class="score-image" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="spacer-1"></div>
+
                                 </div>
   
                             </div>
 
+                            <!-- Smartphon qui n'est plus sous garantie -->
                             <div v-else>
-                                <span>v-else avec résultats à mettre</span>
+                                
+                                <!-- Si Modèle pas dans la BDD -->
+                                <div v-if="uiParams.selectedModele==='autre'" class="module-1">
+                                    
+                                    <div style="text-align: justify">
+                                        <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                        <span class="p3"> Même si votre smartphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un smartphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix Global réparation  -->
+                                    <div id="prix-repa">
+
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen de la réparation totale</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results" >
+
+                                            <!-- Cas où il manque soit le prix composant soit le prix mo -->
+                                            <div v-if="price_MO==-1||price_component==-1">
+                                                <span class="p2">
+                                                        <span>Malheureusement nous ne pouvons vous fournir le prix moyen d'une réparation d'un écran pour votre téléphone. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- On a à la fois le prix MO et le prix composant -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_repa }} €</span><span> pour faire réparer l'écran de votre téléphone par un professionnel agréé.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div v-if="reduc_etat>0||reduc_telecoop>0" class="spacer-1"></div>
+                                        <div v-if="reduc_etat>0||reduc_telecoop>0" class="module_default-results-2">
+                                            <div v-if="reduc_etat>0" class="p4">
+                                                <span>Profitez du Bonus Réparation sur cette intervention chez n'importe quel réparateur labellisé QualiRépar, pour une réduction à hauteur de </span><span style="font-weight: bold">{{ reduc_etat }} € sur votre facture finale.</span>
+                                            </div>
+
+                                            <div v-if="reduc_telecoop>0" class="p4">
+                                                <br>
+                                                <div v-if="uiParams.selectedTeleCoopOui">
+                                                    <span>En tant que client TeleCoop, cumulez les réductions en passant chez n'importe quel réparateur labellisé QualiRépar, pour une réduction supplémentaire de </span><span style="font-weight: bold">{{ reduc_telecoop }} € sur votre facture finale.</span>
+                                                </div>
+                                                <div v-else>
+                                                    <span>En devenant client TeleCoop, cumulez les réductions en passant chez n'importe quel réparateur labellisé QualiRépar, pour une réduction supplémentaire de </span><span style="font-weight: bold">{{ reduc_telecoop }} € sur votre facture finale.</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix moyen composant -->
+                                    <div id="prix-composant">
+
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results">
+                                            <!-- Prix enregistré dans la BDD -->
+                                            <div v-if="price_component!==-1">
+                                                <span class="p2">
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre téléphone.</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Prix pas enregistré  -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>Malheureusement nous n'avons pas le prix moyen d'un écran pour votre téléphone. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                </span>
+                                            </div>   
+                                        </div>
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
+
+                                    <!-- Prix moyen main d'oeuvre -->
+                                    <div id="prix-mo">
+
+                                        <div class="module-select-info">
+                                            <span class="bullet-1"></span>
+                                            <span class="p3" style="font-weight: bold">Prix moyen de la main d'oeuvre</span>
+                                        </div>
+
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results">
+                                            <!-- Prix enregistré dans la BDD -->
+                                            <div v-if="price_MO!==-1">
+                                                <span class="p2">
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_MO }} €</span><span> de frais de main d'oeuvre chez un réparateur agréé pour réparer l'écran de votre téléphone.</span>
+                                                </span>
+                                            </div>
+
+                                            <!-- Prix pas enregistré  -->
+                                            <div v-else>
+                                                <span class="p2">
+                                                    <span>Malheureusement nous n'avons pas le prix moyen de main d'oeuvre nécessaire pour réparer l'écran de votre téléphone. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                </span>
+                                            </div>   
+                                        </div>
+
+                                    </div>
+
+                                    <div class="spacer-1"></div>
+
+                                </div>
+
+                                <!-- Si modèle dans la BDD -->
+                                <div v-else>
+                                    <div class="module-1">
+
+                                        <div style="text-align: justify">
+                                            <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                            <span class="p3"> Votre smartphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Prix Global réparation  -->
+                                        <div id="prix-repa">
+
+                                            <div class="module-select-info">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Prix moyen de la réparation totale</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results" >
+
+                                                <!-- Cas où il manque soit le prix composant soit le prix mo -->
+                                                <div v-if="price_MO==-1||price_component==-1">
+                                                    <span class="p2">
+                                                            <span>Malheureusement nous ne pouvons vous fournir le prix moyen d'une réparation d'un écran pour votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                    </span>
+                                                </div>
+
+                                                <!-- On a à la fois le prix MO et le prix composant -->
+                                                <div v-else>
+                                                    <span class="p2">
+                                                            <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_repa }} €</span><span> pour faire réparer l'écran de votre </span><span>{{ uiParams.selectedModele }} par un professionnel agréé.</span>
+                                                        </span>
+                                                </div>
+                                            </div>
+
+                                            <div v-if="reduc_etat>0||reduc_telecoop>0" class="spacer-1"></div>
+                                            <div v-if="reduc_etat>0||reduc_telecoop>0" class="module_default-results-2">
+                                                <div v-if="reduc_etat>0" class="p4">
+                                                    <span>Profitez du Bonus Réparation sur cette intervention chez n'importe quel réparateur labellisé QualiRépar, pour une réduction à hauteur de </span><span style="font-weight: bold">{{ reduc_etat }} € sur votre facture finale.</span>
+                                                </div>
+
+                                                <div v-if="reduc_telecoop>0" class="p4">
+                                                    <br>
+                                                    <div v-if="uiParams.selectedTeleCoopOui">
+                                                        <span>En tant que client TeleCoop, cumulez les réductions en passant chez n'importe quel réparateur labellisé QualiRépar, pour une réduction supplémentaire de </span><span style="font-weight: bold">{{ reduc_telecoop }} € sur votre facture finale.</span>
+                                                    </div>
+                                                    <div v-else>
+                                                        <span>En devenant client TeleCoop, cumulez les réductions en passant chez n'importe quel réparateur labellisé QualiRépar, pour une réduction supplémentaire de </span><span style="font-weight: bold">{{ reduc_telecoop }} € sur votre facture finale.</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Prix moyen composant -->
+                                        <div id="prix-composant">
+
+                                            <div class="module-select-info">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results">
+                                                <!-- Prix enregistré dans la BDD -->
+                                                <div v-if="price_component!==-1">
+                                                    <span class="p2">
+                                                        <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre </span><span>{{ uiParams.selectedModele }}.</span>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Prix pas enregistré  -->
+                                                <div v-else>
+                                                    <span class="p2">
+                                                        <span>Malheureusement nous n'avons pas le prix moyen d'un écran pour votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                    </span>
+                                                </div>   
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Prix moyen main d'oeuvre -->
+                                        <div id="prix-mo">
+
+                                            <div class="module-select-info">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Prix moyen de la main d'oeuvre</span>
+                                            </div>
+
+
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results">
+                                                <!-- Prix enregistré dans la BDD -->
+                                                <div v-if="price_MO!==-1">
+                                                    <span class="p2">
+                                                        <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_MO }} €</span><span> de frais de main d'oeuvre chez un réparateur agréé pour réparer l'écran de votre </span><span>{{ uiParams.selectedModele }}.</span>
+                                                    </span>
+                                                </div>
+
+                                                <!-- Prix pas enregistré  -->
+                                                <div v-else>
+                                                    <span class="p2">
+                                                        <span>Malheureusement nous n'avons pas le prix moyen de main d'oeuvre nécessaire pour réparer l'écran de votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                    </span>
+                                                </div>   
+                                            </div>
+
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Score de réparabilité de votre téléphone -->
+                                        <div v-if="scores.length>0">
+                                            <div class="spacer-1"></div>
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module-select-info" id="score-repa">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results">
+                                                <div class="image-container">
+                                                    <img v-for="(score, index) in scores" :key="index" :src="score" class="score-image" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="spacer-1"></div>
+                                
                             </div>
+
+                            <div class="spacer-1"></div>
+
+                            <div class="button-wrapper-4">
+                            <div class="btn-3">
+                                <button>Je préfère réparer moi-même mon téléphone</button>
+                            </div>
+                            <div class="btn-4">
+                                <button>Je préfère changer de smartphone</button>
+                            </div>
+                        </div>
 
                         </div>
 
-                        <div class="spacer-1"></div>
+
                     </div>
 
                     <div class="spacer"></div>
+
 
                 </div>
             </section>
@@ -474,11 +1412,91 @@
     import { titresPages, bonnes_pratiques_ecran,annees } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
     import { uncheckOthersGarantie, uncheckOthersTeleCoop } from '@/controller/controller';
-    import { OSs,cpVilles,marques,getModelsForMarque  } from '@/model/model.js';
-
+    import { OSs,cpVilles,marques,getModelsForMarque,getPriceComponentForModel, getLinkTuto, getListOutils, getScoresRepa, getPriceRepa, getPriceMOForModel, getReducEtat, getReducTeleCoop } from '@/model/model.js';
+    
+    
     const modelsForSelectedMarque = computed(() => {
       return getModelsForMarque(uiParams.selectedMarque).map(model => model[1]);
     });
+
+
+    const price_component = computed(()=>{
+        if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
+            const p = getPriceComponentForModel(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
+            const price = p[0];
+            return price;
+        } else {
+            return null
+        }
+    });
+
+    const price_MO = computed (()=>{
+        if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
+            const p = getPriceMOForModel(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
+            const price = p[0];
+            return price;
+        } else {
+            return null
+        }
+    });
+
+    const price_repa = computed (()=>{
+        if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
+            const price = getPriceRepa(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
+            return price;
+        } else {
+            return null
+        }
+    });
+
+
+    const link_tuto = computed(()=>{
+        if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
+            const t = getLinkTuto(uiParams.selectedModele,'ecran');
+            const tuto = t[0];
+            return tuto;
+        } else {
+            return null
+        }
+    });
+
+    const liste_outils = computed(()=>{
+        if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
+            const l = getListOutils(uiParams.selectedModele,'ecran');
+            const liste = l[0];
+            return liste;
+        } else {
+            return null
+        }
+    });
+
+    const scores = computed(()=>{
+        if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
+            const s = getScoresRepa(uiParams.selectedModele);
+            return s;
+        } else {
+            return null
+        }
+    });
+
+    const reduc_telecoop = computed(()=>{
+        if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
+            const reduc = getReducTeleCoop(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
+            return reduc;
+        } else {
+            return null
+        }
+    });
+
+    const reduc_etat = computed(()=>{
+        if (uiParams.selectedModele!==""&&uiParams.selectedMarque!=""){
+            const reduc = getReducEtat(uiParams.selectedModele,uiParams.selectedMarque,'ecran');
+            return reduc;
+        } else {
+            return null
+        }
+    });
+
 
 
     const toggleSection =(index) => {
@@ -493,7 +1511,7 @@
         }if (!uiParams.isSection1Open && !uiParams.isSection2Open && !uiParams.isSection3Open){
                 uiParams.isOneSectionOpen = false;
         }
-    }
+    };
 
     const handleClickGarantie = (index) => {
         uncheckOthersGarantie(uiParams,index);
@@ -567,6 +1585,138 @@
 
 <style scoped>
 
+.button-wrapper-4 {
+    width:95%;
+    /* Définit la largeur maximale de la zone de contenu */
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content:center;
+    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
+}
+
+.btn-3 button:hover {
+    background-color: var(--attenuated-blue);
+    border-color: var(--attenuated-blue);
+    transform: scale(1.01);
+}
+
+.btn-3 {
+    display: flex;
+    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
+    margin-top:18px;
+    margin-bottom:18px;
+    margin-right:10px;
+    width:100%
+}
+
+.btn-3 button {
+    background-color: var(--blue-back);
+    border: 3px solid var(--blue-back);
+    padding: 2vh ;
+    cursor: pointer;
+    color: white;
+    font-size: 120%;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.btn-4 button:hover {
+    border-color: var(--attenuated-blue);
+    color : var(--attenuated-blue);
+    transform: scale(1.01);
+}
+
+.btn-4 {
+    display: flex;
+    justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
+    margin-top:18px;
+    margin-bottom:18px;
+    margin-left:10px;
+    width:100%
+}
+
+.btn-4 button {
+    background-color: white;
+    border: 3px solid var(--blue-back);
+    padding: 2vh ;
+    cursor: pointer;
+    color: var(--text-blue-color);
+    font-size: 120%;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  gap: 60px; /* Space between images */
+}
+
+.score-image {
+    width:15%;
+    background-size: contain;
+    /* Ajuster la taille de l'image */
+    background-position: center;
+    /* Centrer l'image */
+    background-repeat: no-repeat;
+    /* Empêcher la répétition de l'image */
+}
+
+
+
+.module_default-results {
+    background-color: white;
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    position: relative;
+    border : solid 3px var(--blue-back);
+    /* padding-top: 18px;
+    padding-bottom: 18px; */
+    padding:18px;
+    text-align: justify;
+    text-align-last: center;
+}
+
+.module_default-results-1 {
+    background-color: white;
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    position: relative;
+    border : solid 3px var(--blue-back);
+    /* padding-top: 18px;
+    padding-bottom: 18px; */
+    padding:18px;
+
+}
+
+.module_default-results-2 {
+    background-color: white;
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 10px;
+    position: relative;
+    border : solid 3px var(--green-back);
+    /* padding-top: 18px;
+    padding-bottom: 18px; */
+    padding:18px;
+    text-align: justify;
+    text-align-last: center;
+}
+
 .module-1{
     margin-left: 3vh;
     margin-right : 3vh;
@@ -609,8 +1759,8 @@
 .btn-1 {
     display: flex;
     justify-content: center; /* Ajoutez ceci pour centrer horizontalement */
-    margin-top: 10vh;
-    margin-bottom: 10vh
+    margin-top: 5vh;
+    margin-bottom: 1vh
 }
 
 .btn-1 button {
@@ -789,7 +1939,15 @@
     margin-right:2.5%;
 }
 
-
+.p4 {
+    font-family: Poppins, sans-serif;
+    font-size: 1.6vh;
+    /* Taille de police du paragraphe */
+    line-height: 1.4;
+    /* Hauteur de ligne */
+    font-weight: normal;
+    color: var(--green-back);
+}
 
 
 
