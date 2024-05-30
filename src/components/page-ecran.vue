@@ -125,7 +125,7 @@
                         <!-- Vérifier que tous les champs obligatoires sont remplis -->
                         <div v-if="uiParams.selectedMarque === '' || uiParams.selectedModele === '' || uiParams.selectedPossession === '' || !uiParams.selectedGarantieOK" id="default">
                             <div class="module-text-info"> 
-                                <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informartions nécessaires dans la section "Je renseigne mon modèle de téléphone" ci-dessus.</span>
+                                <span class="p3">Avant de pouvoir accéder à cette section, merci de renseigner les informations nécessaires dans la section "Je renseigne mon modèle de téléphone" ci-dessus.</span>
                             </div>
                             <div class="spacer-1"></div>
                         </div>

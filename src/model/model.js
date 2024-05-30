@@ -97,6 +97,14 @@ const getPriceComponentForModel = (selectedModele, selectedMarque, typeComponent
             const p = smartphones[0][id][2].Ecran.prix_ecran;
             priceComponentForModel.push(p);
             return priceComponentForModel;
+        } if (typeComponent === 'batterie') {
+            const p = smartphones[0][id][1].Batterie.prix_batterie;
+            priceComponentForModel.push(p);
+            return priceComponentForModel;
+        } if (typeComponent === 'divers') {
+            const p = smartphones[0][id][3].Composants_divers.prix_composant;
+            priceComponentForModel.push(p);
+            return priceComponentForModel;
         }
     } else {
         if (typeComponent === 'ecran') {
@@ -104,6 +112,24 @@ const getPriceComponentForModel = (selectedModele, selectedMarque, typeComponent
                 if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
                     const id_type = id;
                     const p = smartphones[0][id_type][2].Ecran.prix_ecran;
+                    priceComponentForModel.push(p);
+                    return priceComponentForModel;
+                }
+            }
+        } if (typeComponent === 'batterie') {
+            for (const id of ids) {
+                if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
+                    const id_type = id;
+                    const p = smartphones[0][id_type][1].Batterie.prix_batterie;
+                    priceComponentForModel.push(p);
+                    return priceComponentForModel;
+                }
+            }
+        } if (typeComponent === 'divers') {
+            for (const id of ids) {
+                if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
+                    const id_type = id;
+                    const p = smartphones[0][id_type][3].Composants_divers.prix_composant;
                     priceComponentForModel.push(p);
                     return priceComponentForModel;
                 }
@@ -128,12 +154,36 @@ const getPriceMOForModel = (selectedModele, selectedMarque, typeComponent) => {
             const p = smartphones[0][id][2].Ecran.prix_mo_ecran;
             priceMOForModel.push(p);
             return priceMOForModel;
+        } if (typeComponent === 'batterie') {
+            const p = smartphones[0][id][1].Batterie.prix_mo_batterie;
+            priceMOForModel.push(p);
+            return priceMOForModel;
+        } if (typeComponent === 'divers') {
+            const p = smartphones[0][id][3].Composants_divers.prix_mo_composant;
+            priceMOForModel.push(p);
+            return priceMOForModel;
         }
     } else {
         if (typeComponent === 'ecran') {
             for (const id of ids) {
                 if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
                     const p = smartphones[0][id][2].Ecran.prix_mo_ecran;
+                    priceMOForModel.push(p);
+                    return priceMOForModel;
+                }
+            }
+        } if (typeComponent === 'batterie') {
+            for (const id of ids) {
+                if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
+                    const p = smartphones[0][id][1].Batterie.prix_mo_batterie;
+                    priceMOForModel.push(p);
+                    return priceMOForModel;
+                }
+            }
+        } if (typeComponent === 'divers') {
+            for (const id of ids) {
+                if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
+                    const p = smartphones[0][id][3].Composants_divers.prix_mo_composant;
                     priceMOForModel.push(p);
                     return priceMOForModel;
                 }
@@ -178,6 +228,24 @@ const getLinkTuto = (selectedModele, typeComponent) => {
                 linkTuto.push(tuto);
                 return linkTuto;
             }
+        } if (typeComponent === 'batterie') {
+            if (smartphones[0][id][1].Batterie.tutoriel_batterie === 0) {
+                linkTuto.push(0);
+                return linkTuto;
+            } else {
+                const tuto = smartphones[0][id][1].Batterie.lien_tutoriel_batterie;
+                linkTuto.push(tuto);
+                return linkTuto;
+            }
+        } if (typeComponent === 'divers') {
+            if (smartphones[0][id][3].Composants_divers.tutoriel_composant === 0) {
+                linkTuto.push(0);
+                return linkTuto;
+            } else {
+                const tuto = smartphones[0][id][3].Composants_divers.lien_tutoriel_composant;
+                linkTuto.push(tuto);
+                return linkTuto;
+            }
         }
     } else {
         linkTuto.push(0);
@@ -205,6 +273,30 @@ const getListOutils = (selectedModele, typeComponent) => {
                 return listOutils;
             } else {
                 const list = smartphones[0][id][2].Ecran.liste_outils_ecran;
+                listOutils.push(list);
+                return listOutils;
+            }
+        } if (typeComponent === 'batterie') {
+            if (smartphones[0][id][1].Batterie.besoin_outils_batterie == 0) {
+                listOutils.push(0);
+                return listOutils;
+            } if (smartphones[0][id][1].Batterie.besoin_outils_batterie == -1) {
+                listOutils.push(-1);
+                return listOutils;
+            } else {
+                const list = smartphones[0][id][1].Batterie.liste_outils_batterie;
+                listOutils.push(list);
+                return listOutils;
+            }
+        } if (typeComponent === 'divers') {
+            if (smartphones[0][id][3].Composants_divers.besoin_outils_composant == 0) {
+                listOutils.push(0);
+                return listOutils;
+            } if (smartphones[0][id][3].Composants_divers.besoin_outils_composant == -1) {
+                listOutils.push(-1);
+                return listOutils;
+            } else {
+                const list = smartphones[0][id][3].Composants_divers.liste_outils_composant;
                 listOutils.push(list);
                 return listOutils;
             }
@@ -259,12 +351,36 @@ const getReducEtat = (selectedModele, selectedMarque, typeComponent) => {
             const id = idforModele[0];
             const reduc = smartphones[0][id][2].Ecran.reduction_etat_ecran;
             return reduc;
+        } if (typeComponent === 'batterie') {
+            const idforModele = getIdForModel(selectedModele);
+            const id = idforModele[0];
+            const reduc = smartphones[0][id][1].Batterie.reduction_etat_batterie;
+            return reduc;
+        } if (typeComponent === 'divers') {
+            const idforModele = getIdForModel(selectedModele);
+            const id = idforModele[0];
+            const reduc = smartphones[0][id][3].Composants_divers.reduction_etat_composant;
+            return reduc;
         }
     } else {
         if (typeComponent === 'ecran') {
             for (const id of ids) {
                 if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
                     const reduc = smartphones[0][id][2].Ecran.reduction_etat_ecran;
+                    return reduc;
+                }
+            }
+        } if (typeComponent === 'batterie') {
+            for (const id of ids) {
+                if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
+                    const reduc = smartphones[0][id][1].Batterie.reduction_etat_batterie;
+                    return reduc;
+                }
+            }
+        } if (typeComponent === 'divers') {
+            for (const id of ids) {
+                if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
+                    const reduc = smartphones[0][id][3].Composants_divers.reduction_etat_composant;
                     return reduc;
                 }
             }
@@ -285,12 +401,36 @@ const getReducTeleCoop = (selectedModele, selectedMarque, typeComponent) => {
             const id = idforModele[0];
             const reduc = smartphones[0][id][2].Ecran.reduction_telecoop_ecran;
             return reduc;
+        } if (typeComponent === 'batterie') {
+            const idforModele = getIdForModel(selectedModele);
+            const id = idforModele[0];
+            const reduc = smartphones[0][id][1].Batterie.reduction_telecoop_batterie;
+            return reduc;
+        } if (typeComponent === 'divers') {
+            const idforModele = getIdForModel(selectedModele);
+            const id = idforModele[0];
+            const reduc = smartphones[0][id][3].Composants_divers.reduction_telecoop_composant;
+            return reduc;
         }
     } else {
         if (typeComponent === 'ecran') {
             for (const id of ids) {
                 if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
                     const reduc = smartphones[0][id][2].Ecran.reduction_telecoop_ecran;
+                    return reduc;
+                }
+            }
+        } if (typeComponent === 'batterie') {
+            for (const id of ids) {
+                if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
+                    const reduc = smartphones[0][id][1].Batterie.reduction_telecoop_batterie;
+                    return reduc;
+                }
+            }
+        } if (typeComponent === 'divers') {
+            for (const id of ids) {
+                if (smartphones[0][id][0].General.oem === selectedMarque && smartphones[0][id][0].General.telephone_type === 1) {
+                    const reduc = smartphones[0][id][3].Composants_divers.reduction_telecoop_composant;
                     return reduc;
                 }
             }
