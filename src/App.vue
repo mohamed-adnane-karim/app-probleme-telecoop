@@ -8,8 +8,8 @@ import pageVitreArriere from './components/page-vitre-arriere.vue';
 
 <template>
     <!-- <pageAutonomie/> -->
-    <pageVitreArriere/>
+    <!-- <pageVitreArriere/> -->
     <!-- <pageEcran/> -->
-    <!-- <pageAccueil/> -->
+    <pageAccueil/>
 </template>
 

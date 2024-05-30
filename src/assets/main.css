@@ -220,15 +220,15 @@ body {
     margin: 0 auto;
     padding: 0;
     width: 100%;
+    position: absolute;
 }
 
 .button-wrapper-1 {
     display: flex;
     overflow: hidden;
     justify-content: center;
-    /* margin: 0 auto;
-    padding: 0; */
     width: 100%;
+    box-sizing: border-box;
 }
 
 .button-wrapper-3 {
@@ -739,14 +739,17 @@ body {
 
 .screen-buttons-blue-4 {
     display: flex;
+    width: 45%;
+    justify-content: center;
 }
 
 .screen-buttons-blue-4 button {
     background-color: var(--blue-back);
     border: 3px solid var(--blue-back);
-    padding: 3vh 6.42vw;
     margin-left: 2px;
     margin-bottom: 1vh;
+    padding-top: 25px;
+    padding-bottom: 25px;
     cursor: pointer;
     color: white;
     font-size: 120%;
@@ -761,14 +764,17 @@ body {
 
 .screen-buttons-white-4 {
     display: flex;
+    width: 45%;
+    justify-content: center;
 }
 
 .screen-buttons-white-4 button {
     background-color: var(--module_default-background-color);
     border: 3px solid var(--blue-back);
-    padding: 3vh 6.42vw;
     margin-right: 2px;
     margin-bottom: 1vh;
+    padding-top: 25px;
+    padding-bottom: 25px;
     cursor: pointer;
     color: var(--text-blue-color);
     font-size: 120%;
@@ -783,12 +789,16 @@ body {
 
 .screen-buttons-blue-5 {
     display: flex;
+    width: 45%;
+    justify-content: center;
 }
 
 .screen-buttons-blue-5 button {
     background-color: var(--blue-back);
     border: 3px solid var(--blue-back);
-    padding: 3vh 7.8vw;
+    width: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
     margin-right: 2px;
     margin-bottom: 1vh;
     cursor: pointer;
@@ -799,18 +809,18 @@ body {
     appearance: none;
     font-family: Poppins, sans-serif;
     border-radius: 5px;
-    width: 100%;
-
+    position: relative;
 }
 
 .screen-buttons-white-5 {
     display: flex;
+    width: 45%;
+    justify-content: center;
 }
 
 .screen-buttons-white-5 button {
     background-color: var(--module_default-background-color);
     border: 3px solid var(--blue-back);
-    padding: 3vh 7.8vw;
     margin-left: 2px;
     margin-bottom: 1vh;
     cursor: pointer;
@@ -821,8 +831,9 @@ body {
     appearance: none;
     font-family: Poppins, sans-serif;
     border-radius: 5px;
-    width: auto;
     flex-grow: 1;
+    position: relative;
+    width: 100%;
 }
 
 
