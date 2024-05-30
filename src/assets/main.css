@@ -188,6 +188,7 @@
         .wrapper-pratiques-item {
             margin-left: 10vw;
         }
+
     }
 }
 
@@ -580,162 +581,6 @@ body {
 /* 2.1 - Boutons */
 
 /* 2.1.a - Boutons page Accueil */
-.screen-buttons-blue-1 {
-    display: flex;
-}
-
-.screen-buttons-blue-1 button {
-    background-color: var(--blue-back);
-    border: 3px solid var(--blue-back);
-    padding: 3vh 8.45vw;
-    margin-right: 2px;
-    margin-bottom: 1vh;
-    cursor: pointer;
-    color: white;
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-    border-radius: 5px;
-    width: 100%;
-
-}
-
-.screen-buttons-white-1 {
-    display: flex;
-}
-
-.screen-buttons-white-1 button {
-    background-color: var(--module_default-background-color);
-    border: 3px solid var(--blue-back);
-    padding: 3vh 8.45vw;
-    margin-left: 2px;
-    margin-bottom: 1vh;
-    cursor: pointer;
-    color: var(--text-blue-color);
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-    border-radius: 5px;
-    width: auto;
-    flex-grow: 1;
-}
-
-.screen-buttons-blue-2 {
-    display: flex;
-}
-
-.screen-buttons-blue-2 button {
-    background-color: var(--blue-back);
-    border: 3px solid var(--blue-back);
-    padding: 3vh 9.85vw;
-    margin-left: 2px;
-    margin-bottom: 1vh;
-    cursor: pointer;
-    color: white;
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-    border-radius: 5px;
-    width: 100%;
-
-}
-
-.screen-buttons-white-2 {
-    display: flex;
-}
-
-.screen-buttons-white-2 button {
-    background-color: var(--module_default-background-color);
-    border: 3px solid var(--blue-back);
-    padding: 3vh 9.85vw;
-    margin-right: 2px;
-    margin-bottom: 1vh;
-    cursor: pointer;
-    color: var(--text-blue-color);
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-    border-radius: 5px;
-    width: auto;
-    flex-grow: 1;
-}
-
-
-.screen-buttons-blue-3_1 {
-    display: flex;
-}
-
-.screen-buttons-blue-3_1 button {
-    background-color: var(--blue-back);
-    border: 3px solid var(--blue-back);
-    padding: 3vh 5.215vw;
-    margin-right: 2px;
-    margin-bottom: 1vh;
-    cursor: pointer;
-    color: white;
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-    border-radius: 5px;
-    width: 100%;
-
-}
-
-.screen-buttons-blue-3_2 {
-    display: flex;
-}
-
-.screen-buttons-blue-3_2 button {
-    background-color: var(--blue-back);
-    border: 3px solid var(--blue-back);
-    padding: 3vh 5.215vw;
-    margin-left: 2px;
-    margin-bottom: 1vh;
-    cursor: pointer;
-    color: white;
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-    border-radius: 5px;
-    width: 100%;
-
-}
-
-.screen-buttons-white-3 {
-    display: flex;
-}
-
-.screen-buttons-white-3 button {
-    background-color: var(--module_default-background-color);
-    border: 3px solid var(--blue-back);
-    padding: 3vh 5.215vw;
-    margin-right: 2px;
-    margin-left: 2px;
-    margin-bottom: 1vh;
-    cursor: pointer;
-    color: var(--text-blue-color);
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-    border-radius: 5px;
-    width: auto;
-    flex-grow: 1;
-}
-
 
 .screen-buttons-blue-4 {
     display: flex;
@@ -836,29 +681,6 @@ body {
     width: 100%;
 }
 
-
-
-.screen-buttons-green {
-    display: flex;
-}
-
-.screen-buttons-green button {
-    background-color: var(--green-back);
-    border: 3px solid var(--green-back);
-    padding: 3vh 7vh;
-    margin-right: 1vh;
-    margin-bottom: 1vh;
-    cursor: pointer;
-    color: white;
-    font-size: 120%;
-    font-weight: bold;
-    text-align: center;
-    appearance: none;
-    font-family: Poppins, sans-serif;
-    border-radius: 5px;
-    width: auto;
-}
-
 .btn-3 {
     display: flex;
     justify-content: center;
@@ -951,64 +773,29 @@ body {
 
 
 /* 2.2 - Actions sur boutons */
-.screen-buttons-blue-1 button:hover {
-    background-color: var(--attenuated-blue);
-    border: 3px solid var(--attenuated-blue);
-}
-
-.screen-buttons-white-1 button:hover {
-    color: var(--attenuated-blue);
-    border: 3px solid var(--attenuated-blue);
-}
-
-.screen-buttons-blue-2 button:hover {
-    background-color: var(--attenuated-blue);
-    border: 3px solid var(--attenuated-blue);
-}
-
-.screen-buttons-white-2 button:hover {
-    color: var(--attenuated-blue);
-    border: 3px solid var(--attenuated-blue);
-}
-
-.screen-buttons-blue-3_1 button:hover {
-    background-color: var(--attenuated-blue);
-    border: 3px solid var(--attenuated-blue);
-}
-
-.screen-buttons-blue-3_2 button:hover {
-    background-color: var(--attenuated-blue);
-    border: 3px solid var(--attenuated-blue);
-}
-
-.screen-buttons-white-3 button:hover {
-    color: var(--attenuated-blue);
-    border: 3px solid var(--attenuated-blue);
-}
 
 .screen-buttons-blue-4 button:hover {
     background-color: var(--attenuated-blue);
     border: 3px solid var(--attenuated-blue);
+    transform: scale(1.01);
 }
 
 .screen-buttons-white-4 button:hover {
     color: var(--attenuated-blue);
     border: 3px solid var(--attenuated-blue);
+    transform: scale(1.01);
 }
 
 .screen-buttons-blue-5 button:hover {
     background-color: var(--attenuated-blue);
     border: 3px solid var(--attenuated-blue);
+    transform: scale(1.01);
 }
 
 .screen-buttons-white-5 button:hover {
     color: var(--attenuated-blue);
     border: 3px solid var(--attenuated-blue);
-}
-
-.screen-buttons-green button:hover {
-    background-color: var(--attenuated-green);
-    border: 3px solid var(--attenuated-green);
+    transform: scale(1.01);
 }
 
 .btn-4 button:hover {

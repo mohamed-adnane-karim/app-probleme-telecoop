@@ -8,7 +8,7 @@
 
         <header class="wrapper-sous-titre">
                 <p class="p1">
-                    <span>TeleCoop vous accompagne pour conserver votre mobile le plus longtemps possible ! Quel problème rencontrez-vous avez votre smartphone actuel ?</span>
+                    <span>TeleCoop vous accompagne pour conserver votre mobile le plus longtemps possible ! Quel problème rencontrez-vous avez votre téléphone actuel ?</span>
                 </p>
         </header>
 
