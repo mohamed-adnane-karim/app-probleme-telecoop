@@ -1,0 +1,46 @@
+[
+    {"1": [
+        {
+            "probleme": {
+                "nom": "Mon smartphone a un trop grand temps de réponse",
+                "bonnes_pratiques": {
+                    "bonnes_pratiques_1": "Fermer les applications inutiles",
+                    "bonnes_pratiques_2": "Vider le cache des applications",
+                    "bonnes_pratiques_3": "Mettre à jour le système d'exploitation et les applications"   
+                }
+                    
+            
+        }
+        }],
+    "2": [    
+        {
+            "probleme":{
+            "nom": "L'écran de mon téléphone se fige",
+            "bonnes_pratiques": {
+                "bonnes_pratiques_1": "Démarrer en mode sans échec",
+                "bonnes_pratiques_2": "Redémarrer le téléphone",
+                "bonnes_pratiques_3": "Mettre à jour les applications et le système d'exploitation"
+                
+            }
+                
+       
+        }}
+    ]
+    ,
+    "3": [
+        {
+            "probleme":{ 
+            "nom":"Mon smartphone est infecté par un virus",
+            "bonnes_pratiques": {
+                "bonnes_pratiques_1": "Installer un antivirus fiable",
+                "bonnes_pratiques_2": "Désinstaller les applications suspectes",
+                "bonnes_pratiques_3": "Effectuer une analyse complète du système"
+            }
+                
+            
+        }}
+    ]
+
+   
+    }
+    ]

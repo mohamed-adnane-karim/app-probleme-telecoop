@@ -7,6 +7,7 @@ const uiParams = reactive({
 
     selectedMarque: "",
     selectedModele: "",
+    selectedBugs: "",
     selectedPossession: "",
 
     selectedGarantieOui: false,
@@ -61,6 +62,8 @@ const titresPages = {
     soustitrePageEcran: "Réparons ensemble votre écran !",
     soustitrePageAutonomie: "Réparons ensemble votre batterie !",
     soustitrePageVitre: "Réparons ensemble votre vitre arrière !",
+    soustitrePageAutre: "Nous ne sommes malheureusement pas en mesure de vous fournir plus d'aides pour votre problème. Nous vous redirigeons cependant vers des personnes en mesure de vous aider :",
+    soustitrePageBugs: "Essayons de résoudre vos bugs!",
 
 
 
@@ -68,6 +71,8 @@ const titresPages = {
     souslabelPageEcran: "Je répare mon écran de téléphone",
     souslabelPageAutonomie: "Je répare la batterie de mon téléphone",
     souslabelPageVitreArrière: "Je répare la vitre arrière de mon téléphone",
+    souslabelPageBugs: "Je trouve une solution à mon bug"
+
 };
 
 const bonnes_pratiques_ecran = {
@@ -86,6 +91,12 @@ const bonnes_pratiques_vitre_arriere = {
     pratique2: "Faire réparer la vitre arrière : Consultez un professionnel de la réparation de smartphones pour remplacer la vitre arrière cassée.",
     pratique3: "Utiliser du ruban adhésif transparent : En attendant la réparation, appliquez du ruban adhésif transparent sur la vitre cassée pour éviter les coupures et empêcher les fragments de verre de se détacher.",
 };
+
+const bonnes_pratiques_bugs = {
+    pratique1: "Ne pas aller sur des sites non sécurisés",
+    pratique2: "Installer un antivirus"
+};
+
 const annees = {
     1: "Moins de 1 an",
     2: "Entre 1 an et 2 ans",
@@ -109,6 +120,7 @@ export {
     bonnes_pratiques_ecran,
     bonnes_pratiques_autonomie,
     bonnes_pratiques_vitre_arriere,
+    bonnes_pratiques_bugs,
     annees,
     tooltipsLabels
 }
