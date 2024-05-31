@@ -15,16 +15,16 @@
         <div class="module_default">
             <div class="button-wrapper-1">
                 <div class="screen-buttons-blue-5">
-                    <button>{{ titresPages.titrePageEcran }}</button>
+                        <button>{{ titresPages.titrePageEcran }}</button>
                 </div>
                 <div class="screen-buttons-white-5">
-                    <button>{{ titresPages.titrePageVitre }}</button>
+                        <button>{{ titresPages.titrePageVitre }}</button>
                 </div>
             </div>
 
             <div class="button-wrapper-1">
                 <div class="screen-buttons-white-4">
-                    <button>{{ titresPages.titrePageAutonomie }}</button>
+                        <button>{{ titresPages.titrePageAutonomie }}</button>
                 </div>
                 <div class="screen-buttons-blue-4">
                     <button>{{ titresPages.titrePageCharge }}</button>
@@ -62,10 +62,10 @@
 
             <div class="button-wrapper-2">
                 <div class="screen-buttons-white-4">
-                    <button>{{ titresPages.titrePageBugs }}</button>
+                        <button>{{ titresPages.titrePageBugs }}</button>
                 </div>
                 <div class="screen-buttons-blue-4">
-                    <button>{{ titresPages.titrePageAutre }}</button>
+                        <button>{{ titresPages.titrePageAutre }}</button>
                 </div>
             </div>
         </div>
