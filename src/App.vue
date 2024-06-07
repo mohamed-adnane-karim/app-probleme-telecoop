@@ -9,14 +9,8 @@ import pageBugs from './components/page-bugs.vue';
 
 
 <template>
-    <!-- <div>
+    <div>
         <router-view></router-view>
-    </div> -->
-    <pageAccueil/>
-    <!-- <pageEcran/> -->
-    <!-- <pageAutonomie/> -->
-    <!-- <pageVitreArriere/> -->
-    <!-- <pageAutres/> -->
-    <!-- <pageBugs/> -->
+    </div>
 </template>
 

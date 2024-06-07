@@ -15,16 +15,22 @@
         <div class="module_default">
             <div class="button-wrapper-1">
                 <div class="screen-buttons-blue-5">
+                    <router-link to='/pageEcran' style="text-decoration: none; width:100%">
                         <button>{{ titresPages.titrePageEcran }}</button>
+                    </router-link>
                 </div>
                 <div class="screen-buttons-white-5">
+                    <router-link to='/pageVitreArriere' style="text-decoration: none;width:100%">
                         <button>{{ titresPages.titrePageVitre }}</button>
+                    </router-link>
                 </div>
             </div>
 
             <div class="button-wrapper-1">
                 <div class="screen-buttons-white-4">
+                    <router-link to='/pageAutonomie' style="text-decoration: none;width:100%">
                         <button>{{ titresPages.titrePageAutonomie }}</button>
+                    </router-link>
                 </div>
                 <div class="screen-buttons-blue-4">
                     <button>{{ titresPages.titrePageCharge }}</button>
@@ -62,10 +68,14 @@
 
             <div class="button-wrapper-2">
                 <div class="screen-buttons-white-4">
+                    <router-link to='/pageBugs' style="text-decoration: none;width:100%">
                         <button>{{ titresPages.titrePageBugs }}</button>
+                    </router-link>
                 </div>
                 <div class="screen-buttons-blue-4">
+                    <router-link to='/pageAutres' style="text-decoration: none;width:100%">
                         <button>{{ titresPages.titrePageAutre }}</button>
+                    </router-link>
                 </div>
             </div>
         </div>

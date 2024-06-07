@@ -134,9 +134,14 @@
 
                             <!-- Cas où le téléphone est encore sous garantie -->
                             <div v-if="uiParams.selectedGarantieOui || uiParams.selectedPossession==='Moins de 1 an' || uiParams.selectedPossession==='Entre 1 an et 2 ans' " class="module-1" id="il-y-a-garantie">
-                                <div>
+                                <div v-if="uiParams.selectedGarantieOui">
                                     <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
                                     <span class="p3"> Votre téléphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
+                                </div>
+
+                                <div v-else>
+                                    <span class="p3" style="font-weight: bold">Information importante ! </span> 
+                                    <span class="p3"> Votre téléphone est encore potentiellement sous garantie si vous l'avez acheter neuf et qu'il a moins de deux ans. Vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
                                 </div>
 
                                 <div class="spacer-1"></div>
@@ -775,9 +780,14 @@
                             <!-- téléphone encore sous garantie -->
                             <div v-if="uiParams.selectedGarantieOui || uiParams.selectedPossession==='Moins de 1 an' || uiParams.selectedPossession==='Entre 1 an et 2 ans' " class="module-1" id="il-y-a-garantie">
                                 
-                                <div>
+                                <div v-if="uiParams.selectedGarantieOui">
                                     <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
                                     <span class="p3"> Votre téléphone étant encore sous garantie, vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
+                                </div>
+
+                                <div v-else>
+                                    <span class="p3" style="font-weight: bold">Information importante ! </span> 
+                                    <span class="p3"> Votre téléphone est encore potentiellement sous garantie si vous l'avez acheter neuf et qu'il a moins de deux ans. Vous pouvez vous rapprocher de votre SAV pour le faire prendre en charge sans frais !</span>
                                 </div>
 
                                 <div class="spacer-1"></div>
