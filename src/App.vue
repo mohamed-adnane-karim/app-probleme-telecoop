@@ -5,12 +5,15 @@ import pageAutonomie from './components/page-autonomie.vue';
 import pageVitreArriere from './components/page-vitre-arriere.vue';
 import pageAutres from './components/page-autres-problemes.vue';
 import pageBugs from './components/page-bugs.vue';
+import pageType from './components/page-type-api.vue';
+
 </script>
 
 
 <template>
-    <div>
+    <!-- <div>
         <router-view></router-view>
-    </div>
+    </div> -->
+    <pageType/>
 </template>
 

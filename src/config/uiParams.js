@@ -9,6 +9,7 @@ const uiParams = reactive({
     selectedModele: "",
     selectedBugs: "",
     selectedPossession: "",
+    selectedOS: "",
 
     selectedGarantieOui: false,
     selectedGarantieNon: false,

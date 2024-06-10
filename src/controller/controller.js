@@ -8,7 +8,8 @@ export {
     handleClickChgt,
     handleClickRepar,
     handleClickSelf,
-    toggleTooltip
+    toggleTooltip,
+    capitalizeFirstLetter
 };
 
 
@@ -163,4 +164,8 @@ const toggleTooltip = (uiParams, index) => {
     } if (index == 6) {
         uiParams.tooltipVisibleprixmo = !uiParams.tooltipVisibleprixmo;
     }
+};
+
+const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
 };
