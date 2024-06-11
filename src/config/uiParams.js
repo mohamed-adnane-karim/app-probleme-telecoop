@@ -48,6 +48,7 @@ const uiParams = reactive({
     reparinfos: ref(null),
     score: ref(null),
     listComposants: ref([]),
+    listTools: ref([]),
 
 });
 

@@ -398,6 +398,7 @@
                                             <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
                                             <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
                                         </div>
+
                                         <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
                                             <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
                                         </div>
@@ -417,31 +418,59 @@
                                                     <span>En moyenne, comptez </span><span style="font-weight: bold">{{ totalPrice }} €</span><span> pour acheter les composants nécessaires listés ci-dessous afin de changer la batterie votre </span><span>{{ uiParams.selectedModele }}.</span>
                                                 </span>
                                             </div>
+
                                         </div>
 
                                         <div class="spacer-1"></div>
 
-                                        <div class="module_default-results">
+                                        <div class="module_default-results-1">
                                             <!-- Pas d'infos sur le besoin de piève-->
                                             <div v-if="uiParams.reparinfos.parts.length==0" style="text-align: justify">
                                                 <span class="p2">Malheureusement nous ne savons pas quels composants et pièces sont nécessaires pour changer la batterie de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
                                             </div>
 
                                             <div v-else>
+
+                                                <div class="spacer-1"></div>
+
                                                 <div class="p2" style="text-align: center">
-                                                    <span>Pour se lancer dans la réparation de votre batterie, vous aurez besoin de :</span>
+                                                    <span>Pour se lancer dans la réparation de votre batterie, vous aurez besoin des pièces suivantes :</span>
                                                     <br>
                                                 </div>
-                                                <div class="p2" style="text-align: left">
-                                                    <div class="spacer-1"></div>
-                                                    <div v-for="(outil,index) in uiParams.reparinfos.parts" class="bullet-item">
-                                                        <div class="p2">
-                                                            <span class="bullet-1"></span>
-                                                            <a :href="outil.url" target="_blank" style="text-decoration: none">{{ outil.text }}</a>
-                                                            <span v-if="outil.isoptional">  (Optionnel)</span>
+
+                                                <div class="spacer-1"></div>
+
+                                                <div class="p2" style="display: flex; flex-wrap: wrap;">
+
+                                                    <div v-for="(outil,index) in uiParams.reparinfos.parts" class="tools-item">
+
+                                                        <div v-if="!outil.isoptional" class="p2" style="display: flex; align-items: center;">
+                                                            <img :src="outil.thumbnail" class="picture-thumbnail"/>
+                                                            <div class="wrapper-price-tools" >
+                                                                <a :href="outil.url" target="_blank" class="label-tools-mandatory">{{ outil.text }}</a>
+                                                                <div v-for="(partPrices,index) in listPartsPrices">
+                                                                    <span v-if="partPrices[0]==outil.text&&partPrices[2]!='0,0 €'">{{partPrices[2]}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div v-else class="p2" style="display: flex; align-items: center;">
+                                                            <img :src="outil.thumbnail" class="picture-thumbnail"/>
+                                                            <div class="wrapper-price-tools">
+                                                                <div>
+                                                                    <a :href="outil.url" target="_blank" class="label-optionnel">{{ outil.text }}</a>
+                                                                    <span class="label-optionnel">(Optionnel)</span>
+                                                                </div>
+                                                                <div v-for="(partPrices,index) in listPartsPrices">
+                                                                    <span v-if="partPrices[0]==outil.text&&partPrices[2]!='0,0 €'">{{partPrices[2]}}</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
+                                                
+                                            
                                             </div>
                                         </div>
                                     </div>
@@ -498,17 +527,37 @@
 
                                             <!-- Besoin d'outils -->
                                             <div v-else>
+                                                <div class="spacer-1"></div>
+
                                                 <div class="p2" style="text-align: center">
-                                                    <span>Afin de vous lancer dans la réparation de votre batterie, vous aurez besoin de :</span>
+                                                    <span>Afin de vous lancer dans la réparation de votre batterie, vous aurez besoin des outils suivants :</span>
                                                     <br>
                                                 </div>
-                                                <div class="p2" style="text-align: left">
-                                                    <div class="spacer-1"></div>
-                                                    <div v-for="(outil,index) in uiParams.reparinfos.tools" class="bullet-item">
-                                                        <div class="p2">
-                                                            <span class="bullet-1"></span>
-                                                            <a :href="outil.url" target="_blank" style="text-decoration: none">{{ outil.text }}</a>
-                                                            <span v-if="outil.isoptional">  (Optionnel)</span>
+                                                <div class="spacer-1"></div>
+                                                <div class="p2" style="display: flex; flex-wrap: wrap;">
+                                                    <div v-for="(outil,index) in uiParams.reparinfos.tools" class="tools-item">
+
+                                                        <div v-if="!outil.isoptional" class="p2" style="display: flex; align-items: center;">
+                                                            <img :src="outil.thumbnail" class="picture-thumbnail"/>
+                                                            <div class="wrapper-price-tools">
+                                                                <a :href="outil.url" target="_blank" class="label-tools-mandatory">{{ outil.text }}</a>
+                                                                <div v-for="(toolPrices,index) in listToolsPrices">
+                                                                    <span v-if="toolPrices[0]==outil.text&&toolPrices[2]!='0,0 €'">{{toolPrices[2]}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div v-else class="p2" style="display: flex; align-items: center;">
+                                                            <img :src="outil.thumbnail" class="picture-thumbnail"/>
+                                                            <div class="wrapper-price-tools">
+                                                                <div>
+                                                                    <a :href="outil.url" target="_blank" class="label-optionnel">{{ outil.text }}</a>
+                                                                    <span class="label-optionnel">(Optionnel)</span>
+                                                                </div>
+                                                                <div v-for="(toolPrices,index) in listToolsPrices">
+                                                                    <span v-if="toolPrices[0]==outil.text&&toolPrices[2]!='0,0 €'">{{toolPrices[2]}}</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -553,9 +602,7 @@
                                         </div>
                                     </div>
 
-
                                 </div>
-
                                 
                                 <div class="spacer-1"></div>                                
 
@@ -580,7 +627,6 @@
                     </div>
 
                     <div class="spacer"></div>
-
 
                 </div>
             </section>
@@ -1516,12 +1562,12 @@
                 </div>
             </div>
         </footer>
-        {{ console.log(uiParams.score) }}
+        <!-- {{ console.log(uiParams.score) }}
         {{ console.log(uiParams.dicId) }}
         {{ console.log(uiParams.reparinfos) }}
         {{ console.log(uiParams.listComposants) }}
-        {{ console.log(totalPrice) }}
-
+        {{ console.log(totalPrice) }} -->
+        {{ console.log(uiParams.listTools) }}
     </body>
 
 </template>
@@ -1533,7 +1579,7 @@
     import { tooltipsLabels } from '@/config/uiParams.js';
     import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickChgt,handleClickRepar,handleClickSelf,toggleTooltip } from '@/controller/controller';
     import { cpVilles,marques,getModelsForMarque,getPriceComponentForModel, getLinkTuto, getListOutils, getScoresRepa, getPriceRepa, getPriceMOForModel, getReducEtat, getReducTeleCoop } from '@/model/model.js';
-    import { os_api,getMarquesForOSAPI,getModelesForMarqueAndOSAPI,updateGuide, updateScore, updateDicId ,updateInfosRepas, formatageParts, getLinkScorePictures} from '@/model/modelAPI';
+    import { os_api,getMarquesForOSAPI,getModelesForMarqueAndOSAPI,updateGuide, updateScore, updateDicId ,updateInfosRepas, formatageParts, formatageTools, getLinkScorePictures} from '@/model/modelAPI';
     import { getPriceFromUrl } from '@/model/extract';
 
     /**
@@ -1600,6 +1646,36 @@
     // Utiliser watchEffect pour surveiller les changements et mettre à jour les composants
     watchEffect(() => {
         fetchAndCalculatePrices();
+    });
+
+    // Fonction pour récupérer et calculer les prix des outils
+     const fetchAndCalculatePricesTools = async () => {
+        if (uiParams.reparinfos != null) {
+            const prov = formatageTools(uiParams);
+            const promises = prov.map(async (el) => {
+                const calculatedPrice = await getPriceFromUrl(el[1]);
+                el[2] = calculatedPrice || el[2]; // Garde la valeur initiale si l'obtention échoue
+                return el;
+            });
+            uiParams.listTools = await Promise.all(promises);
+        } else {
+            uiParams.listTools = [];
+        }
+    };
+
+    // Utiliser watchEffect pour surveiller les changements et mettre à jour les outils
+    watchEffect(() => {
+        fetchAndCalculatePricesTools();
+    });
+
+    const listToolsPrices = computed (()=>{
+        const tools= uiParams.listTools;
+        return tools
+    });
+
+    const listPartsPrices = computed (()=>{
+        const parts= uiParams.listComposants;
+        return parts
     });
 
     // Calculer le prix total des composants
@@ -1834,6 +1910,46 @@
 </script>
 
 <style setup>
+
+.tools-item {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width:40%;
+    margin : 10px auto;
+    border-radius: 10px;
+    position: relative;
+    border: solid 2px var(--blue-back);
+    padding: 18px;
+    align-items: center;
+    align-content: center;
+    position : relative;
+    transition: transform 0.3s ease; 
+}
+
+.tools-item:hover{
+    transform: scale(1.1);
+}
+
+.wrapper-price-tools{
+    display: flex;
+    flex-direction: column
+}
+
+.picture-thumbnail{
+    margin-right: 15px; 
+    width:70px
+}
+
+.label-optionnel{
+    color: var(--blue-back) ;
+    margin-right: 10px
+}
+
+.label-tools-mandatory{
+    color: var(--blue-back) ;
+    font-weight: bold
+}
 /** 8 - Tooltip **/
 
 /* 8.1 -  Styles pour le point d'interrogation */

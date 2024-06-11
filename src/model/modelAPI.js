@@ -15,6 +15,7 @@ export {
     updateDicId,
     updateInfosRepas,
     formatageParts,
+    formatageTools,
     getLinkScorePictures
 }
 
@@ -119,6 +120,23 @@ const formatageParts = (uiParams) => {
         formattedParts.push(prov)
     }
     return formattedParts
+};
+
+/**
+ * Fonction qui parcourt la liste des outils nécessaires pour la réparation d'un téléphone et renvoie une liste de liste avec nom de l'outils - url d'achat - 0
+ * @param {str} uiParams Localisation de la variable reparinfos
+ * @returns {[[tools.text,tools.url,0]]} Liste attendue
+ */
+const formatageTools = (uiParams) => {
+    const formattedTools = [];
+    for (const tool of uiParams.reparinfos.tools) {
+        const prov = [];
+        prov.push(tool.text);
+        prov.push(tool.url);
+        prov.push(0);
+        formattedTools.push(prov)
+    }
+    return formattedTools
 };
 
 /**
