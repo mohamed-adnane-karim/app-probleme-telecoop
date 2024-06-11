@@ -111,6 +111,23 @@ const annees = {
     2: "Entre 1 an et 2 ans",
     3: "Plus de 2 ans"
 
+};
+
+const difficultyTranslationDic = {
+    'very easy': 'Très facile',
+    'easy': 'Facile',
+    'moderate': 'Modérée',
+    'difficult': 'Difficile',
+    'very difficult': 'Très difficile'
+};
+
+const timeTranslationDic = {
+    'second': 'seconde',
+    'seconds': 'secondes',
+    'hour': 'heure',
+    'hours': 'heures',
+    '-': 'à',
+    'No estimate': "Aucune estimation disponible"
 }
 
 const tooltipsLabels = {
@@ -131,5 +148,7 @@ export {
     bonnes_pratiques_vitre_arriere,
     bonnes_pratiques_bugs,
     annees,
-    tooltipsLabels
+    tooltipsLabels,
+    difficultyTranslationDic,
+    timeTranslationDic
 }

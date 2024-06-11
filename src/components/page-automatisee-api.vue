@@ -384,11 +384,15 @@
 
                                     <div class="spacer-1"></div>
 
-                                    <span class="p3" style="font-weight: bold">Temps moyen de réparation : </span><span class="p3">{{ uiParams.reparinfos.time_required }}.</span>
+                                    <div v-if="uiParams.reparinfos">
+                                        <span class="p3" style="font-weight: bold">Temps moyen de réparation : </span><span class="p3">{{ translatedTimeRequired }}.</span>
+                                    </div>
 
                                     <div class="spacer-1"></div>
 
-                                    <span class="p3" style="font-weight: bold">Difficulté estimée de la réparation : </span><span class="p3">{{ uiParams.reparinfos.difficulty }}.</span>
+                                    <div v-if="uiParams.reparinfos">
+                                        <span class="p3" style="font-weight: bold">Difficulté estimée de la réparation : </span><span class="p3">{{ translatedDifficulty }}.</span>
+                                    </div>
 
                                     <div class="spacer-1"></div>
                                     <div class="spacer-1"></div>
@@ -411,7 +415,7 @@
                                         <div class="module_default-results">
 
                                             <!-- Pas d'infos sur le prix = il n'y a pas de parts renseignées sur iFixit-->
-                                            <div v-if="uiParams.reparinfos.parts.length==0||totalPrice==0" style="text-align: justify">
+                                            <div v-if="!uiParams.reparinfos.parts||totalPrice==0" style="text-align: justify">
                                                 <span class="p2">Malheureusement nous n'avons pas le prix moyen</span>
                                                 <span class="p2">{{ dun_dune }}</span> 
                                                 <span class="p2">pour votre </span><span class="p2">{{ uiParams.selectedModele }}</span><span class="p2">. Nous faisons tout pour remédier à cela au plus vite!</span>
@@ -435,8 +439,8 @@
                                             <!-- Pas d'infos sur le besoin de piève-->
                                             <div v-if="uiParams.reparinfos.parts.length==0" style="text-align: justify">
                                                 <span class="p2">Malheureusement nous ne savons pas quels composants et pièces sont nécessaires pour changer</span>
-                                                <span>{{ le_la }}</span> 
-                                                <span>de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
+                                                <span class="p2">{{ le_la }}</span> 
+                                                <span class="p2">de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
                                             </div>
 
                                             <div v-else>
@@ -1602,18 +1606,17 @@
             </div>
         </footer>
 
-        {{ console.log(uiParams.reparinfos.parts) }}
 
     </body>
 
 </template>
 
 <script setup>
-    import { computed, watch, ref, watchEffect } from 'vue';
-    import { titresPages, bonnes_pratiques_ecran,annees } from '@/config/uiParams.js';
+    import { computed, watch, watchEffect } from 'vue';
+    import { bonnes_pratiques_ecran,annees } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
     import { getLexique } from '@/config/automatisation.js';
-    import { tooltipsLabels } from '@/config/uiParams.js';
+    import { tooltipsLabels, difficultyTranslationDic, timeTranslationDic } from '@/config/uiParams.js';
     import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickChgt,handleClickRepar,handleClickSelf,toggleTooltip } from '@/controller/controller';
     import { cpVilles,marques,getModelsForMarque,getPriceComponentForModel, getLinkTuto, getListOutils, getScoresRepa, getPriceRepa, getPriceMOForModel, getReducEtat, getReducTeleCoop } from '@/model/model.js';
     import { os_api,getMarquesForOSAPI,getModelesForMarqueAndOSAPI,updateGuide, updateScore, updateDicId ,updateInfosRepas, formatageParts, formatageTools, getLinkScorePictures} from '@/model/modelAPI';
@@ -1633,6 +1636,28 @@
     const dun_dune = computed(() => lexique.value[5]);
     const votre = computed(() => lexique.value[6]);
 
+    const translatedDifficulty = computed(()=>{
+        if(uiParams.reparinfos.difficulty){
+            const difficultyEN = uiParams.reparinfos.difficulty.toLowerCase();
+            return difficultyTranslationDic[difficultyEN] || uiParams.reparinfos.difficulty
+        } else {
+            return null
+        }
+        
+    });
+
+    const translatedTimeRequired = computed(()=>{
+        if(uiParams.reparinfos.time_required){
+            const timeRequiredEN=uiParams.reparinfos.time_required
+            return timeRequiredEN.replace(/(second|seconds|hour|hours|No estimate| - )/g, match => {
+                if (match === ' - ') return ' à '; // Gestion spécifique du tiret entouré d'espaces
+                return timeTranslationDic[match];
+                }) || timeRequiredEN
+        } else {
+            return null
+        }
+        
+    });
 
     /**
      * Calcule la liste des marques pour un OS sélectionné (sur l'API iFixit)
