@@ -1,5 +1,7 @@
 import { reactive, ref } from "vue";
 const uiParams = reactive({
+    selectedPage: "ecran",
+
     isSection1Open: false,
     isSection2Open: false,
     isSection3Open: false,

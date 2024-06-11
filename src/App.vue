@@ -5,7 +5,8 @@ import pageAutonomie from './components/page-autonomie.vue';
 import pageVitreArriere from './components/page-vitre-arriere.vue';
 import pageAutres from './components/page-autres-problemes.vue';
 import pageBugs from './components/page-bugs.vue';
-import pageType from './components/page-type-api.vue';
+import pageType from './components/page-batterie-api.vue';
+import pageAutomatiseeApi from './components/page-automatisee-api.vue';
 
 </script>
 
@@ -14,6 +15,7 @@ import pageType from './components/page-type-api.vue';
     <!-- <div>
         <router-view></router-view>
     </div> -->
-    <pageType/>
+    <!-- <pageType/> -->
+    <pageAutomatiseeApi/>
 </template>
 

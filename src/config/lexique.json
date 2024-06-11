@@ -1,0 +1,48 @@
+[
+    {
+        "batterie": [
+            {
+                "Guide": {
+                    "subject": "Battery"
+                }
+            },
+            {
+                "Labels": {
+                    "titrePage": "La batterie mon téléphone disfonctionne",
+                    "soustitrePage": "Réparons ensemble votre batterie !",
+                    "souslabelRéparationDIY": "Je répare la batterie de mon téléphone"
+                }
+            },
+            {
+                "Lexique": {
+                    "le_la": " la batterie ",
+                    "dun_dune": " d'une batterie ",
+                    "votre": " votre batterie "
+                }
+            }
+        ]
+    },
+    {
+        "ecran": [
+            {
+                "Guide": {
+                    "subject": "Screen"
+                }
+            },
+            {
+                "Labels": {
+                    "titrePage": "L'écran de mon téléphone est cassé",
+                    "soustitrePage": "Réparons ensemble votre écran !",
+                    "souslabelRéparationDIY": "Je répare l'écran de mon téléphone"
+                }
+            },
+            {
+                "Lexique": {
+                    "le_la": " l'écran ",
+                    "dun_dune": " d'un écran ",
+                    "votre": " votre écran "
+                }
+            }
+        ]
+    }
+]
