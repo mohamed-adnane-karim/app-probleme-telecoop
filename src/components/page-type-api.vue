@@ -2,13 +2,13 @@
     <body>
         <header class="wrapper-titre">
                 <h1>
-                    <span>{{ titresPages.titrePageEcran }}</span>
+                    <span>{{ titresPages.titrePageAutonomie }}</span>
                 </h1>
         </header>
 
         <header class="wrapper-sous-titre">
                 <p class="p1">
-                    <span>TeleCoop vous accompagne pour conserver votre mobile le plus longtemps possible.</span> <span>{{ titresPages.soustitrePageEcran }}</span>
+                    <span>TeleCoop vous accompagne pour conserver votre mobile le plus longtemps possible.</span> <span>{{ titresPages.soustitrePageAutonomie }}</span>
                 </p>
         </header>
 
@@ -64,7 +64,6 @@
                                 <select v-model="uiParams.selectedModele" id="model" >
                                     <option value="" disabled selected>  Veuillez faire votre choix  </option>
                                     <option v-for="modele in modelesForSelectedOSandMarqueAPI" :key="modele" :value="modele">{{ modele }}</option>
-                                    <option value="autre">Mon téléphone ne figure pas sur la liste</option>
                                 </select>
                             </div>
                         </div>
@@ -130,7 +129,7 @@
                     <div class="module_default-info" id="info-repa">
                         <header class="header-info">
                             <div class="circle">2</div>
-                            <span>{{ titresPages.souslabelPageEcran }}</span>
+                            <span>{{ titresPages.souslabelPageAutonomie }}</span>
                         </header>
 
                         <div class="spacer-1"></div>
@@ -369,47 +368,27 @@
                             <!-- Cas où le téléphone n'est plus sous garantie -->
                             <div v-else class="module-1">
 
-                                <!-- Si le modèle de téléphone n'est pas dans BDD -->
-                                <div v-if="uiParams.selectedModele==='autre'">
-                                    <div style="text-align: justify">
-                                        <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
-                                        <span class="p3"> Même si votre téléphone n'est pas enregistré chez TeleCoop, nous allons pouvoir vous aider grâce à un téléphone type de la gamme </span><span class="p3">{{ uiParams.selectedMarque }}</span><span class="p3"> afin de vous donner les bons ordres de grandeurs ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
-                                    </div>
-
-                                    <div class="spacer-1"></div>
-                                    <div class="spacer-1"></div>
-
-                                    <!-- Prix moyen composant -->
-                                    <div id="prix-composant">
-                                        <div class="module-select-info">
-                                            <span class="bullet-1"></span>
-                                            <span class="p3" style="font-weight: bold">Prix moyen du composant</span>
-                                            <span class="tooltip-icon-prix-composant" @click="handleClickToggle(1)">?</span>
-                                        </div>
-                                        <div class="tooltip-prix-composant" :class="{ 'visible': uiParams.tooltipVisibleprixcomposant }" style="text-align-last:center"> 
-                                            <span>{{ tooltipsLabels.tooltip_labelprixcomposant }}</span>
-                                        </div>
-
-                                        <div class="spacer-1"></div>
-                                        <div class="module_default-results">
-                                            
-                                            <span class="p2">
-                                                <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre téléphone.</span>
-                                            </span>
-                                            
-                                        </div>
-                                    </div>
+                                <!-- Cas où il n'y a pas de tuto remplacement batterie -->
+                                <div v-if="uiParams.dicId===null" style="text-align: justify">
+                                    <span class="p3">Malheureusement il n'y a pour l'instant pas de tutoriel de réparation pour la batterie de votre téléphone disponible sur le site de notre partenaire. Nous faisons au mieux pour remédier à ce problème au plus vite !</span>
                                 </div>
 
-                                <!-- Si le modèle de téléphone est dans la BDD -->
+                                <!-- Cas où il y a pas de tuto remplacement batterie -->
                                 <div v-else>
-
                                     <div style="text-align: justify">
                                         <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
                                         <span class="p3"> Votre téléphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
                                     </div>
 
                                     <div class="spacer-1"></div>
+
+                                    <span class="p3" style="font-weight: bold">Temps moyen de réparation : </span><span class="p3">{{ uiParams.reparinfos.time_required }}.</span>
+
+                                    <div class="spacer-1"></div>
+
+                                    <span class="p3" style="font-weight: bold">Difficulté estimée de la réparation : </span><span class="p3">{{ uiParams.reparinfos.difficulty }}.</span>
+
+                                    <div class="spacer-1"></div>
                                     <div class="spacer-1"></div>
 
                                     <!-- Prix moyen composant -->
@@ -424,25 +403,48 @@
                                         </div>
 
                                         <div class="spacer-1"></div>
+
                                         <div class="module_default-results">
 
-                                            <!-- Prix enregistré dans la BDD -->
-                                            <div v-if="price_component!==-1">
-                                                <span class="p2">
-                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ price_component }} €</span><span> pour racheter un nouvel écran pour votre </span><span>{{ uiParams.selectedModele }}.</span>
-                                                </span>
+                                            <!-- Pas d'infos sur le prix = il n'y a pas de parts renseignées sur iFixit-->
+                                            <div v-if="uiParams.reparinfos.parts.length==0||totalPrice==0" style="text-align: justify">
+                                                <span class="p2">Malheureusement nous n'avons pas le prix moyen d'une batterie pour votre </span><span class="p2">{{ uiParams.selectedModele }}</span><span class="p2">. Nous faisons tout pour remédier à cela au plus vite!</span>
                                             </div>
 
-                                            <!-- Prix pas enregistré  -->
+                                            <!-- On peut obtenir le prix des composants -->
                                             <div v-else>
                                                 <span class="p2">
-                                                    <span>Malheureusement nous n'avons pas le prix moyen d'un écran pour votre </span><span>{{ uiParams.selectedModele }}</span><span>. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                                    <span>En moyenne, comptez </span><span style="font-weight: bold">{{ totalPrice }} €</span><span> pour acheter les composants nécessaires listés ci-dessous afin de changer la batterie votre </span><span>{{ uiParams.selectedModele }}.</span>
                                                 </span>
-                                            </div>   
-                                            
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <div class="module_default-results">
+                                            <!-- Pas d'infos sur le besoin de piève-->
+                                            <div v-if="uiParams.reparinfos.parts.length==0" style="text-align: justify">
+                                                <span class="p2">Malheureusement nous ne savons pas quels composants et pièces sont nécessaires pour changer la batterie de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
+                                            </div>
+
+                                            <div v-else>
+                                                <div class="p2" style="text-align: center">
+                                                    <span>Pour se lancer dans la réparation de votre batterie, vous aurez besoin de :</span>
+                                                    <br>
+                                                </div>
+                                                <div class="p2" style="text-align: left">
+                                                    <div class="spacer-1"></div>
+                                                    <div v-for="(outil,index) in uiParams.reparinfos.parts" class="bullet-item">
+                                                        <div class="p2">
+                                                            <span class="bullet-1"></span>
+                                                            <a :href="outil.url" target="_blank" style="text-decoration: none">{{ outil.text }}</a>
+                                                            <span v-if="outil.isoptional">  (Optionnel)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
 
                                     <div class="spacer-1"></div>
                                     <div class="spacer-1"></div>
@@ -460,22 +462,13 @@
                                         </div>
 
                                         <div class="spacer-1"></div>
-                                        <div class="module_default-results">
-                                            <!-- Pas de tuto dans la BDD -->
-                                            <div v-if="link_tuto===0">
-                                                <span class="p2">
-                                                    <span>A ce jour, il n'y malheureusement aucun tutoriel sur le site de notre partenaire iFixit pour vous aider à changer vous même l'écran de votre </span><span>{{ uiParams.selectedModele }}.</span><span> Nous faisons tout pour remédier à cela au plus vite ! En attendant, n'hésitez pas à consulter les informations fournies sur le site de </span><span>{{ uiParams.selectedMarque }}.</span><span> Vous pouvez aussi passer par un réparateur agréé si vous ne souhaitez prendre aucun risque.</span>
-                                                </span>
-                                            </div>
 
-                                            <!-- Tuto dans la BDD -->
-                                            <div v-else>
-                                                <span class="p2">
-                                                    <span>Vous pouvez consulter le tutoriel pour changer l'écran de votre </span><span>{{ uiParams.selectedModele }} </span> <span></span>
-                                                    <a :href="link_tuto" target="_blank">en cliquant ici</a>
-                                                    <span>.</span>
-                                                </span>
-                                            </div>
+                                        <div class="module_default-results">
+                                            <span class="p2">
+                                                <span>Vous pouvez consulter le tutoriel pour changer la batterie de votre </span><span>{{ uiParams.selectedModele }} </span> <span></span>
+                                                <a :href="uiParams.reparinfos.url" target="_blank">en cliquant ici</a>
+                                                <span>.</span>
+                                            </span>
                                         </div>
                                     </div>
 
@@ -495,52 +488,46 @@
                                         </div>
 
                                         <div class="spacer-1"></div>
+
                                         <div class="module_default-results-1">
 
-                                            <!-- Pas d'infos -->
-                                            <div v-if="liste_outils==-1" style="text-align:justify">
-                                                <span class="p2">Malheureusement le site de notre partenaire iFixit ne recense pas à ce jour la liste du matériel nécessaire pour changer l'écran de votre {{ uiParams.selectedModele }}. Nous faisons tout pour remédier à cela au plus vite!</span>
+                                            <!-- Pas besoin d'outils ou pas d'infos -->
+                                            <div v-if="uiParams.reparinfos.tools.length==0" style="text-align: justify">
+                                                <span class="p2">Malheureusement nous ne savons pas si du matériel spécifique est nécessaire pour changer la batterie de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
                                             </div>
 
-                                            <!-- Pas besoin d'outils -->
-                                            <div v-if="liste_outils==0" style="text-align:justify">
-                                                <span class="p2">
-                                                    <span style="font-weight:bold">Bonne nouvelle !</span><span>Aucun matériel n'est nécessaire pour changer l'écran de votre {{ uiParams.selectedModele }}. On s'y met maintenant ?</span>
-                                                </span>
-                                            </div>
-
-                                            <!-- Besoin d'outils et on a la liste -->
-                                            <div v-if="liste_outils!==0&&liste_outils!==-1">
+                                            <!-- Besoin d'outils -->
+                                            <div v-else>
                                                 <div class="p2" style="text-align: center">
-                                                    <span>Afin de vous lancer dans la réparation de votre écran, vous aurez besoin de :</span>
-                                                    <br>                                                    
+                                                    <span>Afin de vous lancer dans la réparation de votre batterie, vous aurez besoin de :</span>
+                                                    <br>
                                                 </div>
-                                                <div class="p2" style="text-align: left ; margin-left:130px;">
+                                                <div class="p2" style="text-align: left">
                                                     <div class="spacer-1"></div>
-                                                    <span v-for="(outil, index) in liste_outils.split('\n')" :key="index">
-                                                        {{ outil.trim() }} <!-- Supprime les espaces inutiles autour de chaque outil -->
-                                                        <br v-if="index !== liste_outils.split('\n').length - 1"> <!-- Ajoute un saut de ligne sauf pour le dernier élément -->
-                                                    </span>
-                                                    <div class="spacer-1"></div>
+                                                    <div v-for="(outil,index) in uiParams.reparinfos.tools" class="bullet-item">
+                                                        <div class="p2">
+                                                            <span class="bullet-1"></span>
+                                                            <a :href="outil.url" target="_blank" style="text-decoration: none">{{ outil.text }}</a>
+                                                            <span v-if="outil.isoptional">  (Optionnel)</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
 
                                     <div class="spacer-1"></div>
-
-
+                                    <div class="spacer-1"></div>
+                                    <div class="spacer-1"></div>
 
                                     <!-- Score de réparabilité de votre téléphone -->
-                                    <div v-if="scores.length>0">
+                                    <div id="score-reparabilite">
                                         <div class="spacer-1"></div>
                                         <div class="spacer-1"></div>
 
                                         <div class="module-select-info" id="score-repa">
                                             <span class="bullet-1"></span>
-                                            <span class="p3" style="font-weight: bold">Les scores de durabilité de votre téléphone</span>
+                                            <span class="p3" style="font-weight: bold">Le scores de réparabilité maison de votre téléphone</span>
                                             <span class="tooltip-icon-scores" @click="handleClickToggle(4)">?</span>
                                         </div>
                                         <div class="tooltip-scores" :class="{ 'visible': uiParams.tooltipVisiblescores }" style="text-align-last:center"> 
@@ -549,15 +536,27 @@
                                         <div class="spacer-1"></div>
 
                                         <div class="module_default-results">
-                                            <div class="image-container">
-                                                <img v-for="(score, index) in scores" :key="index" :src="score" class="score-image" />
+                                            <!-- Cas où le score ifixit existe -->
+                                            <div v-if="uiParams.score!=null">
+                                                <div class="image-container">
+                                                    <div v-for="(link, index) in link_picture" :key="index" >
+                                                        <img v-if="link!=0" :src="link" class="score-image" />
+                                                    </div>
+                                                </div>
                                             </div>
+
+                                            <!-- Cas où le score ifixit n'existe pas  -->
+                                            <div v-else style="text-align: justify">
+                                                <span class="p2">Malheureusement iFixit n'a pas encore attribué un score de réparabilité à votre {{ uiParams.selectedModele }}. Nous faisons au plus vite pour y remédier !</span>
+                                            </div>
+                                           
                                         </div>
                                     </div>
 
 
                                 </div>
 
+                                
                                 <div class="spacer-1"></div>                                
 
                             </div>
@@ -575,6 +574,8 @@
 
 
                         </div>
+
+                        <div class="spacer-1"></div> 
 
                     </div>
 
@@ -1515,20 +1516,29 @@
                 </div>
             </div>
         </footer>
+        {{ console.log(uiParams.score) }}
+        {{ console.log(uiParams.dicId) }}
+        {{ console.log(uiParams.reparinfos) }}
+        {{ console.log(uiParams.listComposants) }}
+        {{ console.log(totalPrice) }}
 
     </body>
 
 </template>
 
 <script setup>
-    import { computed, ref } from 'vue';
+    import { computed, watch, ref, watchEffect } from 'vue';
     import { titresPages, bonnes_pratiques_ecran,annees } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
     import { tooltipsLabels } from '@/config/uiParams.js';
     import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickChgt,handleClickRepar,handleClickSelf,toggleTooltip } from '@/controller/controller';
     import { cpVilles,marques,getModelsForMarque,getPriceComponentForModel, getLinkTuto, getListOutils, getScoresRepa, getPriceRepa, getPriceMOForModel, getReducEtat, getReducTeleCoop } from '@/model/model.js';
-    import { os_api,getMarquesForOSAPI,getModelesForMarqueAndOSAPI } from '@/model/modelAPI';
+    import { os_api,getMarquesForOSAPI,getModelesForMarqueAndOSAPI,updateGuide, updateScore, updateDicId ,updateInfosRepas, formatageParts, getLinkScorePictures} from '@/model/modelAPI';
+    import { getPriceFromUrl } from '@/model/extract';
 
+    /**
+     * Calcule la liste des marques pour un OS sélectionné (sur l'API iFixit)
+     */
     const marquesForSelectedOSAPI = computed (()=>{
         if (uiParams.selectedOS!=''){
             return getMarquesForOSAPI(uiParams.selectedOS).sort((a, b) => {
@@ -1541,16 +1551,73 @@
         }
     });
 
+    /**
+     * Calcule la liste des modèles pour un OS sélectionné et une marque donnée(sur l'API iFixit)
+     */
     const modelesForSelectedOSandMarqueAPI = computed (()=>{
         if (uiParams.selectedOS!=''&&uiParams.selectedMarque!=''){
             return getModelesForMarqueAndOSAPI(uiParams.selectedOS,uiParams.selectedMarque).sort()
         } else {
             return null
         }
-    })
+    });
 
+    // Utiliser un watch pour surveiller les changements de selectedModel et donc mettre à jour uiParams.guide si maj
+    watch(() => uiParams.selectedModele, async (newMarque) => {
+        await updateGuide(newMarque,uiParams);
+    });
 
+    // Utiliser un watch pour surveiller les changements et mettre à jour automatiquement la valeur de l'ID du guide contenant la réparation du composant sélectionné
+    watch (()=>{
+        updateDicId(uiParams,'Battery')
+    });
 
+    // Utiliser un watch pour surveiller les changements de selectedModel et donc mettre à jour uiParams.guide si maj
+    watch(() => uiParams.selectedModele, async (newMarque) => {
+        await updateScore(newMarque,uiParams);
+    });
+
+     // Utiliser un watch pour surveiller les changements de dicId et donc mettre à jour uiParams.reparinfos si maj
+     watch(() => uiParams.dicId, async (newDicId) => {
+        await updateInfosRepas(uiParams,newDicId);
+    });
+
+    // Fonction pour récupérer et calculer les prix des composants
+    const fetchAndCalculatePrices = async () => {
+        if (uiParams.reparinfos != null) {
+            const prov = formatageParts(uiParams);
+            const promises = prov.map(async (el) => {
+                const calculatedPrice = await getPriceFromUrl(el[1]);
+                el[2] = calculatedPrice || el[2]; // Garde la valeur initiale si l'obtention échoue
+                return el;
+            });
+            uiParams.listComposants = await Promise.all(promises);
+        } else {
+            uiParams.listComposants = [];
+        }
+    };
+
+    // Utiliser watchEffect pour surveiller les changements et mettre à jour les composants
+    watchEffect(() => {
+        fetchAndCalculatePrices();
+    });
+
+    // Calculer le prix total des composants
+    const totalPrice = computed(() => {
+        return uiParams.listComposants.reduce((sum, item) => {
+            const price = parseFloat(item[2].replace('€', '').replace(',', '.')) || 0;
+            return sum + price;
+        }, 0).toFixed(2); // Utilisation de toFixed(2) pour limiter à 2 décimales
+    });
+
+    //Liens pictures pour les scores de réparabilité
+    const link_picture = computed (()=>{
+        if (uiParams.selectedModele!=''){
+            return getLinkScorePictures(uiParams);
+        } else {
+            return null;
+        }
+    });
 
 
 

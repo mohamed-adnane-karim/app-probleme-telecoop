@@ -1,4 +1,4 @@
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 const uiParams = reactive({
     isSection1Open: false,
     isSection2Open: false,
@@ -41,8 +41,13 @@ const uiParams = reactive({
     tooltipVisibleoutils: false,
     tooltipVisiblescores: false,
     tooltipVisibleprixtotal: false,
-    tooltipVisibleprixmo: false
+    tooltipVisibleprixmo: false,
 
+    guide: ref(null),
+    dicId: ref(null),
+    reparinfos: ref(null),
+    score: ref(null),
+    listComposants: ref([]),
 
 });
 
