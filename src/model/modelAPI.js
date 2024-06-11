@@ -1,9 +1,8 @@
 // Ce fichier manipule la data de l'API i-Fixit
 
-import uiParams from '@/config/uiParams';
 import phones_api from '@/data/phonesCategories.json'
-import { fetchWikiDetails, fetchScore } from '@/getGuides';
-import { fetchReparInfos } from '@/getReparIDetails';
+import { fetchWikiDetails, fetchScore } from '@/api/getGuides';
+import { fetchReparInfos } from '@/api/getReparIDetails';
 
 
 export {
