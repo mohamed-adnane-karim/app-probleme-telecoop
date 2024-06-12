@@ -1,8 +1,9 @@
 // Ce fichier manipule la data de l'API i-Fixit
 
 import phones_api from '@/data/phonesCategories.json'
-import { fetchWikiDetails, fetchScore } from '@/api/getGuides';
+import { fetchWikiDetails, fetchScore, fetchRelatedWikiDetails } from '@/api/getGuides';
 import { fetchReparInfos } from '@/api/getReparIDetails';
+import { convertTimeToMinutes } from '@/controller/controller';
 
 
 export {
@@ -15,7 +16,12 @@ export {
     updateInfosRepas,
     formatageParts,
     formatageTools,
-    getLinkScorePictures
+    getLinkScorePictures,
+    calculatePriceMO,
+    updateListTechniquesForModel,
+    updateListReplacementForModel,
+    updateRelatedGuide,
+    updateListTutoAnnexeForModel
 }
 
 // Listes des OS répertoriés sur l'API d' i-Fixit
@@ -64,6 +70,20 @@ async function updateGuide(newModel, uiParams) {
 };
 
 /**
+ * Fonction qui update la valeur de uiParams.relatedGuides avec tous les guides de réparations existant sur l'API d'i-Fixit pour un modèle donnée
+ * @param {str} newModel Modèke sélectionné
+ * @param {*} uiParams Localisation de la variable relatedGuide
+ */
+async function updateRelatedGuide(newModel, uiParams) {
+    if (newModel) {
+        const guides = await fetchRelatedWikiDetails('CATEGORY', newModel);
+        uiParams.relatedGuide = guides;
+    } else {
+        uiParams.relatedGuide = null;
+    }
+};
+
+/**
  * Fonction qui update la valeur de uiParams.score avecle score iFixit existant sur l'API d'i-Fixit pour un modèle donnée
  * @param {str} newModel Modèke sélectionné
  * @param {*} uiParams Localisation de la variable guide
@@ -88,6 +108,114 @@ function updateDicId(uiParams, component) {
         uiParams.dicId = componentGuide ? componentGuide.guideid : null;
     } else {
         uiParams.dicId = null;
+    }
+};
+
+
+function updateListTechniquesForModel(uiParams) {
+    if (uiParams.guide != null) {
+        const list = []
+        const type_searched = 'technique'
+
+        // Parcourir chaque guide dans uiParams.guide
+        uiParams.guide.forEach(guide => {
+            const prov = []
+            // Vérifier si le type est égal à 'technique'
+            if (guide.type === type_searched) {
+
+                const title = guide.title;
+                const url = guide.url;
+                const difficulty = guide.difficulty;
+
+                prov.push(title);
+                prov.push(url);
+                prov.push(difficulty);
+
+                if (guide.image) {
+                    const img = guide.image["140x105"];
+                    prov.push(img);
+                } else {
+                    const img = 0;
+                    prov.push(img);
+                }
+
+                list.push(prov);
+            }
+        });
+
+        uiParams.listTechniques = list
+    } else {
+        uiParams.listTechniques = null
+    }
+};
+
+function updateListReplacementForModel(uiParams) {
+    if (uiParams.guide != null) {
+        const list = []
+        const type_searched = 'replacement'
+
+        // Parcourir chaque guide dans uiParams.guide
+        uiParams.guide.forEach(guide => {
+            const prov = []
+            // Vérifier si le type est égal à 'technique'
+            if (guide.type === type_searched) {
+
+                const title = guide.title;
+                const url = guide.url;
+                const difficulty = guide.difficulty;
+
+                prov.push(title);
+                prov.push(url);
+                prov.push(difficulty);
+
+                if (guide.image) {
+                    const img = guide.image["140x105"];
+                    prov.push(img);
+                } else {
+                    const img = 0;
+                    prov.push(img);
+                }
+
+                list.push(prov);
+            }
+        });
+
+        uiParams.listReplacement = list
+    } else {
+        uiParams.listReplacement = null
+    }
+};
+
+
+function updateListTutoAnnexeForModel(uiParams) {
+    if (uiParams.guide != null) {
+        const list = []
+
+        // Parcourir chaque guide dans uiParams.guide
+        uiParams.relatedGuide.forEach(guide => {
+            const prov = []
+
+            const title = guide.title;
+            const url = guide.url;
+
+            prov.push(title);
+            prov.push(url);
+
+            if (guide.image) {
+                const img = guide.image["140x105"];
+                prov.push(img);
+            } else {
+                const img = 0;
+                prov.push(img);
+            }
+
+            list.push(prov);
+        }
+        );
+
+        uiParams.listrelatedtutos = list
+    } else {
+        uiParams.listrelatedtutos = null
     }
 };
 
@@ -153,3 +281,21 @@ const getLinkScorePictures = (uiParams) => {
     }
     return linkScorePictures
 };
+
+/**
+ * Fonction qui estime le prix de la main d'oeuvre pour une réparation
+ * @param {str} time Temps estimée de réparation
+ * @param {int} taux_moyen_horaire Prix moyen en euros de la Main d'oeuvre à l'heure
+ * @returns {int} Estimation du prix de la main d'oeuvre en fonction du taux horaire et du temps estimé ||0 s'il y a un problème ou si le temps est inférieur à 10 minutes
+ */
+const calculatePriceMO = (time, taux_moyen_horaire) => {
+    const convertedTimeMinutes = convertTimeToMinutes(time);
+    if (convertedTimeMinutes < 10) {
+        const estimated_price_MO = 0;
+        return estimated_price_MO;
+    } else {
+        const estimated_price_MO = (convertedTimeMinutes * taux_moyen_horaire) / 60;
+        return parseFloat(estimated_price_MO.toFixed(2));
+    }
+    return 0;
+}

@@ -8,7 +8,37 @@ export {
     handleClickChgt,
     handleClickRepar,
     handleClickSelf,
-    toggleTooltip
+    toggleTooltip,
+    getIDpage,
+    getButtonClass,
+    convertTimeToMinutes
+};
+
+/**
+ * Fonction qui en fonction de la position d'un bouton sur la page d'accueil retourne la classe CSS qui doit lui être associée
+ * @param {int} index Position du bouton sur la page d'accueil
+ * @returns {str} retourne la classe CSS qui doit être associée au bouton
+ */
+const getButtonClass = (index) => {
+    const pattern = [1, 0, 0, 1]; // 1: blue, 0: white
+    return pattern[index % pattern.length] === 1 ? 'blue-button' : 'white-button';
+};
+
+/**
+ * Fonction qui met à jour uiParams.SelectedPage avec l'ID de la page problème sélectionnée sur le menu accueil
+ * @param {str} uiParams Localisation de la variable selectedPage
+ * @param {[titrePage, id] || str} page Liste contenant le titre de la page et son ID ou alors une chaine de texte pour les pages non automatisée via API
+ */
+const getIDpage = (uiParams, page) => {
+    if (page == "stockage") {
+        uiParams.selectedPage = "stockage";
+    } else if (page == "bugs") {
+        uiParams.selectedPage = "bugs";
+    } else if (page == "autre") {
+        uiParams.selectedPage = "autre";
+    } else {
+        uiParams.selectedPage = page[1];
+    }
 };
 
 
@@ -163,4 +193,71 @@ const toggleTooltip = (uiParams, index) => {
     } if (index == 6) {
         uiParams.tooltipVisibleprixmo = !uiParams.tooltipVisibleprixmo;
     }
+};
+
+
+/**
+ * Convertit une chaîne de temps en minutes.
+ * @param {string} time - Chaîne de texte représentant la durée.
+ * @returns {number} - Moyenne de la durée en minutes.
+ */
+function convertTimeToMinutes(time) {
+    // Fonction pour convertir une unité de temps en minutes
+    const convertToMinutes = (value, unit) => {
+        switch (unit.toLowerCase()) {
+            case 'second':
+            case 'seconds':
+                return value / 60;
+            case 'minute':
+            case 'minutes':
+                return value;
+            case 'hour':
+            case 'hours':
+                return value * 60;
+            default:
+                return 0;
+        }
+    };
+
+    // Expressions régulières pour matcher les différents formats de temps
+    const regexSingle = /^(\d+)\s*(second|seconds|minute|minutes|hour|hours)$/i;
+    const regexRange1 = /^(\d+)\s*(second|seconds|minute|minutes|hour|hours)\s*-\s*(\d+)\s*(second|seconds|minute|minutes|hour|hours)$/i;
+    const regexRange2 = /^(\d+)\s*-\s*(\d+)\s*(second|seconds|minute|minutes|hour|hours)$/i;
+
+    let match;
+    let totalMinutes = 0;
+
+    // Cas 1: 'x unit'
+    if (match = time.match(regexSingle)) {
+        const value = parseInt(match[1]);
+        const unit = match[2];
+        totalMinutes = convertToMinutes(value, unit);
+        return totalMinutes;
+    }
+
+    // Cas 2: 'x unit1 - y unit2'
+    if (match = time.match(regexRange1)) {
+        const value1 = parseInt(match[1]);
+        const unit1 = match[2];
+        const value2 = parseInt(match[3]);
+        const unit2 = match[4];
+        const minutes1 = convertToMinutes(value1, unit1);
+        const minutes2 = convertToMinutes(value2, unit2);
+        totalMinutes = (minutes1 + minutes2) / 2;
+        return totalMinutes;
+    }
+
+    // Cas 3: 'x - y unit'
+    if (match = time.match(regexRange2)) {
+        const value1 = parseInt(match[1]);
+        const value2 = parseInt(match[2]);
+        const unit = match[3];
+        const minutes1 = convertToMinutes(value1, unit);
+        const minutes2 = convertToMinutes(value2, unit);
+        totalMinutes = (minutes1 + minutes2) / 2;
+        return totalMinutes;
+    }
+
+    // Si aucun format ne correspond, retourner 0
+    return 0;
 };

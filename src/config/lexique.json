@@ -19,10 +19,25 @@
                     "dun_dune": " d'une batterie ",
                     "votre": " votre batterie "
                 }
+            },
+            {
+                "Reductions": {
+                    "bonus_repa_etat": 25,
+                    "bonus_telecoop": 30
+                }
+            },
+            {
+                "Réparations": {
+                    "taux_horaire_MO": 25
+                }
+            },
+            {
+                "BonnesPratiques": {
+                    "pratique1": "Réduire la luminosité de l'écran : Diminuez la luminosité de l'écran ou activez le mode automatique.",
+                    "pratique3": "Activer le mode économie d'énergie : Utilisez le mode économie d'énergie de votre téléphone pour prolonger l'autonomie de la batterie."
+                }
             }
-        ]
-    },
-    {
+        ],
         "ecran": [
             {
                 "Guide": {
@@ -41,6 +56,251 @@
                     "le_la": " l'écran ",
                     "dun_dune": " d'un écran ",
                     "votre": " votre écran "
+                }
+            },
+            {
+                "Reductions": {
+                    "bonus_repa_etat": 25,
+                    "bonus_telecoop": 30
+                }
+            },
+            {
+                "Réparations": {
+                    "taux_horaire_MO": 25
+                }
+            },
+            {
+                "BonnesPratiques": {
+                    "pratique1": "Protéger votre appareil à l'aide d'une coque de protection solide",
+                    "pratique2": "Protéger votre écran à l'aide d'une vitre de protection, de préférence en verre trempé"
+                }
+            }
+        ],
+        "hpInterne": [
+            {
+                "Guide": {
+                    "subject": "Earpiece Speaker"
+                }
+            },
+            {
+                "Labels": {
+                    "titrePage": "Le haut-parleur interne de mon téléphone est cassé",
+                    "soustitrePage": "Réparons ensemble votre haut-parleur interne !",
+                    "souslabelRéparationDIY": "Je répare le haut-parleur interne de mon téléphone"
+                }
+            },
+            {
+                "Lexique": {
+                    "le_la": " le haut-parleur interne ",
+                    "dun_dune": " d'un haut-parleur interne ",
+                    "votre": " votre haut-parleur interne "
+                }
+            },
+            {
+                "Reductions": {
+                    "bonus_repa_etat": 25,
+                    "bonus_telecoop": 30
+                }
+            },
+            {
+                "Réparations": {
+                    "taux_horaire_MO": 25
+                }
+            },
+            {
+                "BonnesPratiques": {
+                    "pratique1": "Pratique1",
+                    "pratique2": "Pratique2"
+                }
+            }
+        ],
+        "camFront": [
+            {
+                "Guide": {
+                    "subject": "Front-Facing Camera Assembly"
+                }
+            },
+            {
+                "Labels": {
+                    "titrePage": "La caméra frontale de mon téléphone est cassée",
+                    "soustitrePage": "Réparons ensemble votre caméra frontale !",
+                    "souslabelRéparationDIY": "Je répare la caméra frontale de mon téléphone"
+                }
+            },
+            {
+                "Lexique": {
+                    "le_la": " la caméra frontale ",
+                    "dun_dune": " d'une caméra frontale ",
+                    "votre": " votre caméra frontale "
+                }
+            },
+            {
+                "Reductions": {
+                    "bonus_repa_etat": 25,
+                    "bonus_telecoop": 30
+                }
+            },
+            {
+                "Réparations": {
+                    "taux_horaire_MO": 25
+                }
+            },
+            {
+                "BonnesPratiques": {
+                    "pratique1": "Pratique1",
+                    "pratique2": "Pratique2"
+                }
+            }
+        ],
+        "hpExterne": [
+            {
+                "Guide": {
+                    "subject": "Loudspeaker"
+                }
+            },
+            {
+                "Labels": {
+                    "titrePage": "Le haut-parleur de mon téléphone est cassé",
+                    "soustitrePage": "Réparons ensemble votre haut-parleur externe !",
+                    "souslabelRéparationDIY": "Je répare le haut-parleur externe de mon téléphone"
+                }
+            },
+            {
+                "Lexique": {
+                    "le_la": " le haut-parleur externe ",
+                    "dun_dune": " d'un haut-parleur externe ",
+                    "votre": " votre haut-parleur externe "
+                }
+            },
+            {
+                "Reductions": {
+                    "bonus_repa_etat": 25,
+                    "bonus_telecoop": 30
+                }
+            },
+            {
+                "Réparations": {
+                    "taux_horaire_MO": 25
+                }
+            },
+            {
+                "BonnesPratiques": {
+                    "pratique1": "Pratique1",
+                    "pratique2": "Pratique2"
+                }
+            }
+        ],
+        "vitreArriere": [
+            {
+                "Guide": {
+                    "subject": "Rear Glass"
+                }
+            },
+            {
+                "Labels": {
+                    "titrePage": "La vitre arrière de mon téléphone est cassée",
+                    "soustitrePage": "Réparons ensemble votre vitre arrière !",
+                    "souslabelRéparationDIY": "Je répare la vitre arrière de mon téléphone"
+                }
+            },
+            {
+                "Lexique": {
+                    "le_la": " la vitre arrière ",
+                    "dun_dune": " d'une vitre arrière ",
+                    "votre": " votre vitre arrière "
+                }
+            },
+            {
+                "Reductions": {
+                    "bonus_repa_etat": 25,
+                    "bonus_telecoop": 30
+                }
+            },
+            {
+                "Réparations": {
+                    "taux_horaire_MO": 25
+                }
+            },
+            {
+                "BonnesPratiques": {
+                    "pratique1": "Utiliser une coque de protection : Pour éviter d'autres dommages, utilisez une coque robuste qui couvre l'arrière et les côtés du téléphone.",
+                    "pratique2": "Utiliser du ruban adhésif transparent : En attendant la réparation, appliquez du ruban adhésif transparent sur la vitre cassée pour éviter les coupures et empêcher les fragments de verre de se détacher."
+                }
+            }
+        ],
+        "camArriere": [
+            {
+                "Guide": {
+                    "subject": "Rear-Facing Cameras"
+                }
+            },
+            {
+                "Labels": {
+                    "titrePage": "La caméra arrière de mon téléphone est cassée",
+                    "soustitrePage": "Réparons ensemble votre caméra arrière !",
+                    "souslabelRéparationDIY": "Je répare la caméra arrière de mon téléphone"
+                }
+            },
+            {
+                "Lexique": {
+                    "le_la": " la caméra arrière ",
+                    "dun_dune": " d'une caméra arrière ",
+                    "votre": " votre caméra arrière "
+                }
+            },
+            {
+                "Reductions": {
+                    "bonus_repa_etat": 25,
+                    "bonus_telecoop": 30
+                }
+            },
+            {
+                "Réparations": {
+                    "taux_horaire_MO": 25
+                }
+            },
+            {
+                "BonnesPratiques": {
+                    "pratique1": "Pratique1",
+                    "pratique2": "Pratique2"
+                }
+            }
+        ],
+        "portCharge": [
+            {
+                "Guide": {
+                    "subject": "Charging Board"
+                }
+            },
+            {
+                "Labels": {
+                    "titrePage": "La port de charge de mon téléphone est cassé",
+                    "soustitrePage": "Réparons ensemble votre port de charge !",
+                    "souslabelRéparationDIY": "Je répare le port de charge de mon téléphone"
+                }
+            },
+            {
+                "Lexique": {
+                    "le_la": " le port de charge ",
+                    "dun_dune": " d'un port de charge ",
+                    "votre": " votre port de charge "
+                }
+            },
+            {
+                "Reductions": {
+                    "bonus_repa_etat": 25,
+                    "bonus_telecoop": 30
+                }
+            },
+            {
+                "Réparations": {
+                    "taux_horaire_MO": 25
+                }
+            },
+            {
+                "BonnesPratiques": {
+                    "pratique1": "Pratique1",
+                    "pratique2": "Pratique2"
                 }
             }
         ]

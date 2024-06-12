@@ -25,7 +25,7 @@ async function getPriceFromUrl(url) {
         console.error('Error fetching or parsing the page:', error);
         return "0,0 €";
     }
-}
+};
 
 export {
     getPriceFromUrl

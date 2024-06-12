@@ -1,6 +1,6 @@
 import { reactive, ref } from "vue";
 const uiParams = reactive({
-    selectedPage: "ecran",
+    selectedPage: "batterie",
 
     isSection1Open: false,
     isSection2Open: false,
@@ -46,11 +46,16 @@ const uiParams = reactive({
     tooltipVisibleprixmo: false,
 
     guide: ref(null),
+    relatedGuide: ref(null),
     dicId: ref(null),
     reparinfos: ref(null),
     score: ref(null),
     listComposants: ref([]),
     listTools: ref([]),
+
+    listTechniques: ref(null),
+    listReplacement: ref(null),
+    listrelatedtutos: ref(null)
 
 });
 
