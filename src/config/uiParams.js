@@ -55,7 +55,9 @@ const uiParams = reactive({
 
     listTechniques: ref(null),
     listReplacement: ref(null),
-    listrelatedtutos: ref(null)
+    listrelatedtutos: ref(null),
+
+    listReparateurs: ref([]),
 
 });
 

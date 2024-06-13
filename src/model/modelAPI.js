@@ -5,7 +5,6 @@ import { fetchWikiDetails, fetchScore, fetchRelatedWikiDetails } from '@/api/get
 import { fetchReparInfos } from '@/api/getReparIDetails';
 import { convertTimeToMinutes } from '@/controller/controller';
 
-
 export {
     os_api,
     getMarquesForOSAPI,
@@ -309,3 +308,4 @@ const calculatePriceMO = (time, taux_moyen_horaire) => {
     }
     return 0;
 };
+
