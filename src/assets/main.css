@@ -198,6 +198,97 @@ body {
 }
 
 
+/** 0 - Display des valeurs API **/
+
+/* A - Tutos */
+
+
+.technique-item {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 45%;
+    margin: 5px 2px;
+    border-radius: 10px;
+    position: relative;
+    border: solid 2px var(--blue-back);
+    padding: 18px;
+    position: relative;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.technique-item:hover {
+    transform: scale(1.01);
+}
+
+
+.picture-thumbnail-1 {
+    margin-right: 15px;
+    width: 100px;
+}
+
+.wrapper-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.label-technique {
+    color: var(--blue-back);
+}
+
+.label-difficulty {
+    color: var(--blue-back);
+    font-style: italic;
+    font-size: 15px;
+}
+
+/* B - Tools et Parts */
+
+.tools-item {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 40%;
+    margin: 5px auto;
+    border-radius: 10px;
+    position: relative;
+    border: solid 2px var(--blue-back);
+    padding: 18px;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.tools-item:hover {
+    transform: scale(1.1);
+}
+
+.wrapper-price-tools {
+    display: flex;
+    flex-direction: column
+}
+
+.picture-thumbnail {
+    margin-right: 15px;
+    width: 70px
+}
+
+.label-optionnel {
+    color: var(--blue-back);
+    margin-right: 10px
+}
+
+.label-tools-mandatory {
+    color: var(--blue-back);
+    font-weight: bold
+}
+
+
+
+
 /** 1 - Classes blocs **/
 
 /* 1.1 - Headers */

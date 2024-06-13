@@ -12,7 +12,10 @@ export {
     getIDpage,
     getButtonClass,
     convertTimeToMinutes,
-    resetParams
+    resetParams,
+    resetMarque,
+    resetModel,
+    resetOS
 };
 
 /**
@@ -275,6 +278,10 @@ function convertTimeToMinutes(time) {
     return 0;
 };
 
+/**
+ * Fonction qui rétabli les valeurs initiales de certaines composantes de uiPArams
+ * @param {str} uiParams localisation des variables à reset
+ */
 function resetParams(uiParams) {
     uiParams.selectedOS = "";
     uiParams.selectedMarque = "";
@@ -289,3 +296,60 @@ function resetParams(uiParams) {
     uiParams.isSection3Open = false;
     uiParams.isOneSectionOpen = false;
 };
+
+/**
+ * Fonction qui rétablit les données de rensiegnements de téléphones à leur valeur d'origine lorsque un nouvel OS est sélectionné
+ * @param {str} newOS Nouvelle OS sélectionné
+ * @param {str} uiParams Localisation des variables à maj
+ */
+function resetOS(newOS, uiParams) {
+    if (newOS) {
+        uiParams.selectedMarque = "";
+        uiParams.selectedModele = "";
+        uiParams.selectedPossession = "";
+        uiParams.selectedGarantieOui = false;
+        uiParams.selectedGarantieNon = false;
+        uiParams.selectedGarantieJsp = false;
+        uiParams.selectedGarantieOK = false;
+    } else {
+        return null
+    }
+
+};
+
+/**
+ * Fonction qui rétablit les données de rensiegnements de téléphones à leur valeur d'origine lorsque une nouvelle marque est sélectionnée
+ * @param {str} newMarque Nouvelle marque sélectionné
+ * @param {str} uiParams Localisation des variables à maj
+ */
+function resetMarque(newMarque, uiParams) {
+    if (newMarque) {
+        uiParams.selectedModele = "";
+        uiParams.selectedPossession = "";
+        uiParams.selectedGarantieOui = false;
+        uiParams.selectedGarantieNon = false;
+        uiParams.selectedGarantieJsp = false;
+        uiParams.selectedGarantieOK = false;
+    } else {
+        return null
+    }
+
+};
+
+/**
+ * Fonction qui rétablit les données de rensiegnements de téléphones à leur valeur d'origine lorsque un nouveau est sélectionné
+ * @param {str} newModel Nouveau model sélectionné
+ * @param {str} uiParams Localisation des variables à maj
+ */
+function resetModel(newModel, uiParams) {
+    if (newModel) {
+        uiParams.selectedPossession = "";
+        uiParams.selectedGarantieOui = false;
+        uiParams.selectedGarantieNon = false;
+        uiParams.selectedGarantieJsp = false;
+        uiParams.selectedGarantieOK = false;
+    } else {
+        return null
+    }
+
+}

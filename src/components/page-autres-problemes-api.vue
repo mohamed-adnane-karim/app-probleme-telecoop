@@ -790,7 +790,7 @@
     import { computed, watch } from 'vue';
     import { bonnes_pratiques_bugs, annees, difficultyTranslationDic } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
-    import { uncheckOthersGarantie,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickChgt,handleClickRepar, } from '@/controller/controller';
+    import { uncheckOthersGarantie,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickChgt,handleClickRepar, resetMarque, resetModel, resetOS } from '@/controller/controller';
     import { cpVilles } from '@/model/model.js';
     import { os_api,getMarquesForOSAPI,getModelesForMarqueAndOSAPI,updateGuide, updateScore, getLinkScorePictures, updateListTechniquesForModel, updateListReplacementForModel, updateRelatedGuide, updateListTutoAnnexeForModel} from '@/model/modelAPI';
 
@@ -825,6 +825,22 @@
     });
 
     // 2 - Les watch pour mettre à jour les informations de réparations et de recherche sur l'API dans le cas où le modèle de téléphne est changé
+
+    // Utiliser un watch pour surveiller le changement de l'OS et remettre à 0 les valeurs de modèles de téléphones
+    watch(()=> uiParams.selectedOS, async (newOS) => {
+        resetOS(newOS,uiParams)
+    });
+
+    // Utiliser un watch pour surveiller le changement de marque et remettre à 0 les valeurs de modèles de téléphones
+    watch(()=> uiParams.selectedMarque, async (newMarque) => {
+        resetMarque(newMarque,uiParams)
+    });
+
+    // Utiliser un watch pour surveiller le changement de modèle et remettre à 0 les valeurs de modèles de téléphones
+    watch(()=> uiParams.selectedModele, async (newModele) => {
+        resetModel(newModele,uiParams)
+    });
+
 
     // Utiliser un watch pour surveiller les changements de selectedModel et donc mettre à jour uiParams.guide si maj
     watch(() => uiParams.selectedModele, async (newMarque) => {
@@ -918,46 +934,6 @@
 
 <style setup>
 
-.technique-item {
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    width:45%;
-    margin : 5px 2px;
-    border-radius: 10px;
-    position: relative;
-    border: solid 2px var(--blue-back);
-    padding:18px;
-    position : relative;
-    transition: transform 0.3s ease; 
-    overflow: hidden;
-}
-
-.technique-item:hover{
-    transform: scale(1.01);
-}
-
-
-.picture-thumbnail-1{
-    margin-right: 15px; 
-    width:100px ;
-}
-
-.wrapper-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.label-technique {
-    color: var(--blue-back);
-}
-
-.label-difficulty {
-    color: var(--blue-back);
-    font-style: italic;
-    font-size: 15px;
-}
 /** 8 - Tooltip **/
 
 /* 8.1 -  Styles pour le point d'interrogation */

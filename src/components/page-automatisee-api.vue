@@ -2044,7 +2044,7 @@
     import uiParams from '@/config/uiParams.js';
     import { getLexique, getReductions, getInfosReparation, getBonnesPratiques } from '@/config/automatisation.js';
     import { tooltipsLabels, difficultyTranslationDic, timeTranslationDic } from '@/config/uiParams.js';
-    import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickRepar,handleClickSelf,toggleTooltip } from '@/controller/controller';
+    import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickRepar,handleClickSelf,toggleTooltip, resetMarque, resetModel, resetOS } from '@/controller/controller';
     import { cpVilles } from '@/model/model.js';
     import { os_api,getMarquesForOSAPI,getModelesForMarqueAndOSAPI,updateGuide, updateScore, updateDicId ,updateInfosRepas, formatageParts, formatageTools, getLinkScorePictures, calculatePriceMO} from '@/model/modelAPI';
     import { getPriceFromUrl } from '@/model/extract';
@@ -2147,6 +2147,22 @@
     });
 
     // 4 - Les watch pour mettre à jour les informations de réparations et de recherche sur l'API dans le cas où le modèle de téléphne est changé
+
+    // Utiliser un watch pour surveiller le changement de l'OS et remettre à 0 les valeurs de modèles de téléphones
+    watch(()=> uiParams.selectedOS, async (newOS) => {
+        resetOS(newOS,uiParams)
+    });
+
+    // Utiliser un watch pour surveiller le changement de marque et remettre à 0 les valeurs de modèles de téléphones
+    watch(()=> uiParams.selectedMarque, async (newMarque) => {
+        resetMarque(newMarque,uiParams)
+    });
+
+    // Utiliser un watch pour surveiller le changement de modèle et remettre à 0 les valeurs de modèles de téléphones
+    watch(()=> uiParams.selectedModele, async (newModele) => {
+        resetModel(newModele,uiParams)
+    });
+
 
     // Utiliser un watch pour surveiller les changements de selectedModel et donc mettre à jour uiParams.guide si maj
     watch(() => uiParams.selectedModele, async (newMarque) => {
@@ -2354,45 +2370,7 @@
 
 <style setup>
 
-.tools-item {
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    width:40%;
-    margin : 5px auto;
-    border-radius: 10px;
-    position: relative;
-    border: solid 2px var(--blue-back);
-    padding: 18px;
-    align-items: center;
-    align-content: center;
-    position : relative;
-    transition: transform 0.3s ease; 
-}
 
-.tools-item:hover{
-    transform: scale(1.1);
-}
-
-.wrapper-price-tools{
-    display: flex;
-    flex-direction: column
-}
-
-.picture-thumbnail{
-    margin-right: 15px; 
-    width:70px
-}
-
-.label-optionnel{
-    color: var(--blue-back) ;
-    margin-right: 10px
-}
-
-.label-tools-mandatory{
-    color: var(--blue-back) ;
-    font-weight: bold
-}
 /** 8 - Tooltip **/
 
 /* 8.1 -  Styles pour le point d'interrogation */
