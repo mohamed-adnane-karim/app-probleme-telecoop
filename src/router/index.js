@@ -1,24 +1,27 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+import { resetParams } from '@/controller/controller';
 
-import pageAccueil from '@/components/page-accueil.vue';
-import pageEcran from '@/components/page-ecran.vue';
-import pageAutonomie from '@/components/page-autonomie.vue';
-import pageVitreArriere from '@/components/page-vitre-arriere.vue';
-import pageAutres from '@/components/page-autres-problemes.vue';
 import pageBugs from '@/components/page-bugs.vue';
+import pageAutomatiseeApi from '@/components/page-automatisee-api.vue';
+import pageAccueilAutomatisee from '@/components/page-accueil-automatisee.vue';
+import pageAutresProblemesApi from '@/components/page-autres-problemes-api.vue';
+import uiParams from '@/config/uiParams';
 
 const routes = [
-    { path: '/', name: 'Problèmes', component: pageAccueil },
-    { path: '/pageEcran', name: 'Ecran', component: pageEcran },
-    { path: '/pageAutonomie', name: 'Autonomie', component: pageAutonomie },
-    { path: '/pageVitreArriere', name: 'VitreArriere', component: pageVitreArriere },
-    { path: '/pageAutres', name: 'Autres', component: pageAutres },
-    { path: '/pageBugs', name: 'Bugs', component: pageBugs },
+    { path: '/', name: 'Accueil', component: pageAccueilAutomatisee },
+    { path: '/Probleme', name: 'Probleme', component: pageAutomatiseeApi },
+    { path: '/AutreProbleme', name: 'AutreProbleme', component: pageAutresProblemesApi },
+    { path: '/Bugs', name: 'Bugs', component: pageBugs },
 
 ]
 const router = createRouter({
     history: createWebHistory(),
     routes
-})
+});
+
+router.beforeEach((to, from, next) => {
+    resetParams(uiParams);
+    next();
+});
 
 export default router

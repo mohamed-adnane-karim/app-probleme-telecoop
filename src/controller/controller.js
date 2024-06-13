@@ -11,7 +11,8 @@ export {
     toggleTooltip,
     getIDpage,
     getButtonClass,
-    convertTimeToMinutes
+    convertTimeToMinutes,
+    resetParams
 };
 
 /**
@@ -27,15 +28,15 @@ const getButtonClass = (index) => {
 /**
  * Fonction qui met à jour uiParams.SelectedPage avec l'ID de la page problème sélectionnée sur le menu accueil
  * @param {str} uiParams Localisation de la variable selectedPage
- * @param {[titrePage, id] || str} page Liste contenant le titre de la page et son ID ou alors une chaine de texte pour les pages non automatisée via API
+ * @param {[titrePage, id] || null} page Liste contenant le titre de la page et son ID ou alors une chaine de texte pour les pages non automatisée via API
  */
 const getIDpage = (uiParams, page) => {
     if (page == "stockage") {
-        uiParams.selectedPage = "stockage";
+        return null;
     } else if (page == "bugs") {
-        uiParams.selectedPage = "bugs";
+        return null;
     } else if (page == "autre") {
-        uiParams.selectedPage = "autre";
+        return null;
     } else {
         uiParams.selectedPage = page[1];
     }
@@ -50,6 +51,10 @@ const handleClickRepar = (uiParams) => {
     uiParams.isSection1Open = false;
     uiParams.isSection2Open = true;
     uiParams.isSection3Open = false;
+    const section2 = document.getElementById('sous-titre');
+    if (section2) {
+        section2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 };
 
 /**
@@ -60,6 +65,10 @@ const handleClickSelf = (uiParams) => {
     uiParams.isSection1Open = true;
     uiParams.isSection2Open = false;
     uiParams.isSection3Open = false;
+    const section2 = document.getElementById('sous-titre');
+    if (section2) {
+        section2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
 };
 
@@ -70,7 +79,11 @@ const handleClickSelf = (uiParams) => {
 const handleClickChgt = (uiParams) => {
     uiParams.isSection1Open = false;
     uiParams.isSection2Open = false;
-    uiParams.isSection3Open = true
+    uiParams.isSection3Open = true;
+    const section2 = document.getElementById('sous-titre');
+    if (section2) {
+        section2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 };
 
 
@@ -260,4 +273,19 @@ function convertTimeToMinutes(time) {
 
     // Si aucun format ne correspond, retourner 0
     return 0;
+};
+
+function resetParams(uiParams) {
+    uiParams.selectedOS = "";
+    uiParams.selectedMarque = "";
+    uiParams.selectedModele = "";
+    uiParams.selectedPossession = "";
+    uiParams.selectedGarantieOui = false;
+    uiParams.selectedGarantieNon = false;
+    uiParams.selectedGarantieJsp = false;
+    uiParams.selectedGarantieOK = false;
+    uiParams.isSection1Open = false;
+    uiParams.isSection2Open = false;
+    uiParams.isSection3Open = false;
+    uiParams.isOneSectionOpen = false;
 };

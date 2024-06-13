@@ -111,7 +111,10 @@ function updateDicId(uiParams, component) {
     }
 };
 
-
+/**
+ * Fonction qui update la valeur de uiParams.listTechniques avec les tutoriels tehniques existants sur l'API pour un modèle donné
+ * @param {str} uiParams Localisation de la variable listTechniques
+ */
 function updateListTechniquesForModel(uiParams) {
     if (uiParams.guide != null) {
         const list = []
@@ -149,6 +152,10 @@ function updateListTechniquesForModel(uiParams) {
     }
 };
 
+/**
+ * Fonction qui update la valeur de uiParams.listReplacement avec les tutoriels de remplacement existants sur l'API pour un modèle donné
+ * @param {str} uiParams Localisation de la variable listReplacement
+ */
 function updateListReplacementForModel(uiParams) {
     if (uiParams.guide != null) {
         const list = []
@@ -186,7 +193,10 @@ function updateListReplacementForModel(uiParams) {
     }
 };
 
-
+/**
+ * Fonction qui update la valeur de uiParams.listrelatedtutos avec les tutoriels annexes existants sur l'API pour un modèle donné
+ * @param {str} uiParams Localisation de la variable listrelatedtutos
+ */
 function updateListTutoAnnexeForModel(uiParams) {
     if (uiParams.guide != null) {
         const list = []
@@ -298,4 +308,4 @@ const calculatePriceMO = (time, taux_moyen_horaire) => {
         return parseFloat(estimated_price_MO.toFixed(2));
     }
     return 0;
-}
+};

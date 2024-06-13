@@ -6,7 +6,7 @@
                 </h1>
         </header>
 
-        <header class="wrapper-sous-titre">
+        <header class="wrapper-sous-titre" id="sous-titre">
                 <p class="p1">
                     <span>TeleCoop vous accompagne pour conserver votre mobile le plus longtemps possible.</span> <span>{{ soustitrePage }}</span>
                 </p>
@@ -219,7 +219,7 @@
                                             <div class="module_default-results">
 
                                                 <!-- Pas d'infos sur le prix = il n'y a pas de parts renseignées sur iFixit-->
-                                                <div v-if="uiParams.reparinfos.parts==null||totalPrice==0" style="text-align: justify">
+                                                <div v-if="uiParams.reparinfos==null||uiParams.reparinfos.parts.length==0||totalPrice==0" style="text-align: justify">
                                                     <span class="p2">Malheureusement nous n'avons pas le prix moyen</span>
                                                     <span class="p2">{{ dun_dune }}</span> 
                                                     <span class="p2">pour votre </span><span class="p2">{{ uiParams.selectedModele }}</span><span class="p2">. Nous faisons tout pour remédier à cela au plus vite!</span>
@@ -241,7 +241,7 @@
                                             <!-- Affichage de chauqe pièce nécessaire -->
                                             <div class="module_default-results-1">
                                                 <!-- Pas d'infos sur le besoin de piève-->
-                                                <div v-if="uiParams.reparinfos.parts.length==0" style="text-align: justify; text-align-last: center">
+                                                <div v-if="uiParams.reparinfos==null||uiParams.reparinfos.parts.length==0" style="text-align: justify; text-align-last: center">
                                                     <span class="p2">Malheureusement nous ne savons pas quels composants et pièces sont nécessaires pour changer</span>
                                                     <span class="p2">{{ le_la }}</span> 
                                                     <span class="p2">de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
@@ -375,7 +375,7 @@
                                             <div class="module_default-results-1">
 
                                                 <!-- Pas besoin d'outils ou pas d'infos -->
-                                                <div v-if="uiParams.reparinfos.tools.length==0" style="text-align: justify">
+                                                <div v-if="uiParams.reparinfos==null||uiParams.reparinfos.tools.length==0" style="text-align: justify">
                                                     <span class="p2">Malheureusement nous ne savons pas si du matériel spécifique est nécessaire pour changer</span>
                                                     <span class="p2">{{ le_la }}</span> 
                                                     <span class="p2">de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
@@ -552,7 +552,7 @@
                                         <div class="module_default-results">
 
                                             <!-- Pas d'infos sur le prix = il n'y a pas de parts renseignées sur iFixit-->
-                                            <div v-if="uiParams.reparinfos.parts==null||totalPrice==0" style="text-align: justify">
+                                            <div v-if="uiParams.reparinfos==null||uiParams.reparinfos.parts.length==0||totalPrice==0" style="text-align: justify">
                                                 <span class="p2">Malheureusement nous n'avons pas le prix moyen</span>
                                                 <span class="p2">{{ dun_dune }}</span> 
                                                 <span class="p2">pour votre </span><span class="p2">{{ uiParams.selectedModele }}</span><span class="p2">. Nous faisons tout pour remédier à cela au plus vite!</span>
@@ -574,7 +574,7 @@
                                         <!-- Affichage de chauqe pièce nécessaire -->
                                         <div class="module_default-results-1">
                                             <!-- Pas d'infos sur le besoin de piève-->
-                                            <div v-if="uiParams.reparinfos.parts.length==0" style="text-align: justify; text-align-last: center">
+                                            <div v-if="uiParams.reparinfos==null||uiParams.reparinfos.parts.length==0" style="text-align: justify; text-align-last: center">
                                                 <span class="p2">Malheureusement nous ne savons pas quels composants et pièces sont nécessaires pour changer</span>
                                                 <span class="p2">{{ le_la }}</span> 
                                                 <span class="p2">de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
@@ -708,7 +708,7 @@
                                         <div class="module_default-results-1">
 
                                             <!-- Pas besoin d'outils ou pas d'infos -->
-                                            <div v-if="uiParams.reparinfos.tools.length==0" style="text-align: justify">
+                                            <div v-if="uiParams.reparinfos==null||uiParams.reparinfos.tools.length==0" style="text-align: justify">
                                                 <span class="p2">Malheureusement nous ne savons pas si du matériel spécifique est nécessaire pour changer</span>
                                                 <span class="p2">{{ le_la }}</span> 
                                                 <span class="p2">de votre {{ uiParams.selectedModele }}. Il se peut que vous trouviez cette information directement sur le tutoriel fournit en haut. Nous faisons au plus vite pour y remédier !</span>
@@ -840,7 +840,9 @@
                                     <button @click="handleClickRepar(uiParams)">Je préfère passer par un réparateur agréé</button>
                                 </div>
                                 <div class="btn-4">
-                                    <button @click="handleClickChgt(uiParams)">Je préfère changer de téléphone</button>
+                                    <router-link to="/AutreProbleme" style="text-decoration: none; width:100%">
+                                        <button>Je rencontre un autre type de problème</button>
+                                    </router-link>
                                 </div>
                             </div>
 
@@ -1934,13 +1936,15 @@
                             <div class="spacer-1"></div>
 
                             <div class="button-wrapper-4">
-                            <div class="btn-3">
-                                <button @click="handleClickSelf(uiParams)">Je préfère réparer moi-même mon téléphone</button>
+                                <div class="btn-3">
+                                    <button @click="handleClickSelf(uiParams)">Je préfère réparer moi-même mon téléphone</button>
+                                </div>
+                                <div class="btn-4">
+                                    <router-link to="/AutreProbleme" style="text-decoration: none; width:100%">
+                                        <button>Je rencontre un autre type de problème</button>
+                                    </router-link>
+                                </div>
                             </div>
-                            <div class="btn-4">
-                                <button @click="handleClickChgt(uiParams)">Je préfère changer de téléphone</button>
-                            </div>
-                        </div>
 
                         </div>
 
@@ -1968,16 +1972,21 @@
 
                         <div class="spacer-1"></div>
 
-                        <div class="module-text-info" id="text-info">
+                        <div class="module-text-info" id="text-info" style="text-align: justify">
                             <span class="p2">80% de l'impact d'un mobile réside dans sa fabrication d'après l'ADEME. Les Français changent en moyenne de mobile tous les 2 ans alors qu'il fonctionne encore. Dans un effort commun de réduction de nos émission, il est donc important d'essayer de conserver son mobile le plus longtemps possible ! En faisant réparer votre téléphone, vous réduisez non seulement vos déchets, votre impact environnemental de votre usage numérique, mais aussi l'impact sur votre portefeuille.
                             </span>
                         </div>
 
                         <div class="spacer-1"></div>
 
-                        <div clas="button-wrapper-3">
-                            <div class="btn-2">
-                                <button>Je souhaite quand même découvrir les téléphones durables de la gamme TeleCoop</button>
+                        <div class="button-wrapper-4">
+                            <div class="btn-3">
+                                <router-link to="/AutreProbleme" style="text-decoration: none; width:100%">
+                                    <button>Je rencontre un autre type de problème</button>
+                                </router-link>
+                            </div>
+                            <div class="btn-4">
+                                <button>Je souhaite quand même changer de téléphone</button>
                             </div>
                         </div>
 
@@ -2002,7 +2011,7 @@
                 <span>BONNES PRATIQUES</span>
             </div>
             <div class = "wrapper-pratiques">
-                <span>Afin de garantir une meilleure longévité de votre appareil, TeleCoop vous recommande de :</span>
+                <span style="font-weight: bold">Afin de garantir une meilleure longévité de votre appareil, TeleCoop vous recommande de :</span>
             </div>
             <div v-for="(item, index) in Object.values(bonnes_pratiques_page)" :key="index" class="bullet-item">
                 <div class="wrapper-pratiques-item">
@@ -2016,13 +2025,26 @@
 
 </template>
 
+<script>
+    import { resetParams } from '@/controller/controller';
+    import uiParams from '@/config/uiParams.js';
+
+    export default {
+    beforeRouteLeave(to, from, next) {
+        resetParams(uiParams);
+        next();
+    }
+    };
+
+</script>
+
 <script setup>
     import { computed, watch, watchEffect } from 'vue';
     import { annees } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
     import { getLexique, getReductions, getInfosReparation, getBonnesPratiques } from '@/config/automatisation.js';
     import { tooltipsLabels, difficultyTranslationDic, timeTranslationDic } from '@/config/uiParams.js';
-    import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickChgt,handleClickRepar,handleClickSelf,toggleTooltip } from '@/controller/controller';
+    import { uncheckOthersGarantie, uncheckOthersTeleCoop,openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickRepar,handleClickSelf,toggleTooltip } from '@/controller/controller';
     import { cpVilles } from '@/model/model.js';
     import { os_api,getMarquesForOSAPI,getModelesForMarqueAndOSAPI,updateGuide, updateScore, updateDicId ,updateInfosRepas, formatageParts, formatageTools, getLinkScorePictures, calculatePriceMO} from '@/model/modelAPI';
     import { getPriceFromUrl } from '@/model/extract';

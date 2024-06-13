@@ -2,13 +2,13 @@
     <body>
         <header class="wrapper-titre">
                 <h1>
-                    <span>{{ titresPages.titrePageBugs }}</span>
+                    <span>Je rencontre des bugs sur mon téléphone</span>
                 </h1>
         </header>
 
         <header class="wrapper-sous-titre">
                 <p class="p1">
-                    <span>TeleCoop vous accompagne pour conserver votre mobile le plus longtemps possible.</span> <span>{{ titresPages.soustitrePageBugs }}</span>
+                    <span>TeleCoop vous accompagne pour conserver votre mobile le plus longtemps possible.</span> <span>Essayons de trouver une solution à vos bugs !</span>
                 </p>
         </header>
 
@@ -58,7 +58,7 @@
                     <div class="module_default-info" id="info-repa">
                         <header class="header-info">
                             <div class="circle">2</div>
-                            <span>{{ titresPages.souslabelPageBugs }}</span>
+                            <span>Je trouve une solution à mon problème</span>
                         </header>
 
                         <div class="spacer-1"></div>
@@ -126,7 +126,9 @@
                                     <button @click="handleClickRepar(uiParams)">Je préfère passer par un réparateur agréé</button>
                                 </div>
                                 <div class="btn-4">
-                                    <button @click="handleClickChgt(uiParams)">Je préfère changer de téléphone</button>
+                                    <router-link to="/AutreProbleme" style="text-decoration: none; width:100%">
+                                        <button>Je rencontre un autre type de problème</button>
+                                    </router-link>
                                 </div>
                             </div>
 
@@ -217,16 +219,21 @@
 
                         <div class="spacer-1"></div>
 
-                        <div class="module-text-info" id="text-info">
+                        <div class="module-text-info" id="text-info" style="text-align: justify">
                             <span class="p2">80% de l'impact d'un mobile réside dans sa fabrication d'après l'ADEME. Les Français changent en moyenne de mobile tous les 2 ans alors qu'il fonctionne encore. Dans un effort commun de réduction de nos émission, il est donc important d'essayer de conserver son mobile le plus longtemps possible ! En faisant réparer votre téléphone, vous réduisez non seulement vos déchets, votre impact environnemental de votre usage numérique, mais aussi l'impact sur votre portefeuille.
                             </span>
                         </div>
 
                         <div class="spacer-1"></div>
 
-                        <div clas="button-wrapper-3">
-                            <div class="btn-2">
-                                <button>Je souhaite quand même découvrir les téléphones durables de la gamme TeleCoop</button>
+                        <div class="button-wrapper-4">
+                            <div class="btn-3">
+                                <router-link to="/AutreProbleme" style="text-decoration: none; width:100%">
+                                    <button>Je rencontre un autre type de problème</button>
+                                </router-link>
+                            </div>
+                            <div class="btn-4">
+                                <button>Je souhaite quand même changer de téléphone</button>
                             </div>
                         </div>
 
@@ -251,7 +258,7 @@
                 <span>BONNES PRATIQUES</span>
             </div>
             <div class = "wrapper-pratiques">
-                <span>Afin de garantir une meilleure longévité de votre appareil, TeleCoop vous recommande de :</span>
+                <span style="font-weight: bold">Afin de garantir une meilleure longévité de votre appareil, TeleCoop vous recommande de :</span>
             </div>
             <div v-for="(item, index) in Object.values(bonnes_pratiques_bugs)" :key="index" class="bullet-item">
                 <div class="wrapper-pratiques-item">
@@ -267,9 +274,9 @@
 
 <script setup>
     import { computed } from 'vue';
-    import { titresPages, bonnes_pratiques_bugs } from '@/config/uiParams.js';
+    import { bonnes_pratiques_bugs } from '@/config/uiParams.js';
     import uiParams from '@/config/uiParams.js';
-    import {openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickChgt,handleClickRepar } from '@/controller/controller';
+    import {openRepairerLink,toggleSection, showSuggestions, selectCP,handleClickRepar } from '@/controller/controller';
     import { cpVilles, bugs, getBps } from '@/model/model.js';
     
 

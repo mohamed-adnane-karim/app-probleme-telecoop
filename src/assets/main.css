@@ -212,6 +212,8 @@ body {
 
 .wrapper-sous-titre {
     margin: 0 auto;
+    padding-left: 40px;
+    padding-right: 60px;
     text-align: center;
     background-color: var(--wrapper-background-color);
 }
@@ -381,11 +383,11 @@ body {
 /* 1.4 - Footer */
 .footer {
     background-color: #1F1549;
-    /* width: 100%; */
     justify-content: flex-start;
-    padding-bottom: 6vh;
-    padding-top: 4vh;
-    padding-left: 10vh;
+    padding-bottom: 3vh;
+    padding-top: 1vh;
+    padding-left: 1vh;
+    padding-right: 15vh;
     bottom: 0;
     left: 0;
     display: block;
@@ -409,12 +411,14 @@ body {
 
 .wrapper-pratiques {
     background-color: var(--blue-back);
-    margin-left: 100px;
+    margin-left: 80px;
     margin-top: 20px;
     font-family: Poppins, sans-serif;
     font-size: 120%;
     color: white;
     margin-bottom: 10px;
+    line-height: 1.5;
+
 }
 
 .wrapper-pratiques-item {
@@ -422,6 +426,8 @@ body {
     font-family: Poppins, sans-serif;
     font-size: 120%;
     color: white;
+    line-height: 1.4;
+    text-align: justify;
 }
 
 /* 1.5 - Images */

@@ -33,8 +33,8 @@
             },
             {
                 "BonnesPratiques": {
-                    "pratique1": "Réduire la luminosité de l'écran : Diminuez la luminosité de l'écran ou activez le mode automatique.",
-                    "pratique3": "Activer le mode économie d'énergie : Utilisez le mode économie d'énergie de votre téléphone pour prolonger l'autonomie de la batterie."
+                    "pratique1": "Éviter de laisser votre téléphone surcharger toute la nuit ; débranchez-le une fois complètement chargé pour prévenir une usure prématurée de la batterie.",
+                    "pratique2": "Utiliser un chargeur et un câble de qualité, de préférence ceux recommandés par le fabricant de votre téléphone, pour éviter les surchauffes et les problèmes de charge qui peuvent endommager la batterie."
                 }
             }
         ],
@@ -72,7 +72,8 @@
             {
                 "BonnesPratiques": {
                     "pratique1": "Protéger votre appareil à l'aide d'une coque de protection solide",
-                    "pratique2": "Protéger votre écran à l'aide d'une vitre de protection, de préférence en verre trempé"
+                    "pratique2": "Protéger votre écran à l'aide d'une vitre de protection, de préférence en verre trempé",
+                    "pratique3": "Éviter de mettre votre téléphone dans la même poche que des objets durs comme des clés ou des pièces de monnaie, pour prévenir les rayures sur l'écran."
                 }
             }
         ],
@@ -109,8 +110,8 @@
             },
             {
                 "BonnesPratiques": {
-                    "pratique1": "Pratique1",
-                    "pratique2": "Pratique2"
+                    "pratique1": "Éviter de laisser votre téléphone dans des environnements poussiéreux ou humides pour protéger le haut-parleur interne de l'encrassement et de la corrosion.",
+                    "pratique2": "Utiliser des écouteurs ou un kit mains libres pour les appels ou l'écoute de musique, afin de réduire l'usure et la pression sur le haut-parleur interne."
                 }
             }
         ],
@@ -147,8 +148,8 @@
             },
             {
                 "BonnesPratiques": {
-                    "pratique1": "Pratique1",
-                    "pratique2": "Pratique2"
+                    "pratique1": "Protéger votre appareil avec une coque de protection solide qui inclut un rebord surélevé autour de l'écran pour éviter les chocs directs sur la caméra frontale.",
+                    "pratique2": "Utiliser un protège-écran avec une découpe précise pour la caméra frontale, de préférence en verre trempé, pour éviter les rayures et les fissures."
                 }
             }
         ],
@@ -185,8 +186,8 @@
             },
             {
                 "BonnesPratiques": {
-                    "pratique1": "Pratique1",
-                    "pratique2": "Pratique2"
+                    "pratique1": "Éviter de placer votre téléphone sur des surfaces dures ou inégales qui pourraient exercer une pression excessive sur le haut-parleur externe.",
+                    "pratique2": "Éviter d'exposer votre téléphone à des environnements humides ou poussiéreux qui pourraient obstruer le haut-parleur externe et affecter sa performance."
                 }
             }
         ],
@@ -261,8 +262,8 @@
             },
             {
                 "BonnesPratiques": {
-                    "pratique1": "Pratique1",
-                    "pratique2": "Pratique2"
+                    "pratique1": "Utiliser une coque de protection qui offre une découpe précise autour de la caméra arrière pour éviter les chocs directs et les rayures.",
+                    "pratique2": "Éviter de poser votre téléphone sur des surfaces dures ou irrégulières qui pourraient endommager la lentille de la caméra arrière."
                 }
             }
         ],
@@ -299,8 +300,8 @@
             },
             {
                 "BonnesPratiques": {
-                    "pratique1": "Pratique1",
-                    "pratique2": "Pratique2"
+                    "pratique1": "Utiliser uniquement le câble de charge d'origine ou des câbles certifiés par le fabricant de votre téléphone pour éviter les dommages électriques et mécaniques au port de charge.",
+                    "pratique2": "Nettoyer régulièrement le port de charge à l'aide d'un cure-dent en bois ou en plastique et d'un chiffon sec pour enlever la saleté et la poussière accumulées."
                 }
             }
         ]

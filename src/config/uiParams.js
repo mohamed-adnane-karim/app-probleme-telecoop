@@ -59,56 +59,10 @@ const uiParams = reactive({
 
 });
 
-const titresPages = {
-    titrePageEcran: "L'écran de mon téléphone est cassé",
-    titrePageVitre: "La vitre arrière de mon téléphone est cassée",
-    titrePageAutonomie: "L'autonomie de mon téléphone a diminué",
-    titrePageCharge: "Mon téléphone ne charge plus",
-    titrePageMicrophone: "Le microphone est défectueux",
-    titrePageHautParleur: "Le haut-parleur est défectueux",
-    titrePageCamera: "La caméra est défectueuse",
-    titrePageBoutons: "Les boutons de mon téléphone sont défectueux",
-    titrePageConnexion: "La connexion de mon téléphone est mauvaise",
-    titrePageStockage: "Je manque de stockage sur mon téléphone",
-    titrePageBugs: "Je rencontre des bugs sur mon téléphone",
-    titrePageAutre: "Je recontre un autre type de problème",
-
-    soustitrePageEcran: "Réparons ensemble votre écran !",
-    soustitrePageAutonomie: "Réparons ensemble votre batterie !",
-    soustitrePageVitre: "Réparons ensemble votre vitre arrière !",
-    soustitrePageAutre: "Nous ne sommes malheureusement pas en mesure de vous fournir plus d'aides pour votre problème. Nous vous redirigeons cependant vers des personnes en mesure de vous aider :",
-    soustitrePageBugs: "Essayons de résoudre vos bugs!",
-
-
-
-
-    souslabelPageEcran: "Je répare mon écran de téléphone",
-    souslabelPageAutonomie: "Je répare la batterie de mon téléphone",
-    souslabelPageVitreArrière: "Je répare la vitre arrière de mon téléphone",
-    souslabelPageBugs: "Je trouve une solution à mon bug"
-
-};
-
-const bonnes_pratiques_ecran = {
-    pratique1: "Protéger votre appareil à l'aide d'une coque de protection solide",
-    pratique2: "Protéger votre écran à l'aide d'une vitre de protection, de préférence en verre trempé"
-};
-
-const bonnes_pratiques_autonomie = {
-    pratique1: "Réduire la luminosité de l'écran : Diminuez la luminosité de l'écran ou activez le mode automatique.",
-    pratique2: "Fermer les applications en arrière-plan : Fermez les applications que vous n'utilisez pas pour économiser la batterie.",
-    pratique3: "Activer le mode économie d'énergie : Utilisez le mode économie d'énergie de votre téléphone pour prolonger l'autonomie de la batterie.",
-};
-
-const bonnes_pratiques_vitre_arriere = {
-    pratique1: "Utiliser une coque de protection : Pour éviter d'autres dommages, utilisez une coque robuste qui couvre l'arrière et les côtés du téléphone.",
-    pratique2: "Faire réparer la vitre arrière : Consultez un professionnel de la réparation de smartphones pour remplacer la vitre arrière cassée.",
-    pratique3: "Utiliser du ruban adhésif transparent : En attendant la réparation, appliquez du ruban adhésif transparent sur la vitre cassée pour éviter les coupures et empêcher les fragments de verre de se détacher.",
-};
 
 const bonnes_pratiques_bugs = {
-    pratique1: "Ne pas aller sur des sites non sécurisés",
-    pratique2: "Installer un antivirus"
+    pratique1: "Maintenir votre système d'exploitation à jour en installant les mises à jour proposées par le fabricant de votre téléphone. Ces mises à jour corrigent souvent les bugs et améliorent la sécurité.",
+    pratique2: "Redémarrer périodiquement votre téléphone pour vider la mémoire et réinitialiser les processus, ce qui peut souvent résoudre les bugs mineurs."
 };
 
 const annees = {
@@ -147,10 +101,6 @@ const tooltipsLabels = {
 export default uiParams;
 
 export {
-    titresPages,
-    bonnes_pratiques_ecran,
-    bonnes_pratiques_autonomie,
-    bonnes_pratiques_vitre_arriere,
     bonnes_pratiques_bugs,
     annees,
     tooltipsLabels,

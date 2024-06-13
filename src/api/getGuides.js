@@ -36,7 +36,7 @@ async function fetchRelatedWikiDetails(namespace = "CATEGORY", title) {
         const formattedTitle = title.replace(/ /g, '_')
 
         // Construire l'URL de l'API avec les paramètres de requête
-        const url = `https://www.ifixit.com/api/2.0/wikis/${namespace}/${formattedTitle}?langid=fr`;
+        const url = `https://www.ifixit.com/api/2.0/wikis/${namespace}/${formattedTitle}?`;
 
         // Effectuer la requête GET
         const response = await axios.get(url);
@@ -45,15 +45,7 @@ async function fetchRelatedWikiDetails(namespace = "CATEGORY", title) {
     } catch (error) {
         console.error('Failed to fetch related wiki details in French:', error.message);
 
-        const formattedTitle = title.replace(/ /g, '_')
-
-        // Construire l'URL de l'API avec les paramètres de requête
-        const url = `https://www.ifixit.com/api/2.0/wikis/${namespace}/${formattedTitle}`;
-
-        // Effectuer la requête GET
-        const response = await axios.get(url);
-        // Retourner les données de la réponse, uniquement la clé "guides"
-        return response.data.related_wikis;
+        return null
 
     }
 };

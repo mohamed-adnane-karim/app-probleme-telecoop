@@ -6,7 +6,7 @@
                 </h1>
         </header>
 
-        <header class="wrapper-sous-titre">
+        <header class="wrapper-sous-titre" id="sous-titre">
                 <p class="p1">
                     <span>TeleCoop vous accompagne pour conserver votre mobile le plus longtemps possible.</span> <span>Identifions votre problème ensemble afin de trouver la bonne solution !</span>
                 </p>
@@ -172,8 +172,235 @@
 
                                 <div class="spacer-1"></div>
 
-                                <div v-if="uiParams.selectedContinuer">                                    
-                                    <!-- A faire -->
+                                <div v-if="uiParams.selectedContinuer">     
+
+                                    <!-- Cas où il n'y a aucune info de réparation sur le site d'iFixit -->
+                                    <div v-if="uiParams.guide==null" style="text-align: justify">
+                                        <span class="p3">Malheureusement il n'y a pour l'instant aucune information de réparation pour votre {{ uiParams.selectedModele }} sur le site de notre partenaire. Nous faisons au plus vite pour y remédier ! N'hésitez pas à passer par un réparateur labellisé afin de faire diagnostiquer votre téléphone.</span>
+                                    </div>
+
+                                    <!-- Cas où il y a des infos de réparations sur le site d'iFixit -->
+                                    <div v-else>
+                                        
+                                        <div style="text-align: justify">
+                                            <span class="p3" style="font-weight: bold">Bonne nouvelle ! </span> 
+                                            <span class="p3"> Votre téléphone est bien enregistré chez TeleCoop, nous allons pouvoir vous aider ! Nous vous guidons pas à pas tout au long du processus de réparation.</span>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Score de réparabilité de votre téléphone -->
+                                        <div id="score-reparabilite">
+
+                                            <div class="module-select-info" id="score-repa">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Le score de réparabilité de votre téléphone</span>
+                                            </div>
+                                        
+                                            <div class="spacer-1"></div>
+
+                                            <div class="module_default-results">
+                                                <!-- Cas où le score ifixit existe -->
+                                                <div v-if="uiParams.score!=null">
+                                                    <div class="image-container">
+                                                        <div v-for="(link, index) in link_picture" :key="index" >
+                                                            <img v-if="link!=0" :src="link" class="score-image" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Cas où le score ifixit n'existe pas  -->
+                                                <div v-else style="text-align: justify">
+                                                    <span class="p2">Malheureusement iFixit n'a pas encore attribué un score de réparabilité à votre {{ uiParams.selectedModele }}. Nous faisons au plus vite pour y remédier !</span>
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Les tutoriels de remplacement existant  -->
+                                        <div id="remplacement">
+
+                                            <div class="module-select-info" id="tech">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Tutoriels de remplacement</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <!-- Il existe des techniques -->
+                                            <div  v-if="uiParams.listReplacement.length>0" class="module_default-results-1">
+
+                                                <div class="p2" style="display: flex; flex-wrap: wrap;">
+
+                                                    <div v-for="(technique,index) in Object.values(uiParams.listReplacement)" :key="index" class="technique-item">
+
+                                                        <div class="p2" style="display: flex; align-items: center;">
+
+                                                            <!-- Si l'image existe -->
+                                                            <div v-if="technique[3]!=0&&technique[3]">
+                                                                <img :src="technique[3]" class="picture-thumbnail-1"/>
+                                                            </div>
+
+                                                            <!-- Si elle n'existe pas -->
+                                                            <div v-else>
+                                                                <img :src="'./src/pictures/not-found.png'" class="picture-thumbnail-1"/>
+                                                            </div>
+
+                                                            <!-- Affichage des techniques -->
+                                                            <div class="wrapper-price-tools">
+
+                                                                <!-- Cas où l'url de la technique est valide -->
+                                                                <div v-if="technique[1].startsWith('http') || technique[1].startsWith('https')" class="label-technique">
+                                                                    <a :href="technique[1]" target="_blank" class="label-technique">{{ technique[0] }}</a>
+                                                                </div>
+
+                                                                <!--Affichage de la difficulté de la technqiue si existante -->
+                                                                <div id="difficulté">
+                                                                    <span class="label-difficulty">Difficulté : {{translatedDifficulty(technique[2])}}</span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Il n'en existe pas -->
+                                            <div v-else class="module_default-results" style="text-align: justify">
+                                                <span class="p3">Malheureusement il n'y a pour l'instant aucune tutoriel de remplacement disponible pour votre {{ uiParams.selectedModele }} sur le site de notre partenaire. Nous faisons au plus vite pour y remédier ! N'hésitez pas à passer par un réparateur labellisé afin de faire diagnostiquer votre téléphone.</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+
+                                        <!-- Les techniques disponibles -->
+                                        <div id="techniques">
+
+                                            <div class="module-select-info" id="tech">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Tutoriels de techniques</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <!-- Il existe des techniques -->
+                                            <div  v-if="uiParams.listTechniques.length>0" class="module_default-results-1">
+
+                                                <div class="p2" style="display: flex; flex-wrap: wrap;">
+
+                                                    <div v-for="(technique,index) in Object.values(uiParams.listTechniques)" :key="index" class="technique-item">
+
+                                                        <div class="p2" style="display: flex; align-items: center;">
+
+                                                            <!-- Si l'image existe -->
+                                                            <div v-if="technique[3]!=0&&technique[3]">
+                                                                <img :src="technique[3]" class="picture-thumbnail-1"/>
+                                                            </div>
+
+                                                            <!-- Si elle n'existe pas -->
+                                                            <div v-else>
+                                                                <img :src="'./src/pictures/not-found.png'" class="picture-thumbnail-1"/>
+                                                            </div>
+
+                                                            <!-- Affichage des techniques -->
+                                                            <div class="wrapper-price-tools">
+
+                                                                <!-- Cas où l'url de la technique est valide -->
+                                                                <div v-if="technique[1].startsWith('http') || technique[1].startsWith('https')" class="label-technique">
+                                                                    <a :href="technique[1]" target="_blank" class="label-technique">{{ technique[0] }}</a>
+                                                                </div>
+
+                                                                <!--Affichage de la difficulté de la technqiue si existante -->
+                                                                <div id="difficulté">
+                                                                    <span class="label-difficulty">Difficulté : {{translatedDifficulty(technique[2])}}</span>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Il n'en existe pas -->
+                                            <div v-else class="module_default-results" style="text-align: justify">
+                                                <span class="p3">Malheureusement il n'y a pour l'instant aucune technique de réparation disponible pour votre {{ uiParams.selectedModele }} sur le site de notre partenaire. Nous faisons au plus vite pour y remédier ! N'hésitez pas à passer par un réparateur labellisé afin de faire diagnostiquer votre téléphone.</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+                                        <div class="spacer-1"></div>
+
+                                        <!-- Les tutoriels annexes -->
+                                        <div id="tutoAnnexe">
+
+                                            <div class="module-select-info" id="tech">
+                                                <span class="bullet-1"></span>
+                                                <span class="p3" style="font-weight: bold">Diagnostic et tutoriels annexes</span>
+                                            </div>
+
+                                            <div class="spacer-1"></div>
+
+                                            <!-- Il existe des techniques -->
+                                            <div  v-if="uiParams.listrelatedtutos.length>0" class="module_default-results-1">
+
+                                                <div class="p2" style="display: flex; flex-wrap: wrap;">
+
+                                                    <div v-for="(technique,index) in Object.values(uiParams.listrelatedtutos)" :key="index" class="technique-item">
+
+                                                        <div class="p2" style="display: flex; align-items: center;">
+
+                                                            <!-- Si l'image existe -->
+                                                            <div v-if="technique[2]!=0&&technique[2]">
+                                                                <img :src="technique[2]" class="picture-thumbnail-1"/>
+                                                            </div>
+
+                                                            <!-- Si elle n'existe pas -->
+                                                            <div v-else>
+                                                                <img :src="'./src/pictures/not-found.png'" class="picture-thumbnail-1"/>
+                                                            </div>
+
+                                                            <!-- Affichage des techniques -->
+                                                            <div class="wrapper-price-tools">
+
+                                                                <!-- Cas où l'url de la technique est valide -->
+                                                                <div v-if="technique[1].startsWith('http') || technique[1].startsWith('https')" class="label-technique">
+                                                                    <a :href="technique[1]" target="_blank" class="label-technique">{{ technique[0] }}</a>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Il n'en existe pas -->
+                                            <div v-else class="module_default-results" style="text-align: justify">
+                                                <span class="p3">Malheureusement il n'y a pour l'instant aucun diagnostic disponible pour votre {{ uiParams.selectedModele }} sur le site de notre partenaire. Nous faisons au plus vite pour y remédier ! N'hésitez pas à passer par un réparateur labellisé afin de faire diagnostiquer votre téléphone.</span>
+                                            </div>
+                                            </div>
+
+                                    </div>
+
+                                    <div class="spacer-1"></div>   
+                                    
                                 </div>
   
                             </div>
@@ -404,7 +631,7 @@
                                         </div>
                                         </div>
 
-                                    </div>
+                                </div>
 
                                 <div class="spacer-1"></div>                                
 
@@ -509,7 +736,7 @@
 
                         <div class="spacer-1"></div>
 
-                        <div class="module-text-info" id="text-info">
+                        <div class="module-text-info" id="text-info" style="text-align: justify">
                             <span class="p2">80% de l'impact d'un mobile réside dans sa fabrication d'après l'ADEME. Les Français changent en moyenne de mobile tous les 2 ans alors qu'il fonctionne encore. Dans un effort commun de réduction de nos émission, il est donc important d'essayer de conserver son mobile le plus longtemps possible ! En faisant réparer votre téléphone, vous réduisez non seulement vos déchets, votre impact environnemental de votre usage numérique, mais aussi l'impact sur votre portefeuille.
                             </span>
                         </div>
@@ -543,7 +770,7 @@
                 <span>BONNES PRATIQUES</span>
             </div>
             <div class = "wrapper-pratiques">
-                <span>Afin de garantir une meilleure longévité de votre appareil, TeleCoop vous recommande de :</span>
+                <span style="font-weight: bold">Afin de garantir une meilleure longévité de votre appareil, TeleCoop vous recommande de :</span>
             </div>
             <div v-for="(item, index) in Object.values(bonnes_pratiques_bugs)" :key="index" class="bullet-item">
                 <div class="wrapper-pratiques-item">
